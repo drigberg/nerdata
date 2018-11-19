@@ -4,7 +4,7 @@
   "description": "testdata for the fantasy/scifi enthusiast",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout=10000 test/*.test.ts --require ts-node/register --recursive --prof --ui tdd --throw-deprecation"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,18 @@
   "bugs": {
     "url": "https://github.com/drigberg/nerdfaker/issues"
   },
-  "homepage": "https://github.com/drigberg/nerdfaker#readme"
+  "homepage": "https://github.com/drigberg/nerdfaker#readme",
+  "dependencies": {
+    "lodash": "4.17.11"
+  },
+  "devDependencies": {
+    "@types/chai": "4.1.7",
+    "@types/lodash": "4.14.118",
+    "@types/mocha": "5.2.5",
+    "@types/node": "10.12.9",
+    "chai": "4.2.0",
+    "mocha": "5.2.0",
+    "ts-node": "7.0.1",
+    "typescript": "3.1.6"
+  }
 }

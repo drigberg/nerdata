@@ -2,22 +2,26 @@
  * Module dependencies
  */
 
-const { castArray, reduce, sample } = require('lodash')
-const { unsupportedError } = require('./errors')
+import { castArray, reduce, sample } from 'lodash'
+import { unsupportedError } from './errors'
 
 /*
  * Module
  */
 
-class Names {
-  constructor(data) {
+export class Name {
+  private data: any[]
+  private universes: string[]
+  private subsets: any
+
+  constructor(data: any) {
     const parsed = this._parseData(data);
     this.data = parsed.data
     this.universes = parsed.universes
     this.subsets = {}
   }
 
-  _getSubset(ctx) {
+  _getSubset(ctx: string | string[]) {
     if (!ctx || !ctx.length) {
       return this.data
     }
@@ -38,37 +42,31 @@ class Names {
     return subset
   }
 
-  first(ctx) {
+  first(ctx: string | string[]) {
     return sample(this._getSubset(ctx)).first
   }
 
-  last(ctx) {
+  last(ctx: string | string[]) {
     return sample(this._getSubset(ctx)).last
   }
 
-  full(ctx) {
+  full(ctx: string | string[]) {
     const { first, last } = sample(this._getSubset(ctx))
     return [first, last].filter(item => item).join(' ');
   }
 
-  _parseData(data) {
+  _parseData(data: any) {
     return reduce(data, (acc, { names }, ctx) => {
-      acc.data.push(...names.map(item => ({
-        ...item,
+      acc.data.push(...names.map((ctxNameData: any) => ({
+        ...ctxNameData,
         ctx,
       })))
 
       acc.universes.push(ctx)
       return acc;
     }, {
-        data: [],
-        universes: [],
-      });
+      data: [],
+      universes: [],
+    } as any);
   }
 }
-
-/*
- * Module exports
- */
-
-module.exports = Names
