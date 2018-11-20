@@ -16,14 +16,14 @@ import {
 
 import * as path from 'path'
 import { Name } from './Name'
-import { unsupportedError } from './errors'
+import * as errors from './errors'
 import { IFakerOpts } from './interface'
 
 /*
  * Module variables
  */
 
-const dataDir = path.join(__dirname, '..', 'data')
+const dataDir: string = path.join(__dirname, '..', 'data')
 
 /*
  * Module
@@ -50,34 +50,12 @@ export class NerdFaker {
     }
 
     if (has(opts, 'include')) {
-      const toInclude = castArray(opts.include).map(item => item.toLowerCase())
-
-      const unavailable = toInclude.filter(key => !this._allUniverses.includes(key));
-
-      if (unavailable.length) {
-        throw unsupportedError(unavailable, this._allUniverses)
-      }
-
-      this.setup(toInclude)
+      this.setup(this.limitByInclusion(opts.include))
       return
     }
 
-    const toExclude = castArray(opts.exclude).map(item => item.toLowerCase())
-    const unavailable = toExclude.filter(key => !this._allUniverses.includes(key));
-
-    if (unavailable.length) {
-      throw unsupportedError(unavailable, this._allUniverses)
-    }
-
-    this.setup(this._allUniverses.filter(item => !toExclude.includes(item)))
+    this.setup(this.limitByExclusion(opts.exclude))
   }
-
-  setup(universes: string[]) {
-    this._universes = universes
-    this._data = this.loadData(universes)
-    this.name = new Name(this._data)
-  }
-
 
   public universes(): string[] {
     return this._universes
@@ -85,6 +63,12 @@ export class NerdFaker {
 
   public allUniverses(): string[] {
     return this._allUniverses
+  }
+
+  private setup(universes: string[]) {
+    this._universes = universes
+    this._data = this.loadData(universes)
+    this.name = new Name(this._data)
   }
 
   private loadData(universes: string[]): any {
@@ -96,5 +80,32 @@ export class NerdFaker {
       acc[universe] = JSON.parse(readFileSync(path.join(dataDir, `${universe}.json`)).toString());
       return acc
     }, {} as any)
+  }
+
+  private limitByExclusion(excluded?: string | string[]) {
+    const toExclude = castArray(excluded).map(item => item.toLowerCase())
+    const unavailable = toExclude.filter(key => !this._allUniverses.includes(key));
+
+    if (unavailable.length) {
+      throw errors.unsupported(unavailable, this._allUniverses)
+    }
+
+    return this._allUniverses.filter(item => !toExclude.includes(item))
+  }
+
+  private limitByInclusion(included?: string | string[]) {
+    const toInclude = castArray(included).map(item => item.toLowerCase())
+
+    if (!toInclude.length) {
+      throw errors.noneIncluded(this._allUniverses)
+    }
+
+    const unavailable = toInclude.filter(key => !this._allUniverses.includes(key));
+
+    if (unavailable.length) {
+      throw errors.unsupported(unavailable, this._allUniverses)
+    }
+
+    return toInclude
   }
 }

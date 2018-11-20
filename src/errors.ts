@@ -2,10 +2,23 @@
  * Module
  */
 
-export function unsupportedError(unavailable: string[], available: string[]) {
+
+function formatAvailable(available: string[]) {
+  return available.sort().join(', ')
+}
+
+export function unsupported(unavailable: string[], available: string[]) {
   return new Error(
-    `The following universes are unsupported or misspelled: ${unavailable.join(
+    `The following universes are unsupported or misspelled: ${unavailable.sort().join(
       ", ",
-    )}. Available universes are: ${available.join(", ")}`,
+    )}. Available universes are: ${formatAvailable(available)}`,
   );
+}
+
+export function noneIncluded(available: string[]) {
+  return new Error(`opts.include must have at least one item, if specified. Options are: ${formatAvailable(available)}`)
+}
+
+export function allExcluded(available: string[]) {
+  return new Error(`opts.include must have at least one item, if specified. Options are: ${formatAvailable(available)}`)
 }
