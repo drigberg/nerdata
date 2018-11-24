@@ -3,7 +3,7 @@
  */
 
 import { castArray, reduce, sample } from 'lodash'
-import { unsupportedError } from './errors'
+import * as errors from './errors'
 
 /*
  * Module
@@ -34,7 +34,7 @@ export class Name {
 
     const unavailable = universes.filter(item => !this.universes.includes(item))
     if (unavailable.length) {
-      throw unsupportedError(unavailable, this.universes)
+      throw errors.unsupported(unavailable, this.universes)
     }
 
     const subset = this.data.filter(item => universes.includes(item.ctx))

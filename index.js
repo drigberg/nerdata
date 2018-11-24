@@ -2,11 +2,11 @@
  * Module dependencies
  */
 
-const NerdFaker = require('./lib/NerdFaker')
+const Nerdata = require('./lib/Nerdata')
 
 
 /*
  * Module exports
  */
 
-module.exports = NerdFaker
+module.exports = Nerdata

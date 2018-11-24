@@ -1,13 +1,13 @@
 import { expect } from 'chai'
-import { NerdFaker } from '../src/NerdFaker'
+import { Nerdata } from '../src/Nerdata'
 
-describe('NerdFaker', () => {
+describe('Nerdata', () => {
   describe('universes', () => {
     describe('no args', () => {
       it('success', () => {
-        const faker = new NerdFaker()
+        const nerdata = new Nerdata()
 
-        expect(faker.universes()).have.same.members([
+        expect(nerdata.universes()).have.same.members([
           'dune',
           'rick-and-morty',
           'star-wars',
@@ -19,42 +19,42 @@ describe('NerdFaker', () => {
       describe('positive', () => {
         describe('uppercase', () => {
           it('string', () => {
-            const faker = new NerdFaker({
+            const nerdata = new Nerdata({
               include: 'DUNE'
             })
 
-            expect(faker.universes()).have.same.members([
+            expect(nerdata.universes()).have.same.members([
               'dune',
             ])
           })
 
           it('array - one item', () => {
-            const faker = new NerdFaker({
+            const nerdata = new Nerdata({
               include: ['STAR-WARS']
             })
 
-            expect(faker.universes()).have.same.members([
+            expect(nerdata.universes()).have.same.members([
               'star-wars',
             ])
           })
 
           it('array - two items', () => {
-            const faker = new NerdFaker({
+            const nerdata = new Nerdata({
               include: ['DUNE', 'STAR-WARS']
             })
 
-            expect(faker.universes()).have.same.members([
+            expect(nerdata.universes()).have.same.members([
               'dune',
               'star-wars',
             ])
           })
 
           it('array - all items', () => {
-            const faker = new NerdFaker({
+            const nerdata = new Nerdata({
               include: ['DUNE', 'STAR-WARS', 'RICK-AND-MORTY']
             })
 
-            expect(faker.universes()).have.same.members([
+            expect(nerdata.universes()).have.same.members([
               'dune',
               'star-wars',
               'rick-and-morty',
@@ -64,42 +64,42 @@ describe('NerdFaker', () => {
 
         describe('lowercase', () => {
           it('string', () => {
-            const faker = new NerdFaker({
+            const nerdata = new Nerdata({
               include: 'dune'
             })
 
-            expect(faker.universes()).have.same.members([
+            expect(nerdata.universes()).have.same.members([
               'dune',
             ])
           })
 
           it('array - one item', () => {
-            const faker = new NerdFaker({
+            const nerdata = new Nerdata({
               include: ['star-wars']
             })
 
-            expect(faker.universes()).have.same.members([
+            expect(nerdata.universes()).have.same.members([
               'star-wars',
             ])
           })
 
           it('array - two items', () => {
-            const faker = new NerdFaker({
+            const nerdata = new Nerdata({
               include: ['dune', 'star-wars']
             })
 
-            expect(faker.universes()).have.same.members([
+            expect(nerdata.universes()).have.same.members([
               'dune',
               'star-wars',
             ])
           })
 
           it('array - all items', () => {
-            const faker = new NerdFaker({
+            const nerdata = new Nerdata({
               include: ['dune', 'star-wars', 'rick-and-morty']
             })
 
-            expect(faker.universes()).have.same.members([
+            expect(nerdata.universes()).have.same.members([
               'dune',
               'star-wars',
               'rick-and-morty',
@@ -112,7 +112,7 @@ describe('NerdFaker', () => {
         it('empty array', () => {
           let error: Error | undefined = undefined
           try {
-            new NerdFaker({
+            new Nerdata({
               include: []
             })
           } catch (err) {
@@ -129,7 +129,7 @@ describe('NerdFaker', () => {
         it('invalid universe', () => {
           let error: Error | undefined = undefined
           try {
-            new NerdFaker({
+            new Nerdata({
               include: ['twilight', 'duun']
             })
           } catch (err) {

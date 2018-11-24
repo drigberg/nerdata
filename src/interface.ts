@@ -1,6 +1,4 @@
-
-export interface IFakerOpts {
-  readonly include?: string | string[]
-  readonly exclude?: string | string[]
+export interface NerdataOpts {
+  readonly include?: string | string[];
+  readonly exclude?: string | string[];
 }
-

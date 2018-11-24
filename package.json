@@ -1,21 +1,22 @@
 {
-  "name": "nerdfaker",
+  "name": "nerdata",
   "version": "0.0.1",
   "description": "testdata for the fantasy/scifi enthusiast",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout=10000 test/*.test.ts --require ts-node/register --recursive --prof --ui tdd --throw-deprecation"
+    "testjs": "mocha test/*.test.js",
+    "test": "mocha --timeout=10000 test/chaiSetup.js test/*.test.ts --require ts-node/register --recursive --prof --ui tdd --throw-deprecation"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drigberg/nerdfaker.git"
+    "url": "git+https://github.com/drigberg/nerdata.git"
   },
   "author": "drigberg",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/drigberg/nerdfaker/issues"
+    "url": "https://github.com/drigberg/nerdata/issues"
   },
-  "homepage": "https://github.com/drigberg/nerdfaker#readme",
+  "homepage": "https://github.com/drigberg/nerdata#readme",
   "dependencies": {
     "lodash": "4.17.11"
   },
