@@ -11,6 +11,94 @@
     {
       "first": "Leia",
       "last": "Organa"
+    },
+    {
+      "first": "Padme",
+      "last": "Amidala"
+    },
+    {
+      "first": "Jar Jar",
+      "last": "Binks"
+    },
+    {
+      "first": "Jabba",
+      "last": "The Hutt"
+    },
+    {
+      "first": "C-3PO"
+    },
+    {
+      "first": "R2-D2"
+    },
+    {
+      "first": "Lando",
+      "last": "Calrissian"
+    },
+    {
+      "first": "Chewbacca"
+    },
+    {
+      "first": "Boba",
+      "last": "Fett"
+    },
+    {
+      "first": "Jango",
+      "last": "Fett"
+    },
+    {
+      "first": "Greedo"
+    },
+    {
+      "first": "Qui-Gon",
+      "last": "Jinn"
+    },
+    {
+      "first": "K-2SO"
+    },
+    {
+      "first": "Obi-Wan",
+      "last": "Kenobi"
+    },
+    {
+      "first": "L3-37"
+    },
+    {
+      "first": "Sheev",
+      "last": "Palpatine"
+    },
+    {
+      "first": "Darth Vader"
+    },
+    {
+      "first": "Darth Maul"
+    },
+    {
+      "first": "Count Dooku"
+    },
+    {
+      "first": "Luke",
+      "last": "Skywalker"
+    },
+    {
+      "first": "Mace",
+      "last": "Windu"
+    },
+    {
+      "first": "Yoda"
+    },
+    {
+      "first": "Rey"
+    },
+    {
+      "first": "Finn"
+    },
+    {
+      "first": "Kylo",
+      "last": "Ren"
+    },
+    {
+      "first": "Poe",
+      "last": "Dameron"
     }
   ]
 }

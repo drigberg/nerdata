@@ -16,6 +16,7 @@ import { NerdataOpts } from "./interface";
  */
 
 const dataDir: string = path.join(__dirname, "..", "data");
+let cache: any = {};
 
 /*
  * Module
@@ -51,6 +52,10 @@ export class Nerdata {
     this.setup(this.limitByExclusion(opts.exclude));
   }
 
+  public static resetCache() {
+    cache = {};
+  }
+
   public universes(): string[] {
     return this._universes;
   }
@@ -61,11 +66,11 @@ export class Nerdata {
 
   private setup(universes: string[]) {
     this._universes = universes;
-    this._data = this.loadData(universes);
+    this._data = this.getData(universes);
     this.name = new Name(this._data);
   }
 
-  private loadData(universes: string[]): any {
+  private getData(universes: string[]): any {
     if (this._data) {
       return this._data;
     }
@@ -73,13 +78,24 @@ export class Nerdata {
     return reduce(
       universes,
       (acc, universe) => {
-        acc[universe] = JSON.parse(
-          readFileSync(path.join(dataDir, `${universe}.json`)).toString(),
-        );
+        acc[universe] = this.loadData(universe);
         return acc;
       },
       {} as any,
     );
+  }
+
+  private loadData(universe: string) {
+    if (cache[universe]) {
+      return cache[universe];
+    }
+
+    const data = JSON.parse(
+      readFileSync(path.join(dataDir, `${universe}.json`)).toString(),
+    );
+    cache[universe] = data;
+
+    return data;
   }
 
   private limitByExclusion(excluded?: string | string[]) {
@@ -92,7 +108,15 @@ export class Nerdata {
       throw errors.unsupported(unavailable, this._allUniverses);
     }
 
-    return this._allUniverses.filter(item => !toExclude.includes(item));
+    const universes = this._allUniverses.filter(
+      item => !toExclude.includes(item),
+    );
+
+    if (!universes.length) {
+      throw errors.allExcluded();
+    }
+
+    return universes;
   }
 
   private limitByInclusion(included?: string | string[]) {
