@@ -2,79 +2,28 @@
  * Module dependencies
  */
 
-import { castArray, reduce, sample } from "lodash";
-import * as errors from "./errors";
+import { sample } from "lodash";
+import { Namespace } from "./Namespace";
 
 /*
  * Module
  */
 
-export class Name {
-  private data: any[];
-  private universes: string[];
-  private subsets: any;
-
+export class Name extends Namespace {
   constructor(data: any) {
-    const parsed = this._parseData(data);
-    this.data = parsed.data;
-    this.universes = parsed.universes;
-    this.subsets = {};
+    super(data, "names");
   }
 
-  _getSubset(ctx?: string | string[]) {
-    if (!ctx || !ctx.length) {
-      return this.data;
-    }
-
-    const universes = castArray(ctx);
-    const hash = universes.sort().join("-");
-    if (this.subsets[hash]) {
-      return this.subsets[hash];
-    }
-
-    const unavailable = universes.filter(
-      item => !this.universes.includes(item),
-    );
-    if (unavailable.length) {
-      throw errors.unloaded(unavailable, this.universes);
-    }
-
-    const subset = this.data.filter(item => universes.includes(item.ctx));
-    this.subsets[hash] = subset;
-    return subset;
+  public first(ctx?: string | string[]) {
+    return sample(this.getSubset(ctx)).first;
   }
 
-  first(ctx?: string | string[]) {
-    return sample(this._getSubset(ctx)).first;
+  public last(ctx?: string | string[]) {
+    return sample(this.getSubset(ctx).filter((item: any) => item.last)).last;
   }
 
-  last(ctx?: string | string[]) {
-    return sample(this._getSubset(ctx).filter((item: any) => item.last)).last;
-  }
-
-  full(ctx?: string | string[]) {
-    const { first, last } = sample(this._getSubset(ctx));
+  public full(ctx?: string | string[]) {
+    const { first, last } = sample(this.getSubset(ctx));
     return [first, last].filter(item => item).join(" ");
-  }
-
-  _parseData(data: any) {
-    return reduce(
-      data,
-      (acc, { names }, ctx) => {
-        acc.data.push(
-          ...names.map((ctxNameData: any) => ({
-            ...ctxNameData,
-            ctx,
-          })),
-        );
-
-        acc.universes.push(ctx);
-        return acc;
-      },
-      {
-        data: [],
-        universes: [],
-      } as any,
-    );
   }
 }

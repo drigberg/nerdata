@@ -2,11 +2,10 @@
  * Module dependencies
  */
 
-const Nerdata = require('./lib/Nerdata')
-
+const { Nerdata } = require("./lib/Nerdata");
 
 /*
  * Module exports
  */
 
-module.exports = Nerdata
+module.exports = Nerdata;

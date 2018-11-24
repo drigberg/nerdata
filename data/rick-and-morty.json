@@ -1,4 +1,39 @@
 {
+  "places": [
+    {
+      "name": "The Citadel"
+    },
+    {
+      "name": "Seattle"
+    },
+    {
+      "name": "Bespin"
+    },
+    {
+      "name": "Gazorpazorp"
+    },
+    {
+      "name": "Earth"
+    },
+    {
+      "name": "Pluto"
+    },
+    {
+      "name": "Bespin"
+    },
+    {
+      "name": "Bird World"
+    },
+    {
+      "name": "Dwarf Terrace 9"
+    },
+    {
+      "name": "Glaagablaaga"
+    },
+    {
+      "name": "Squanch"
+    }
+  ],
   "names": [
     {
       "first": "Rick",

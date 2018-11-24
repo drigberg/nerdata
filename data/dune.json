@@ -1,4 +1,51 @@
 {
+  "places": [
+    {
+      "name": "Arrakeen"
+    },
+    {
+      "name": "Harko City"
+    },
+    {
+      "name": "Bandalong"
+    },
+    {
+      "name": "Cala City"
+    },
+    {
+      "name": "Barony"
+    },
+    {
+      "name": "Vernii"
+    },
+    {
+      "name": "Giedi Prime"
+    },
+    {
+      "name": "Salusa Secundus"
+    },
+    {
+      "name": "Ix"
+    },
+    {
+      "name": "Chapterhouse"
+    },
+    {
+      "name": "Corrin"
+    },
+    {
+      "name": "Tleilax"
+    },
+    {
+      "name": "Wallach IX"
+    },
+    {
+      "name": "Caladan"
+    },
+    {
+      "name": "Arrakis"
+    }
+  ],
   "names": [
     {
       "first": "Paul",
@@ -14,7 +61,7 @@
     },
     {
       "first": "Vladimir",
-      "last": "Hakonnnen"
+      "last": "Harkonnnen"
     },
     {
       "first": "Leto",

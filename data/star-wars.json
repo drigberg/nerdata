@@ -1,4 +1,57 @@
 {
+  "places": [
+    {
+      "name": "Cloud City"
+    },
+    {
+      "name": "Theed"
+    },
+    {
+      "name": "Mos Eisley"
+    },
+    {
+      "name": "Tipoca City"
+    },
+    {
+      "name": "Galactic City"
+    },
+    {
+      "name": "Anchorhead"
+    },
+    {
+      "name": "Ahto City"
+    },
+    {
+      "name": "Tattooine"
+    },
+    {
+      "name": "Dantooine"
+    },
+    {
+      "name": "Korriban"
+    },
+    {
+      "name": "Kamino"
+    },
+    {
+      "name": "Coruscant"
+    },
+    {
+      "name": "Bespin"
+    },
+    {
+      "name": "Hoth"
+    },
+    {
+      "name": "Naboo"
+    },
+    {
+      "name": "Alderaan"
+    },
+    {
+      "name": "Dagobah"
+    }
+  ],
   "names": [
     {
       "first": "Anakin",

@@ -10,7 +10,7 @@ import * as path from "path";
 import { Name } from "./Name";
 import * as errors from "./errors";
 import { NerdataOpts } from "./interface";
-
+import { Place } from "./Place";
 /*
  * Module variables
  */
@@ -24,6 +24,7 @@ let cache: any = {};
 
 export class Nerdata {
   public name: Name = new Name([]);
+  public place: Place = new Place([]);
   private _allUniverses: string[];
   private _universes: string[] = [];
   private _data: any;
@@ -68,6 +69,7 @@ export class Nerdata {
     this._universes = universes;
     this._data = this.getData(universes);
     this.name = new Name(this._data);
+    this.place = new Place(this._data);
   }
 
   private getData(universes: string[]): any {
