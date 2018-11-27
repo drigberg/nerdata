@@ -153,5 +153,13 @@
       "first": "Poe",
       "last": "Dameron"
     }
+  ],
+  "things": [
+    {
+      "name": "lightsaber"
+    },
+    {
+      "name": "blaster"
+    }
   ]
 }

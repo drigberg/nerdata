@@ -9,7 +9,7 @@ describe("Nerdata", () => {
       it("success", () => {
         const nerdata = new Nerdata();
 
-        expect(nerdata.universes()).have.same.members([
+        expect(nerdata._universes()).have.same.members([
           "dune",
           "rick-and-morty",
           "star-wars",
@@ -25,7 +25,7 @@ describe("Nerdata", () => {
               include: "DUNE",
             });
 
-            expect(nerdata.universes()).have.same.members(["dune"]);
+            expect(nerdata._universes()).have.same.members(["dune"]);
           });
 
           it("array - one item", () => {
@@ -33,7 +33,7 @@ describe("Nerdata", () => {
               include: ["STAR-WARS"],
             });
 
-            expect(nerdata.universes()).have.same.members(["star-wars"]);
+            expect(nerdata._universes()).have.same.members(["star-wars"]);
           });
 
           it("array - two items", () => {
@@ -41,7 +41,7 @@ describe("Nerdata", () => {
               include: ["DUNE", "STAR-WARS"],
             });
 
-            expect(nerdata.universes()).have.same.members([
+            expect(nerdata._universes()).have.same.members([
               "dune",
               "star-wars",
             ]);
@@ -52,7 +52,7 @@ describe("Nerdata", () => {
               include: ["DUNE", "STAR-WARS", "RICK-AND-MORTY"],
             });
 
-            expect(nerdata.universes()).have.same.members([
+            expect(nerdata._universes()).have.same.members([
               "dune",
               "star-wars",
               "rick-and-morty",
@@ -66,7 +66,7 @@ describe("Nerdata", () => {
               include: "dune",
             });
 
-            expect(nerdata.universes()).have.same.members(["dune"]);
+            expect(nerdata._universes()).have.same.members(["dune"]);
           });
 
           it("array - one item", () => {
@@ -74,7 +74,7 @@ describe("Nerdata", () => {
               include: ["star-wars"],
             });
 
-            expect(nerdata.universes()).have.same.members(["star-wars"]);
+            expect(nerdata._universes()).have.same.members(["star-wars"]);
           });
 
           it("array - two items", () => {
@@ -82,7 +82,7 @@ describe("Nerdata", () => {
               include: ["dune", "star-wars"],
             });
 
-            expect(nerdata.universes()).have.same.members([
+            expect(nerdata._universes()).have.same.members([
               "dune",
               "star-wars",
             ]);
@@ -93,7 +93,7 @@ describe("Nerdata", () => {
               include: ["dune", "star-wars", "rick-and-morty"],
             });
 
-            expect(nerdata.universes()).have.same.members([
+            expect(nerdata._universes()).have.same.members([
               "dune",
               "star-wars",
               "rick-and-morty",
@@ -151,7 +151,7 @@ describe("Nerdata", () => {
               exclude: "DUNE",
             });
 
-            expect(nerdata.universes()).have.same.members([
+            expect(nerdata._universes()).have.same.members([
               "star-wars",
               "rick-and-morty",
             ]);
@@ -162,7 +162,7 @@ describe("Nerdata", () => {
               exclude: ["STAR-WARS"],
             });
 
-            expect(nerdata.universes()).have.same.members([
+            expect(nerdata._universes()).have.same.members([
               "dune",
               "rick-and-morty",
             ]);
@@ -173,7 +173,7 @@ describe("Nerdata", () => {
               exclude: ["DUNE", "RICK-AND-MORTY"],
             });
 
-            expect(nerdata.universes()).have.same.members(["star-wars"]);
+            expect(nerdata._universes()).have.same.members(["star-wars"]);
           });
         });
 
@@ -183,7 +183,7 @@ describe("Nerdata", () => {
               exclude: "dune",
             });
 
-            expect(nerdata.universes()).have.same.members([
+            expect(nerdata._universes()).have.same.members([
               "star-wars",
               "rick-and-morty",
             ]);
@@ -194,7 +194,7 @@ describe("Nerdata", () => {
               exclude: ["star-wars"],
             });
 
-            expect(nerdata.universes()).have.same.members([
+            expect(nerdata._universes()).have.same.members([
               "dune",
               "rick-and-morty",
             ]);
@@ -205,7 +205,7 @@ describe("Nerdata", () => {
               exclude: ["dune", "rick-and-morty"],
             });
 
-            expect(nerdata.universes()).have.same.members(["star-wars"]);
+            expect(nerdata._universes()).have.same.members(["star-wars"]);
           });
         });
       });

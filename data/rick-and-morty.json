@@ -111,5 +111,13 @@
     {
       "first": "Gazorpazorpfield"
     }
+  ],
+  "things": [
+    {
+      "name": "plumbus"
+    },
+    {
+      "name": "fleeb"
+    }
   ]
 }

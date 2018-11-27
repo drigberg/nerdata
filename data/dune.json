@@ -127,5 +127,13 @@
       "first": "Glossu",
       "last": "Rabban"
     }
+  ],
+  "things": [
+    {
+      "name": "suspensor"
+    },
+    {
+      "name": "ornithopter"
+    }
   ]
 }

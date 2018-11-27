@@ -10,31 +10,31 @@ import * as errors from "./errors";
  */
 
 export class Namespace {
-  private data: any[];
-  private universes: string[];
+  private data: any;
+  private universes: any;
 
   constructor(data: any, namespace: string) {
     const parsed = this.parseData(data, namespace);
-    this.data = parsed.data;
-    this.universes = parsed.universes;
+    this.data = () => parsed.data;
+    this.universes = () => parsed.universes;
   }
 
   public getSubset(ctx?: string | string[]) {
     if (!ctx || !ctx.length) {
-      return this.data;
+      return this.data();
     }
 
     const universes = castArray(ctx);
 
     const unavailable = universes.filter(
-      item => !this.universes.includes(item),
+      item => !this.universes().includes(item),
     );
 
     if (unavailable.length) {
-      throw errors.unloaded(unavailable, this.universes);
+      throw errors.unloaded(unavailable, this.universes());
     }
 
-    return this.data.filter(item => universes.includes(item.ctx));
+    return this.data().filter((item: any) => universes.includes(item.ctx));
   }
 
   private parseData(data: any, namespace: string) {

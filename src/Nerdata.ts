@@ -11,6 +11,7 @@ import { Name } from "./Name";
 import * as errors from "./errors";
 import { NerdataOpts } from "./interface";
 import { Place } from "./Place";
+import { Thing } from "./Thing";
 /*
  * Module variables
  */
@@ -25,17 +26,20 @@ let cache: any = {};
 export class Nerdata {
   public name: Name = new Name([]);
   public place: Place = new Place([]);
-  private _allUniverses: string[];
-  private _universes: string[] = [];
+  public thing: Thing = new Thing([]);
+  public _allUniverses: any;
+  public _universes: any;
   private _data: any;
 
   constructor(opts?: NerdataOpts) {
-    this._allUniverses = readdirSync(dataDir)
+    const allUniverses = readdirSync(dataDir)
       .filter(item => path.extname(item) === ".json")
       .map(item => path.basename(item, ".json"));
 
+    this._allUniverses = () => allUniverses;
+
     if (!opts || isEmpty(opts)) {
-      this.setup(this._allUniverses);
+      this._setup(this._allUniverses());
       return;
     }
 
@@ -46,48 +50,43 @@ export class Nerdata {
     }
 
     if (has(opts, "include")) {
-      this.setup(this.limitByInclusion(opts.include));
+      this._setup(this._limitByInclusion(opts.include));
       return;
     }
 
-    this.setup(this.limitByExclusion(opts.exclude));
+    this._setup(this._limitByExclusion(opts.exclude));
   }
 
   public static resetCache() {
     cache = {};
   }
 
-  public universes(): string[] {
-    return this._universes;
-  }
-
   public allUniverses(): string[] {
     return this._allUniverses;
   }
 
-  private setup(universes: string[]) {
-    this._universes = universes;
-    this._data = this.getData(universes);
-    this.name = new Name(this._data);
-    this.place = new Place(this._data);
+  private _setup(universes: string[]) {
+    this._universes = () => universes;
+    const data = this._getData(universes);
+    this._data = () => data;
+
+    this.name = new Name(this._data());
+    this.place = new Place(this._data());
+    this.thing = new Thing(this._data());
   }
 
-  private getData(universes: string[]): any {
-    if (this._data) {
-      return this._data;
-    }
-
+  private _getData(universes: string[]): any {
     return reduce(
       universes,
       (acc, universe) => {
-        acc[universe] = this.loadData(universe);
+        acc[universe] = this._loadData(universe);
         return acc;
       },
       {} as any,
     );
   }
 
-  private loadData(universe: string) {
+  private _loadData(universe: string) {
     if (cache[universe]) {
       return cache[universe];
     }
@@ -95,23 +94,24 @@ export class Nerdata {
     const data = JSON.parse(
       readFileSync(path.join(dataDir, `${universe}.json`)).toString(),
     );
+
     cache[universe] = data;
 
     return data;
   }
 
-  private limitByExclusion(excluded?: string | string[]) {
+  private _limitByExclusion(excluded?: string | string[]) {
     const toExclude = castArray(excluded).map(item => item.toLowerCase());
     const unavailable = toExclude.filter(
-      key => !this._allUniverses.includes(key),
+      key => !this._allUniverses().includes(key),
     );
 
     if (unavailable.length) {
-      throw errors.unsupported(unavailable, this._allUniverses);
+      throw errors.unsupported(unavailable, this._allUniverses());
     }
 
-    const universes = this._allUniverses.filter(
-      item => !toExclude.includes(item),
+    const universes = this._allUniverses().filter(
+      (item: any) => !toExclude.includes(item),
     );
 
     if (!universes.length) {
@@ -121,19 +121,19 @@ export class Nerdata {
     return universes;
   }
 
-  private limitByInclusion(included?: string | string[]) {
+  private _limitByInclusion(included?: string | string[]) {
     const toInclude = castArray(included).map(item => item.toLowerCase());
 
     if (!toInclude.length) {
-      throw errors.noneIncluded(this._allUniverses);
+      throw errors.noneIncluded(this._allUniverses());
     }
 
     const unavailable = toInclude.filter(
-      key => !this._allUniverses.includes(key),
+      key => !this._allUniverses().includes(key),
     );
 
     if (unavailable.length) {
-      throw errors.unsupported(unavailable, this._allUniverses);
+      throw errors.unsupported(unavailable, this._allUniverses());
     }
 
     return toInclude;
