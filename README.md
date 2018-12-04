@@ -54,7 +54,7 @@ nerdata.name.full("fifty-shades-of-grey"); // ERROR: unsupported or unloaded
 | place.city      | name of city                   | "Ahto City", "Seattle", "Bandalong"         |
 | place.planet    | name of planet                 | "Tattooine", "Gazorpazorp", "Caladan"       |
 | item.item       | name of item (any type)        | "light saber", "plumbus", "suspensor"       |
-| item.weapon     | name of weapon                 | "light saber", "gun", "cryknife"            |
+| item.weapon     | name of weapon                 | "light saber", "gun", "crysknife"           |
 | item.vehicle    | name of vehicle                | "X-Wing", "spaceship", "ornithopter"        |
 | species.species | name of race                   | "jawa", "splorpian", "sandworm"             |
 | quote.sentence  | full sentence with punctuation | "There is no try: only do."                 |
