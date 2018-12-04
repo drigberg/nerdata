@@ -3,9 +3,7 @@
  */
 
 import { castArray, has, isEmpty, reduce } from "lodash";
-
 import { readdirSync, readFileSync } from "fs";
-
 import * as path from "path";
 import { Name } from "./namespaces/Name";
 import * as errors from "./errors";
