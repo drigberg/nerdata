@@ -7,11 +7,11 @@ import { castArray, has, isEmpty, reduce } from "lodash";
 import { readdirSync, readFileSync } from "fs";
 
 import * as path from "path";
-import { Name } from "./Name";
+import { Name } from "./namespaces/Name";
 import * as errors from "./errors";
 import { NerdataOpts } from "./interface";
-import { Place } from "./Place";
-import { Item } from "./Item";
+import { Place } from "./namespaces/Place";
+import { Item } from "./namespaces/Item";
 /*
  * Module variables
  */

@@ -3,7 +3,7 @@
  */
 
 import { sample } from "lodash";
-import { Namespace } from "./Namespace";
+import { Namespace } from "../Namespace";
 
 /*
  * Module
