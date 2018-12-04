@@ -4,6 +4,7 @@
 
 import { sample } from "lodash";
 import { Namespace } from "../Namespace";
+import { isNumber } from "util";
 
 /*
  * Module
@@ -26,11 +27,15 @@ export class Quote extends Namespace {
   }
 
   public paragraph(ctx?: string | string[], opts: any = {}) {
-    let ret = [];
-    for (let i = 0; i < opts.sentences || this._defaultParagraphLength; i++) {
+    const ret = [];
+    const sentences = isNumber(opts.sentences) && opts.sentences > 0
+      ? opts.sentences
+      : this._defaultParagraphLength;
+
+    for (let i = 0; i < sentences; i++) {
       ret.push(this.sentence(ctx));
     }
 
-    return ret;
+    return ret.join(' ');
   }
 }
