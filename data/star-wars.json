@@ -1,55 +1,72 @@
 {
   "places": [
     {
-      "name": "Cloud City"
+      "name": "Cloud City",
+      "type": "city"
     },
     {
-      "name": "Theed"
+      "name": "Theed",
+      "type": "city"
     },
     {
-      "name": "Mos Eisley"
+      "name": "Mos Eisley",
+      "type": "city"
     },
     {
-      "name": "Tipoca City"
+      "name": "Tipoca City",
+      "type": "city"
     },
     {
-      "name": "Galactic City"
+      "name": "Galactic City",
+      "type": "city"
     },
     {
-      "name": "Anchorhead"
+      "name": "Anchorhead",
+      "type": "city"
     },
     {
-      "name": "Ahto City"
+      "name": "Ahto City",
+      "type": "city"
     },
     {
-      "name": "Tattooine"
+      "name": "Tattooine",
+      "type": "planet"
     },
     {
-      "name": "Dantooine"
+      "name": "Dantooine",
+      "type": "planet"
     },
     {
-      "name": "Korriban"
+      "name": "Korriban",
+      "type": "planet"
     },
     {
-      "name": "Kamino"
+      "name": "Kamino",
+      "type": "planet"
     },
     {
-      "name": "Coruscant"
+      "name": "Coruscant",
+      "type": "planet"
     },
     {
-      "name": "Bespin"
+      "name": "Bespin",
+      "type": "planet"
     },
     {
-      "name": "Hoth"
+      "name": "Hoth",
+      "type": "planet"
     },
     {
-      "name": "Naboo"
+      "name": "Naboo",
+      "type": "planet"
     },
     {
-      "name": "Alderaan"
+      "name": "Alderaan",
+      "type": "planet"
     },
     {
-      "name": "Dagobah"
+      "name": "Dagobah",
+      "type": "planet"
     }
   ],
   "names": [
@@ -154,7 +171,7 @@
       "last": "Dameron"
     }
   ],
-  "things": [
+  "items": [
     {
       "name": "lightsaber"
     },

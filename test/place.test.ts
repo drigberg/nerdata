@@ -24,10 +24,22 @@ describe("Place", () => {
 
     data = {
       rickAndMorty: {
-        place: rickAndMortyPlaces.map((item: any) => item.name),
+        cities: rickAndMortyPlaces
+          .filter((item: any) => item.type === "city")
+          .map((item: any) => item.name),
+        places: rickAndMortyPlaces.map((item: any) => item.name),
+        planets: rickAndMortyPlaces
+          .filter((item: any) => item.type === "planet")
+          .map((item: any) => item.name),
       },
       starWars: {
-        place: starWarsPlaces.map((item: any) => item.name),
+        cities: starWarsPlaces
+          .filter((item: any) => item.type === "city")
+          .map((item: any) => item.name),
+        places: starWarsPlaces.map((item: any) => item.name),
+        planets: starWarsPlaces
+          .filter((item: any) => item.type === "planet")
+          .map((item: any) => item.name),
       },
     };
   });
@@ -39,7 +51,7 @@ describe("Place", () => {
 
     it("filters by universe: string", () => {
       for (let i = 0; i < 10; i++) {
-        expect(data.starWars.place).to.include(
+        expect(data.starWars.places).to.include(
           nerdata.place.place("star-wars"),
         );
       }
@@ -47,14 +59,14 @@ describe("Place", () => {
 
     it("filters by universe: array (single)", () => {
       for (let i = 0; i < 10; i++) {
-        expect(data.starWars.place).to.include(
+        expect(data.starWars.places).to.include(
           nerdata.place.place(["star-wars"]),
         );
       }
     });
 
     it("filters by universe: array (multiple)", () => {
-      const fullArray = data.rickAndMorty.place.concat(data.starWars.place);
+      const fullArray = data.rickAndMorty.places.concat(data.starWars.places);
       for (let i = 0; i < 10; i++) {
         expect(fullArray).to.include(
           nerdata.place.place(["star-wars", "rick-and-morty"]),
@@ -65,7 +77,103 @@ describe("Place", () => {
     it("throws error when unloaded universe is requested", () => {
       let error: Error | undefined = undefined;
       try {
-        nerdata.name.first("dune");
+        nerdata.place.city("dune");
+      } catch (err) {
+        error = err;
+      }
+
+      if (!error) {
+        throw new Error("expected error");
+      }
+
+      expect(error.message).to.equal(
+        "The following universes were not loaded when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars",
+      );
+    });
+  });
+
+  describe("city", () => {
+    it("returns a city", () => {
+      expect(nerdata.place.city()).to.be.a("string");
+    });
+
+    it("filters by universe: string", () => {
+      for (let i = 0; i < 10; i++) {
+        expect(data.starWars.cities).to.include(
+          nerdata.place.city("star-wars"),
+        );
+      }
+    });
+
+    it("filters by universe: array (single)", () => {
+      for (let i = 0; i < 10; i++) {
+        expect(data.starWars.cities).to.include(
+          nerdata.place.city(["star-wars"]),
+        );
+      }
+    });
+
+    it("filters by universe: array (multiple)", () => {
+      const fullArray = data.rickAndMorty.cities.concat(data.starWars.cities);
+      for (let i = 0; i < 10; i++) {
+        expect(fullArray).to.include(
+          nerdata.place.city(["star-wars", "rick-and-morty"]),
+        );
+      }
+    });
+
+    it("throws error when unloaded universe is requested", () => {
+      let error: Error | undefined = undefined;
+      try {
+        nerdata.place.city("dune");
+      } catch (err) {
+        error = err;
+      }
+
+      if (!error) {
+        throw new Error("expected error");
+      }
+
+      expect(error.message).to.equal(
+        "The following universes were not loaded when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars",
+      );
+    });
+  });
+
+  describe("planet", () => {
+    it("returns a planet", () => {
+      expect(nerdata.place.planet()).to.be.a("string");
+    });
+
+    it("filters by universe: string", () => {
+      for (let i = 0; i < 10; i++) {
+        expect(data.starWars.planets).to.include(
+          nerdata.place.planet("star-wars"),
+        );
+      }
+    });
+
+    it("filters by universe: array (single)", () => {
+      for (let i = 0; i < 10; i++) {
+        expect(data.starWars.planets).to.include(
+          nerdata.place.planet(["star-wars"]),
+        );
+      }
+    });
+
+    it("filters by universe: array (multiple)", () => {
+      const fullArray = data.rickAndMorty.planets.concat(data.starWars.planets);
+      for (let i = 0; i < 10; i++) {
+        expect(fullArray).to.include(
+          nerdata.place.planet(["star-wars", "rick-and-morty"]),
+        );
+      }
+    });
+
+    it("throws error when unloaded universe is requested", () => {
+      let error: Error | undefined = undefined;
+      try {
+        nerdata.place.planet("dune");
       } catch (err) {
         error = err;
       }

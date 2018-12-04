@@ -9,12 +9,12 @@ import { Namespace } from "./Namespace";
  * Module
  */
 
-export class Thing extends Namespace {
+export class Item extends Namespace {
   constructor(data: any) {
-    super(data, "things");
+    super(data, "items");
   }
 
-  public thing(ctx?: string | string[]) {
+  public item(ctx?: string | string[]) {
     return sample(this.getSubset(ctx)).name;
   }
 }

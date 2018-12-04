@@ -1,49 +1,64 @@
 {
   "places": [
     {
-      "name": "Arrakeen"
+      "name": "Arrakeen",
+      "type": "city"
     },
     {
-      "name": "Harko City"
+      "name": "Harko City",
+      "type": "city"
     },
     {
-      "name": "Bandalong"
+      "name": "Bandalong",
+      "type": "city"
     },
     {
-      "name": "Cala City"
+      "name": "Cala City",
+      "type": "city"
     },
     {
-      "name": "Barony"
+      "name": "Barony",
+      "type": "city"
     },
     {
-      "name": "Vernii"
+      "name": "Vernii",
+      "type": "city"
     },
     {
-      "name": "Giedi Prime"
+      "name": "Giedi Prime",
+      "type": "planet"
     },
     {
-      "name": "Salusa Secundus"
+      "name": "Salusa Secundus",
+      "type": "planet"
     },
     {
-      "name": "Ix"
+      "name": "Ix",
+      "type": "planet"
     },
     {
-      "name": "Chapterhouse"
+      "name": "Chapterhouse",
+      "type": "planet"
     },
     {
-      "name": "Corrin"
+      "name": "Corrin",
+      "type": "planet"
     },
     {
-      "name": "Tleilax"
+      "name": "Tleilax",
+      "type": "planet"
     },
     {
-      "name": "Wallach IX"
+      "name": "Wallach IX",
+      "type": "planet"
     },
     {
-      "name": "Caladan"
+      "name": "Caladan",
+      "type": "planet"
     },
     {
-      "name": "Arrakis"
+      "name": "Arrakis",
+      "type": "planet"
     }
   ],
   "names": [
@@ -128,12 +143,14 @@
       "last": "Rabban"
     }
   ],
-  "things": [
+  "items": [
     {
-      "name": "suspensor"
+      "name": "suspensor",
+      "type": "item"
     },
     {
-      "name": "ornithopter"
+      "name": "ornithopter",
+      "type": "item"
     }
   ]
 }

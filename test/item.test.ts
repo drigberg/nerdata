@@ -3,61 +3,57 @@ import { Nerdata } from "../src/Nerdata";
 import { readFileSync } from "fs";
 import * as path from "path";
 
-describe.only("Thing", () => {
+describe("Item", () => {
   let data: any;
   let nerdata: Nerdata;
 
   before(() => {
     nerdata = new Nerdata({ include: ["star-wars", "rick-and-morty"] });
 
-    const rickAndMortyThings = JSON.parse(
+    const rickAndMortyItems = JSON.parse(
       readFileSync(
         path.join(__dirname, "..", "data", "rick-and-morty.json"),
       ).toString(),
-    ).things;
+    ).items;
 
-    const starWarsThings = JSON.parse(
+    const starWarsItems = JSON.parse(
       readFileSync(
         path.join(__dirname, "..", "data", "star-wars.json"),
       ).toString(),
-    ).things;
+    ).items;
 
     data = {
       rickAndMorty: {
-        thing: rickAndMortyThings.map((item: any) => item.name),
+        item: rickAndMortyItems.map((item: any) => item.name),
       },
       starWars: {
-        thing: starWarsThings.map((item: any) => item.name),
+        item: starWarsItems.map((item: any) => item.name),
       },
     };
   });
 
-  describe("thing", () => {
-    it("returns a thing", () => {
-      expect(nerdata.thing.thing()).to.be.a("string");
+  describe("item", () => {
+    it("returns a item", () => {
+      expect(nerdata.item.item()).to.be.a("string");
     });
 
     it("filters by universe: string", () => {
       for (let i = 0; i < 10; i++) {
-        expect(data.starWars.thing).to.include(
-          nerdata.thing.thing("star-wars"),
-        );
+        expect(data.starWars.item).to.include(nerdata.item.item("star-wars"));
       }
     });
 
     it("filters by universe: array (single)", () => {
       for (let i = 0; i < 10; i++) {
-        expect(data.starWars.thing).to.include(
-          nerdata.thing.thing(["star-wars"]),
-        );
+        expect(data.starWars.item).to.include(nerdata.item.item(["star-wars"]));
       }
     });
 
     it("filters by universe: array (multiple)", () => {
-      const fullArray = data.rickAndMorty.thing.concat(data.starWars.thing);
+      const fullArray = data.rickAndMorty.item.concat(data.starWars.item);
       for (let i = 0; i < 10; i++) {
         expect(fullArray).to.include(
-          nerdata.thing.thing(["star-wars", "rick-and-morty"]),
+          nerdata.item.item(["star-wars", "rick-and-morty"]),
         );
       }
     });

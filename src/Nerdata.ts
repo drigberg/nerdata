@@ -11,7 +11,7 @@ import { Name } from "./Name";
 import * as errors from "./errors";
 import { NerdataOpts } from "./interface";
 import { Place } from "./Place";
-import { Thing } from "./Thing";
+import { Item } from "./Item";
 /*
  * Module variables
  */
@@ -26,7 +26,7 @@ let cache: any = {};
 export class Nerdata {
   public name: Name = new Name([]);
   public place: Place = new Place([]);
-  public thing: Thing = new Thing([]);
+  public item: Item = new Item([]);
   public _allUniverses: any;
   public _universes: any;
   private _data: any;
@@ -72,7 +72,7 @@ export class Nerdata {
 
     this.name = new Name(this._data());
     this.place = new Place(this._data());
-    this.thing = new Thing(this._data());
+    this.item = new Item(this._data());
   }
 
   private _getData(universes: string[]): any {

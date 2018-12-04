@@ -1,37 +1,48 @@
 {
   "places": [
     {
-      "name": "The Citadel"
+      "name": "The Citadel",
+      "type": "city"
     },
     {
-      "name": "Seattle"
+      "name": "Seattle",
+      "type": "city"
     },
     {
-      "name": "Bespin"
+      "name": "Bespin",
+      "type": "city"
     },
     {
-      "name": "Gazorpazorp"
+      "name": "Gazorpazorp",
+      "type": "planet"
     },
     {
-      "name": "Earth"
+      "name": "Earth",
+      "type": "planet"
     },
     {
-      "name": "Pluto"
+      "name": "Pluto",
+      "type": "planet"
     },
     {
-      "name": "Bespin"
+      "name": "Bespin",
+      "type": "planet"
     },
     {
-      "name": "Bird World"
+      "name": "Bird World",
+      "type": "planet"
     },
     {
-      "name": "Dwarf Terrace 9"
+      "name": "Dwarf Terrace 9",
+      "type": "planet"
     },
     {
-      "name": "Glaagablaaga"
+      "name": "Glaagablaaga",
+      "type": "planet"
     },
     {
-      "name": "Squanch"
+      "name": "Squanch",
+      "type": "planet"
     }
   ],
   "names": [
@@ -112,7 +123,7 @@
       "first": "Gazorpazorpfield"
     }
   ],
-  "things": [
+  "items": [
     {
       "name": "plumbus"
     },
