@@ -9,20 +9,20 @@ import { Namespace } from "../Namespace";
  * Module
  */
 
-export class Place extends Namespace {
+export class Species extends Namespace {
   constructor(data: any) {
-    super(data, "places");
+    super(data, "species");
   }
 
-  public city(ctx?: string | string[]) {
+  public sentient(ctx?: string | string[]) {
     return sample(
-      this.getSubset(ctx).filter((item: any) => item.type === "city"),
+      this.getSubset(ctx).filter((item: any) => item.type === "sentient"),
     ).name;
   }
 
-  public planet(ctx?: string | string[]) {
+  public nonsentient(ctx?: string | string[]) {
     return sample(
-      this.getSubset(ctx).filter((item: any) => item.type === "planet"),
+      this.getSubset(ctx).filter((item: any) => item.type === "nonsentient"),
     ).name;
   }
 

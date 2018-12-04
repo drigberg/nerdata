@@ -125,10 +125,104 @@
   ],
   "items": [
     {
-      "name": "plumbus"
+      "name": "plumbus",
+      "type": "tool"
     },
     {
-      "name": "fleeb"
+      "name": "cognition amplifier",
+      "type": "tool"
+    },
+    {
+      "name": "dream inceptor",
+      "type": "tool"
+    },
+    {
+      "name": "shrink ray",
+      "type": "tool"
+    },
+    {
+      "name": "Meeseeks box",
+      "type": "tool"
+    },
+    {
+      "name": "ionic defibulizer",
+      "type": "tool"
+    },
+    {
+      "name": "microverse battery",
+      "type": "tool"
+    },
+    {
+      "name": "combat suit",
+      "type": "weapon"
+    },
+    {
+      "name": "portal gun",
+      "type": "tool"
+    },
+    {
+      "name": "neutrino bomb",
+      "type": "weapon"
+    },
+    {
+      "name": "laser gun",
+      "type": "weapon"
+    },
+    {
+      "name": "freeze ray",
+      "type": "weapon"
+    },
+    {
+      "name": "pulse rifle",
+      "type": "weapon"
+    },
+    {
+      "name": "space cruiser",
+      "type": "vehicle"
+    }
+  ],
+  "species": [
+    {
+      "name": "human",
+      "type": "sentient"
+    },
+    {
+      "name": "cromulon",
+      "type": "sentient"
+    },
+    {
+      "name": "gazorpian",
+      "type": "sentient"
+    },
+    {
+      "name": "garblovian",
+      "type": "sentient"
+    },
+    {
+      "name": "fleeb",
+      "type": "nonsentient"
+    },
+    {
+      "name": "eye worm",
+      "type": "nonsentient"
+    }
+  ],
+  "quotes": [
+    {
+      "text": "I made the bomb, Morty.",
+      "speaker": "Rick Sanchez"
+    },
+    {
+      "text": "I mean, why would a Pop-Tart want to live inside a toaster, Rick?",
+      "speaker": "Morty Smith"
+    },
+    {
+      "text": "To live is to risk it all, otherwise you’re just an inert chunk of randomly assembled molecules drifting wherever the universe blows you.",
+      "speaker": "Rick Sanchez"
+    },
+    {
+      "text": "You pass butter.",
+      "speaker": "Rick Sanchez"
     }
   ]
 }

@@ -146,11 +146,143 @@
   "items": [
     {
       "name": "suspensor",
-      "type": "item"
+      "type": "tool"
+    },
+    {
+      "name": "axlotl tank",
+      "type": "tool"
+    },
+    {
+      "name": "stillsuit",
+      "type": "tool"
+    },
+    {
+      "name": "Holtzman shield",
+      "type": "tool"
+    },
+    {
+      "name": "Holtzman drive",
+      "type": "tool"
+    },
+    {
+      "name": "glowglobe",
+      "type": "tool"
+    },
+    {
+      "name": "Ixian Probe",
+      "type": "tool"
+    },
+    {
+      "name": "no-room",
+      "type": "tool"
+    },
+    {
+      "name": "stone burner",
+      "type": "weapon"
+    },
+    {
+      "name": "Gom Jabbar",
+      "type": "weapon"
+    },
+    {
+      "name": "atomics",
+      "type": "weapon"
+    },
+    {
+      "name": "inkvine",
+      "type": "weapon"
+    },
+    {
+      "name": "lasgun",
+      "type": "weapon"
+    },
+    {
+      "name": "flechette pistol",
+      "type": "weapon"
+    },
+    {
+      "name": "hunter-seeker",
+      "type": "weapon"
+    },
+    {
+      "name": "maula pistol",
+      "type": "weapon"
+    },
+    {
+      "name": "tarpel gun",
+      "type": "weapon"
     },
     {
       "name": "ornithopter",
-      "type": "item"
+      "type": "vehicle"
+    },
+    {
+      "name": "heighliner",
+      "type": "vehicle"
+    },
+    {
+      "name": "troop carrier",
+      "type": "vehicle"
+    },
+    {
+      "name": "starship lighter",
+      "type": "vehicle"
+    },
+    {
+      "name": "spice lighter",
+      "type": "vehicle"
+    },
+    {
+      "name": "frigate",
+      "type": "vehicle"
+    }
+  ],
+  "species": [
+    {
+      "name": "human",
+      "type": "sentient"
+    },
+    {
+      "name": "sandworm",
+      "type": "nonsentient"
+    },
+    {
+      "name": "laza tiger",
+      "type": "nonsentient"
+    },
+    {
+      "name": "sandtrout",
+      "type": "nonsentient"
+    },
+    {
+      "name": "thorse",
+      "type": "nonsentient"
+    },
+    {
+      "name": "desert hawk",
+      "type": "nonsentient"
+    },
+    {
+      "name": "kit fox",
+      "type": "nonsentient"
+    },
+    {
+      "name": "kangaroo mouse",
+      "type": "nonsentient"
+    }
+  ],
+  "quotes": [
+    {
+      "text": "A beginning is the time for taking the most delicate care that the balances are correct.",
+      "speaker": "Princess Irulan"
+    },
+    {
+      "text": "Precautions have been taken.",
+      "speaker": "Duke Leto I"
+    },
+    {
+      "text": "I thank you for the gift, Doctor Yueh.",
+      "speaker": "Paul Atreides"
     }
   ]
 }

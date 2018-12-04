@@ -4,7 +4,7 @@
   "description": "testdata for the fantasy/scifi enthusiast",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout=10000 test/*.test.ts --require ts-node/register --recursive --prof --ui tdd --throw-deprecation"
+    "test": "mocha --timeout=10000 test/*.test.ts test/**/*.test.ts --require ts-node/register --recursive --prof --ui tdd --throw-deprecation"
   },
   "repository": {
     "type": "git",

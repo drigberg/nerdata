@@ -12,6 +12,9 @@ import * as errors from "./errors";
 import { NerdataOpts } from "./interface";
 import { Place } from "./namespaces/Place";
 import { Item } from "./namespaces/Item";
+import { Species } from "./namespaces/Species";
+import { Quote } from "./namespaces/Quote";
+
 /*
  * Module variables
  */
@@ -27,6 +30,9 @@ export class Nerdata {
   public name: Name = new Name([]);
   public place: Place = new Place([]);
   public item: Item = new Item([]);
+  public species: Species = new Species([]);
+  public quote: Quote = new Quote([]);
+
   public _allUniverses: any;
   public _universes: any;
   private _data: any;
@@ -73,6 +79,8 @@ export class Nerdata {
     this.name = new Name(this._data());
     this.place = new Place(this._data());
     this.item = new Item(this._data());
+    this.species = new Species(this._data());
+    this.quote = new Quote(this._data());
   }
 
   private _getData(universes: string[]): any {

@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-import { Nerdata } from "../src/Nerdata";
+import { Nerdata } from "../../src/Nerdata";
 import { readFileSync } from "fs";
 import * as path from "path";
 
@@ -11,12 +11,14 @@ describe("Name", () => {
     nerdata = new Nerdata({ include: ["star-wars", "dune"] });
 
     const duneNames = JSON.parse(
-      readFileSync(path.join(__dirname, "..", "data", "dune.json")).toString(),
+      readFileSync(
+        path.join(__dirname, "..", "..", "data", "dune.json"),
+      ).toString(),
     ).names;
 
     const starWarsNames = JSON.parse(
       readFileSync(
-        path.join(__dirname, "..", "data", "star-wars.json"),
+        path.join(__dirname, "..", "..", "data", "star-wars.json"),
       ).toString(),
     ).names;
 
@@ -43,7 +45,7 @@ describe("Name", () => {
   });
 
   describe("first", () => {
-    it("returns a name", () => {
+    it("returns a string", () => {
       expect(nerdata.name.first()).to.be.a("string");
     });
 
@@ -87,7 +89,7 @@ describe("Name", () => {
   });
 
   describe("last", () => {
-    it("returns a name", () => {
+    it("returns a string", () => {
       expect(nerdata.name.last()).to.be.a("string");
     });
 
@@ -129,7 +131,7 @@ describe("Name", () => {
   });
 
   describe("full", () => {
-    it("returns a name", () => {
+    it("returns a string", () => {
       expect(nerdata.name.full()).to.be.a("string");
     });
 

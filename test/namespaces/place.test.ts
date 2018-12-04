@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-import { Nerdata } from "../src/Nerdata";
+import { Nerdata } from "../../src/Nerdata";
 import { readFileSync } from "fs";
 import * as path from "path";
 
@@ -12,13 +12,13 @@ describe("Place", () => {
 
     const rickAndMortyPlaces = JSON.parse(
       readFileSync(
-        path.join(__dirname, "..", "data", "rick-and-morty.json"),
+        path.join(__dirname, "..", "..", "data", "rick-and-morty.json"),
       ).toString(),
     ).places;
 
     const starWarsPlaces = JSON.parse(
       readFileSync(
-        path.join(__dirname, "..", "data", "star-wars.json"),
+        path.join(__dirname, "..", "..", "data", "star-wars.json"),
       ).toString(),
     ).places;
 
@@ -44,23 +44,21 @@ describe("Place", () => {
     };
   });
 
-  describe("place", () => {
-    it("returns a place", () => {
-      expect(nerdata.place.place()).to.be.a("string");
+  describe("any", () => {
+    it("returns a string", () => {
+      expect(nerdata.place.any()).to.be.a("string");
     });
 
     it("filters by universe: string", () => {
       for (let i = 0; i < 10; i++) {
-        expect(data.starWars.places).to.include(
-          nerdata.place.place("star-wars"),
-        );
+        expect(data.starWars.places).to.include(nerdata.place.any("star-wars"));
       }
     });
 
     it("filters by universe: array (single)", () => {
       for (let i = 0; i < 10; i++) {
         expect(data.starWars.places).to.include(
-          nerdata.place.place(["star-wars"]),
+          nerdata.place.any(["star-wars"]),
         );
       }
     });
@@ -69,7 +67,7 @@ describe("Place", () => {
       const fullArray = data.rickAndMorty.places.concat(data.starWars.places);
       for (let i = 0; i < 10; i++) {
         expect(fullArray).to.include(
-          nerdata.place.place(["star-wars", "rick-and-morty"]),
+          nerdata.place.any(["star-wars", "rick-and-morty"]),
         );
       }
     });
@@ -77,7 +75,7 @@ describe("Place", () => {
     it("throws error when unloaded universe is requested", () => {
       let error: Error | undefined = undefined;
       try {
-        nerdata.place.city("dune");
+        nerdata.place.any("dune");
       } catch (err) {
         error = err;
       }
@@ -93,7 +91,7 @@ describe("Place", () => {
   });
 
   describe("city", () => {
-    it("returns a city", () => {
+    it("returns a string", () => {
       expect(nerdata.place.city()).to.be.a("string");
     });
 
@@ -141,7 +139,7 @@ describe("Place", () => {
   });
 
   describe("planet", () => {
-    it("returns a planet", () => {
+    it("returns a string", () => {
       expect(nerdata.place.planet()).to.be.a("string");
     });
 
