@@ -39,6 +39,23 @@ describe("Quote", () => {
       expect(nerdata.quote.sentence()).to.be.a("string");
     });
 
+    describe('citation = true', () => {
+      it("returns a string", () => {
+        expect(nerdata.quote.sentence(undefined, { citation: true })).to.be.a("string");
+      })
+
+      it("appends speaker", () => {
+        for (let i = 0; i < 10; i++) {
+          const sentence = nerdata.quote.sentence(undefined, { citation: true })
+          const all = data.rickAndMorty.full.concat(data.starWars.full)
+          const match = all.find((quote: any) => sentence.includes(quote.text) & sentence.includes(quote.speaker))
+
+          expect(match).to.be.an("object")
+          expect(sentence).to.equal(`"${match.text}" - ${match.speaker}`)
+        }
+      })
+    })
+
     it("filters by universe: string", () => {
       for (let i = 0; i < 10; i++) {
         expect(data.starWars.text).to.include(

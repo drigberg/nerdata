@@ -32,7 +32,11 @@ const nerdata = new Nerdata({
 
 ## USAGE
 
+Call signature: `nerdata.namespace.method([universes], [options])`
+
 Each method will return a random item from all loaded universes if no arguments are given. Universes can be filtered by providing a string or array of strings. Requesting a universe that does not exist or has not been loaded will throw an error.
+
+Options may be provided for certain methods as an object.
 
 ```js
 nerdata.name.full(); // full name from any loaded universe
@@ -41,23 +45,48 @@ nerdata.name.full(["dune", "star-wars"]); // full name from Dune or Star Wars
 nerdata.name.full("fifty-shades-of-grey"); // ERROR: unsupported or unloaded
 ```
 
+
+
 ## API
 
 **All return values are strings.**
 
-| method              | description                    | examples                                    |
-| ------------------- | ------------------------------ | ------------------------------------------- |
-| name.first          | first name                     | "Han", "Rick", "Paul"                       |
-| name.last           | last name                      | "Solo", "Sanchez", "Atreides"               |
-| name.full           | full name                      | "Han Solo", "Rick Sanchez", "Paul Atreides" |
-| place.any           | name of location (any type)    | "Ahto City", "Gazorpazorp", "Caladan"       |
-| place.city          | name of city                   | "Ahto City", "Seattle", "Bandalong"         |
-| place.planet        | name of planet                 | "Tattooine", "Gazorpazorp", "Caladan"       |
-| item.any            | name of item (any type)        | "light saber", "space cruiser", "suspensor" |
-| item.tool           | name of tool                   | "neural band", "plumbus", "suspensor"       |
-| item.weapon         | name of weapon                 | "light saber", "freeze ray", "crysknife"    |
-| item.vehicle        | name of vehicle                | "X-Wing", "space cruiser", "ornithopter"    |
-| species.any         | name of species (any type)     | "jawa", "splorpian", "sandworm"             |
-| species.sentient    | name of sentient species       | "jawa", "human", "tleilaxu"                 |
-| species.nonsentient | name of nonsentient species    | "bantha", "fleeb", "sandworm"               |
-| quote.sentence      | full sentence with punctuation | "There is no try: only do."                 |
+| method              | description                         | examples                                      |
+| ------------------- | ----------------------------------- | --------------------------------------------- |
+| name.first          | first name                          | "Han", "Rick", "Paul"                         |
+| name.last           | last name                           | "Solo", "Sanchez", "Atreides"                 |
+| name.full           | full name                           | "Han Solo", "Rick Sanchez", "Paul Atreides"   |
+| place.any           | name of location (any type)         | "Ahto City", "Gazorpazorp", "Caladan"         |
+| place.city          | name of city                        | "Ahto City", "Seattle", "Bandalong"           |
+| place.planet        | name of planet                      | "Tattooine", "Gazorpazorp", "Caladan"         |
+| item.any            | name of item (any type)             | "light saber", "space cruiser", "suspensor"   |
+| item.tool           | name of tool                        | "neural band", "plumbus", "suspensor"         |
+| item.weapon         | name of weapon                      | "light saber", "freeze ray", "crysknife"      |
+| item.vehicle        | name of vehicle                     | "X-Wing", "space cruiser", "ornithopter"      |
+| species.any         | name of species (any type)          | "jawa", "splorpian", "sandworm"               |
+| species.sentient    | name of sentient species            | "jawa", "human", "tleilaxu"                   |
+| species.nonsentient | name of nonsentient species         | "bantha", "fleeb", "sandworm"                 |
+| quote.sentence      | full sentence with punctuation      | "There is no try: only do."                   |
+| quote.paragraph     | multiple sentences with punctuation | "There is no try: only do. You pass butter. " |
+
+### OPTIONS
+
+#### quote.sentence: opts.citation
+  - `citation`: if true, appends speaker to quote
+    - true: `"It's a trap!" - Admiral Ackbar`
+    - false: `It's a trap!`
+
+```js
+nerdata.quote.sentence('rick-and-morty', { citation: true}) // '"I made the bomb, Morty." - Rick Sanchez'
+nerdata.quote.sentence('rick-and-morty', { citation: false}) // 'I made the bomb, Morty.'
+nerdata.quote.sentence('rick-and-morty') // 'I made the bomb, Morty.'
+```
+
+#### quote.paragraph: opts.sentences
+  - `sentences`: number of sentences in paragraph
+    - default: `3`
+
+```js
+nerdata.quote.paragraph('rick-and-morty', { sentences: 1}) // 'I made the bomb, Morty.'
+nerdata.quote.paragraph('rick-and-morty') // 'I made the bomb, Morty. You pass butter. I mean, why would a Pop-Tart want to live inside a toaster, Rick?'
+```
