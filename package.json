@@ -1,6 +1,6 @@
 {
   "name": "nerdata",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "testdata for the fantasy/scifi enthusiast",
   "main": "index.js",
   "scripts": {
