@@ -1,9 +1,10 @@
 {
   "name": "nerdata",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "testdata for the fantasy/scifi enthusiast",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "compile": "tsc --declaration",
     "test": "mocha --timeout=10000 test/*.test.ts test/**/*.test.ts --require ts-node/register --recursive --prof --ui tdd --throw-deprecation"
   },
   "repository": {
