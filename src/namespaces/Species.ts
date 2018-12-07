@@ -12,6 +12,10 @@ import { Namespace } from "../Namespace";
 export class Species extends Namespace {
   constructor(data: any) {
     super(data, "species");
+    this.any = this.any.bind(this)
+    this.sentient = this.sentient.bind(this)
+    this.nonsentient = this.nonsentient.bind(this)
+
   }
 
   public sentient(ctx?: string | string[]) {

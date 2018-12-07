@@ -12,6 +12,10 @@ import { Namespace } from "../Namespace";
 export class Place extends Namespace {
   constructor(data: any) {
     super(data, "places");
+
+    this.city = this.city.bind(this)
+    this.planet = this.planet.bind(this)
+    this.any = this.any.bind(this)
   }
 
   public city(ctx?: string | string[]) {

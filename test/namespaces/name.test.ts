@@ -44,6 +44,16 @@ describe("Name", () => {
     };
   });
 
+  describe('enumeration', () => {
+    it('methods are enumerable', () => {
+      expect(Object.keys((new Nerdata()).name)).to.have.same.members([
+        'first',
+        'last',
+        'full'
+      ])
+    })
+  })
+
   describe("first", () => {
     it("returns a string", () => {
       expect(nerdata.name.first()).to.be.a("string");

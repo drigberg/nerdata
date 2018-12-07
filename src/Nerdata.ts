@@ -36,6 +36,21 @@ export class Nerdata {
   private _data: any;
 
   constructor(opts?: NerdataOpts) {
+    Object.defineProperties(this, {
+      _allUniverses: {
+        enumerable: false,
+        writable: true,
+      },
+      _universes: {
+        enumerable: false,
+        writable: true,
+      },
+      _data: {
+        enumerable: false,
+        writable: true,
+      }
+    })
+
     const allUniverses = readdirSync(dataDir)
       .filter(item => path.extname(item) === ".json")
       .map(item => path.basename(item, ".json"));

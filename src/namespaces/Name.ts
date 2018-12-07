@@ -12,6 +12,9 @@ import { Namespace } from "../Namespace";
 export class Name extends Namespace {
   constructor(data: any) {
     super(data, "names");
+    this.first = this.first.bind(this)
+    this.last = this.last.bind(this)
+    this.full = this.full.bind(this)
   }
 
   public first(ctx?: string | string[]) {

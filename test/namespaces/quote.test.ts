@@ -34,6 +34,15 @@ describe("Quote", () => {
     };
   });
 
+  describe('enumeration', () => {
+    it('methods are enumerable', () => {
+      expect(Object.keys((new Nerdata()).quote)).to.have.same.members([
+        'sentence',
+        'paragraph'
+      ])
+    })
+  })
+
   describe("sentence", () => {
     it("returns a string", () => {
       expect(nerdata.quote.sentence()).to.be.a("string");

@@ -14,6 +14,17 @@ export class Namespace {
   private universes: any;
 
   constructor(data: any, namespace: string) {
+    Object.defineProperties(this, {
+      data: {
+        enumerable: false,
+        writable: true,
+      },
+      universes: {
+        enumerable: false,
+        writable: true,
+      }
+    })
+
     const parsed = this.parseData(data, namespace);
     this.data = () => parsed.data;
     this.universes = () => parsed.universes;
