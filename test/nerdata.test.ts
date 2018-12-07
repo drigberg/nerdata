@@ -4,6 +4,18 @@ import * as sinon from "sinon";
 import * as fs from "fs";
 
 describe("Nerdata", () => {
+  describe('enumeration', () => {
+    it('namespaces are enumerable', () => {
+      expect(Object.keys(new Nerdata())).to.have.same.members([
+        'name',
+        'place',
+        'item',
+        'quote',
+        'species'
+      ])
+    })
+  })
+
   describe("universes", () => {
     describe("no args", () => {
       it("success", () => {

@@ -14,6 +14,14 @@ export class Quote extends Namespace {
   private _defaultParagraphLength = 3;
   constructor(data: any) {
     super(data, "quotes");
+
+    Object.defineProperty(this, '_defaultParagraphLength', {
+      enumerable: false,
+      writable: true,
+    })
+
+    this.sentence = this.sentence.bind(this)
+    this.paragraph = this.paragraph.bind(this)
   }
 
   public sentence(ctx?: string | string[], opts: any = {}) {

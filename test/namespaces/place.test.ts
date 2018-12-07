@@ -44,6 +44,16 @@ describe("Place", () => {
     };
   });
 
+  describe('enumeration', () => {
+    it('methods are enumerable', () => {
+      expect(Object.keys((new Nerdata()).place)).to.have.same.members([
+        'planet',
+        'city',
+        'any'
+      ])
+    })
+  })
+
   describe("any", () => {
     it("returns a string", () => {
       expect(nerdata.place.any()).to.be.a("string");

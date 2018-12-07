@@ -50,6 +50,17 @@ describe("Item", () => {
     };
   });
 
+  describe('enumeration', () => {
+    it('methods are enumerable', () => {
+      expect(Object.keys((new Nerdata()).item)).to.have.same.members([
+        'any',
+        'weapon',
+        'tool',
+        'vehicle'
+      ])
+    })
+  })
+
   describe("any", () => {
     it("returns a string", () => {
       expect(nerdata.item.any()).to.be.a("string");

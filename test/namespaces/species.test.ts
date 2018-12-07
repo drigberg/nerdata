@@ -44,6 +44,16 @@ describe("Species", () => {
     };
   });
 
+  describe('enumeration', () => {
+    it('methods are enumerable', () => {
+      expect(Object.keys((new Nerdata()).species)).to.have.same.members([
+        'any',
+        'sentient',
+        'nonsentient'
+      ])
+    })
+  })
+
   describe("any", () => {
     it("returns a string", () => {
       expect(nerdata.species.any()).to.be.a("string");

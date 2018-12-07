@@ -12,6 +12,10 @@ import { Namespace } from "../Namespace";
 export class Item extends Namespace {
   constructor(data: any) {
     super(data, "items");
+    this.any = this.any.bind(this)
+    this.weapon = this.weapon.bind(this)
+    this.tool = this.tool.bind(this)
+    this.vehicle = this.vehicle.bind(this)
   }
 
   public weapon(ctx?: string | string[]) {
