@@ -1,4 +1,4 @@
-import { Universe } from "./interface";
+import { Universe } from './interface'
 
 export const isValidUniverse = (
   input: any,
@@ -11,10 +11,3 @@ export const isValidUniverseArray = (
 ): input is Universe[] => {
   return Array.isArray(input) && input.filter((item: any) => !isValidUniverse(item)).length === 0
 }
-
-
-
-
-
-
-

@@ -19,7 +19,8 @@
   ],
   "include": [
     "src/*.d.ts",
-    "src/*.ts"
+    "src/*.ts",
+    "test/*.ts"
   ],
   "typeRoots": [
     "node_modules/@types"

@@ -7,7 +7,7 @@ import { castArray, has, isEmpty, reduce } from 'lodash'
 import * as path from 'path'
 import * as errors from './errors'
 import { Universe } from './interface'
-import { NerdataOpts } from './interface'
+import { INerdataOpts } from './interface'
 import { Item } from './namespaces/Item'
 import { Name } from './namespaces/Name'
 import { Place } from './namespaces/Place'
@@ -20,13 +20,21 @@ import { isValidUniverseArray } from './validators'
  */
 
 const dataDir: string = path.join(__dirname, '..', 'data')
-const cache: any = {}
+let cache: any = {}
 
 /*
  * Module
  */
 
 export class Nerdata {
+  public static resetCache() {
+    cache = {}
+  }
+  public name: Name = new Name([])
+  public item: Item = new Item([])
+  public place: Place = new Place([])
+  public species: Species = new Species([])
+  public quote: Quote = new Quote([])
 
   public _allUniverses: () => Universe[]
   private _data: any
