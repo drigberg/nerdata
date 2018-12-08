@@ -12,4 +12,5 @@
 - [ ] new functionality is documented in readme
 - [ ] new methods are enumerable
 - [ ] hidden methods are not enumerable
+- [ ] new dependencies are saved with exact versions
 - [ ] new contributors are added to readme
