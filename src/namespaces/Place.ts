@@ -15,7 +15,7 @@ export class Place extends Namespace {
     super(data, 'places')
 
     this.city = this.city.bind(this)
-    this.planet = this.planet.bind(this)
+    this.realm = this.realm.bind(this)
     this.any = this.any.bind(this)
   }
 
@@ -25,9 +25,9 @@ export class Place extends Namespace {
     ).name
   }
 
-  public planet(ctx?: Universe | Universe[]) {
+  public realm(ctx?: Universe | Universe[]) {
     return sample(
-      this.getSubset(ctx).filter((item: any) => item.type === 'planet'),
+      this.getSubset(ctx).filter((item: any) => item.type === 'realm'),
     ).name
   }
 

@@ -14,35 +14,35 @@
     },
     {
       "name": "Gazorpazorp",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Earth",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Pluto",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Bespin",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Bird World",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Dwarf Terrace 9",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Glaagablaaga",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Squanch",
-      "type": "planet"
+      "type": "realm"
     }
   ],
   "names": [
