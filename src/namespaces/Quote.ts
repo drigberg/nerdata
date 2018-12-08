@@ -2,18 +2,18 @@
  * Module dependencies
  */
 
-import { sample } from "lodash";
-import { Namespace } from "../Namespace";
-import { isNumber } from "util";
+import { sample } from 'lodash'
+import { isNumber } from 'util'
+import { Namespace } from '../Namespace'
 
 /*
  * Module
  */
 
 export class Quote extends Namespace {
-  private _defaultParagraphLength = 3;
+  private _defaultParagraphLength = 3
   constructor(data: any) {
-    super(data, "quotes");
+    super(data, 'quotes')
 
     Object.defineProperty(this, '_defaultParagraphLength', {
       enumerable: false,
@@ -25,25 +25,25 @@ export class Quote extends Namespace {
   }
 
   public sentence(ctx?: string | string[], opts: any = {}) {
-    const quote = sample(this.getSubset(ctx));
+    const quote = sample(this.getSubset(ctx))
 
     if (opts.citation === true) {
-      return `"${quote.text}" - ${quote.speaker}`;
+      return `"${quote.text}" - ${quote.speaker}`
     }
 
-    return quote.text;
+    return quote.text
   }
 
   public paragraph(ctx?: string | string[], opts: any = {}) {
-    const ret = [];
+    const ret = []
     const sentences = isNumber(opts.sentences) && opts.sentences > 0
       ? opts.sentences
-      : this._defaultParagraphLength;
+      : this._defaultParagraphLength
 
     for (let i = 0; i < sentences; i++) {
-      ret.push(this.sentence(ctx));
+      ret.push(this.sentence(ctx))
     }
 
-    return ret.join(' ');
+    return ret.join(' ')
   }
 }

@@ -1,10 +1,11 @@
-import { Name } from "./namespaces/Name";
-import { NerdataOpts } from "./interface";
-import { Place } from "./namespaces/Place";
+import { INerdataOpts } from "./interface";
 import { Item } from "./namespaces/Item";
-import { Species } from "./namespaces/Species";
+import { Name } from "./namespaces/Name";
+import { Place } from "./namespaces/Place";
 import { Quote } from "./namespaces/Quote";
+import { Species } from "./namespaces/Species";
 export declare class Nerdata {
+    static resetCache(): void;
     name: Name;
     place: Place;
     item: Item;
@@ -13,8 +14,7 @@ export declare class Nerdata {
     _allUniverses: any;
     _universes: any;
     private _data;
-    constructor(opts?: NerdataOpts);
-    static resetCache(): void;
+    constructor(opts?: INerdataOpts);
     allUniverses(): string[];
     private _setup;
     private _getData;

@@ -2,8 +2,8 @@
  * Module dependencies
  */
 
-import { sample } from "lodash";
-import { Namespace } from "../Namespace";
+import { sample } from 'lodash'
+import { Namespace } from '../Namespace'
 
 /*
  * Module
@@ -11,7 +11,7 @@ import { Namespace } from "../Namespace";
 
 export class Place extends Namespace {
   constructor(data: any) {
-    super(data, "places");
+    super(data, 'places')
 
     this.city = this.city.bind(this)
     this.planet = this.planet.bind(this)
@@ -20,17 +20,17 @@ export class Place extends Namespace {
 
   public city(ctx?: string | string[]) {
     return sample(
-      this.getSubset(ctx).filter((item: any) => item.type === "city"),
-    ).name;
+      this.getSubset(ctx).filter((item: any) => item.type === 'city'),
+    ).name
   }
 
   public planet(ctx?: string | string[]) {
     return sample(
-      this.getSubset(ctx).filter((item: any) => item.type === "planet"),
-    ).name;
+      this.getSubset(ctx).filter((item: any) => item.type === 'planet'),
+    ).name
   }
 
   public any(ctx?: string | string[]) {
-    return sample(this.getSubset(ctx)).name;
+    return sample(this.getSubset(ctx)).name
   }
 }
