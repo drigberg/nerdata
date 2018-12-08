@@ -1,7 +1,7 @@
 import { Universe } from '../interface';
 export declare type ItemType = 'tool' | 'vehicle' | 'weapon';
 export declare type NamespaceType = 'items' | 'names' | 'places' | 'quotes' | 'species';
-export declare type PlaceType = 'city' | 'planet';
+export declare type PlaceType = 'city' | 'realm';
 export declare type SpeciesType = 'nonsentient' | 'sentient';
 export interface IItem {
     readonly name: string;

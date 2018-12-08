@@ -2,7 +2,7 @@ import { Universe } from '../interface'
 
 export type ItemType = 'tool' | 'vehicle' | 'weapon'
 export type NamespaceType = 'items' | 'names' | 'places' | 'quotes' | 'species'
-export type PlaceType = 'city' | 'planet'
+export type PlaceType = 'city' | 'realm'
 export type SpeciesType = 'nonsentient' | 'sentient'
 
 export interface IItem {

@@ -30,43 +30,43 @@
     },
     {
       "name": "Tattooine",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Dantooine",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Korriban",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Kamino",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Coruscant",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Bespin",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Hoth",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Naboo",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Alderaan",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Dagobah",
-      "type": "planet"
+      "type": "realm"
     }
   ],
   "names": [

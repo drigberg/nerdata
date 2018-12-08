@@ -26,39 +26,39 @@
     },
     {
       "name": "Giedi Prime",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Salusa Secundus",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Ix",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Chapterhouse",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Corrin",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Tleilax",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Wallach IX",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Caladan",
-      "type": "planet"
+      "type": "realm"
     },
     {
       "name": "Arrakis",
-      "type": "planet"
+      "type": "realm"
     }
   ],
   "names": [

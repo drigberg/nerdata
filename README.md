@@ -5,6 +5,18 @@ Testdata from scifi and fantasy, because y'all need it.
 ## CONTRIBUTING
 I don't have a system in place yet for managing pull requests -- shoot me a message at daniel.rigberg@gmail.com, and let's talk!
 
+## DATA
+
+Supported universes:
+- Lord of the Rings
+- Star Wars
+- Rick and Morty
+- Dune
+
+Planned universes:
+- Doctor Who
+- Harry Potter
+
 ## INITIALIZATION
 
 ```js
@@ -56,15 +68,15 @@ nerdata.name.full("fifty-shades-of-grey"); // ERROR: unsupported or unloaded
 
 | method              | description                         | examples                                      |
 | ------------------- | ----------------------------------- | --------------------------------------------- |
-| name.first          | first name                          | "Han", "Rick", "Paul"                         |
+| name.first          | first name                          | "Han", "Aragorn", "Paul"                      |
 | name.last           | last name                           | "Solo", "Sanchez", "Atreides"                 |
-| name.full           | full name                           | "Han Solo", "Rick Sanchez", "Paul Atreides"   |
+| name.full           | full name                           | "Han Solo", "Rick Sanchez", "Frodo Baggins"   |
 | place.any           | name of location (any type)         | "Ahto City", "Gazorpazorp", "Caladan"         |
 | place.city          | name of city                        | "Ahto City", "Seattle", "Bandalong"           |
-| place.planet        | name of planet                      | "Tattooine", "Gazorpazorp", "Caladan"         |
+| place.realm         | name of realm                       | "Tattooine", "Gazorpazorp", "Gondor"          |
 | item.any            | name of item (any type)             | "light saber", "space cruiser", "suspensor"   |
 | item.tool           | name of tool                        | "neural band", "plumbus", "suspensor"         |
-| item.weapon         | name of weapon                      | "light saber", "freeze ray", "crysknife"      |
+| item.weapon         | name of weapon                      | "Narsil", "freeze ray", "crysknife"           |
 | item.vehicle        | name of vehicle                     | "X-Wing", "space cruiser", "ornithopter"      |
 | species.any         | name of species (any type)          | "jawa", "splorpian", "sandworm"               |
 | species.sentient    | name of sentient species            | "jawa", "human", "tleilaxu"                   |
