@@ -145,6 +145,10 @@
       "type": "sentient"
     },
     {
+      "name": "dragon",
+      "type": "sentient"
+    },
+    {
       "name": "dwarf",
       "type": "sentient"
     },
@@ -169,11 +173,19 @@
       "type": "sentient"
     },
     {
-      "name": "kangaroo mouse",
+      "name": "warg",
       "type": "nonsentient"
     },
     {
-      "name": "kangaroo mouse",
+      "name": "great spider",
+      "type": "nonsentient"
+    },
+    {
+      "name": "crebain",
+      "type": "nonsentient"
+    },
+    {
+      "name": "oliphaunt",
       "type": "nonsentient"
     }
   ],
