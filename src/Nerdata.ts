@@ -6,12 +6,14 @@ import { readdirSync, readFileSync } from 'fs'
 import { castArray, has, isEmpty, reduce } from 'lodash'
 import * as path from 'path'
 import * as errors from './errors'
+import { Universe } from './interface'
 import { INerdataOpts } from './interface'
 import { Item } from './namespaces/Item'
 import { Name } from './namespaces/Name'
 import { Place } from './namespaces/Place'
 import { Quote } from './namespaces/Quote'
 import { Species } from './namespaces/Species'
+import { isValidUniverseArray } from './validators'
 
 /*
  * Module variables
@@ -25,18 +27,16 @@ let cache: any = {}
  */
 
 export class Nerdata {
-
   public static resetCache() {
     cache = {}
   }
   public name: Name = new Name([])
-  public place: Place = new Place([])
   public item: Item = new Item([])
+  public place: Place = new Place([])
   public species: Species = new Species([])
   public quote: Quote = new Quote([])
 
-  public _allUniverses: any
-  public _universes: any
+  public _allUniverses: () => Universe[]
   private _data: any
 
   constructor(opts?: INerdataOpts) {
@@ -59,6 +59,10 @@ export class Nerdata {
       .filter((item) => path.extname(item) === '.json')
       .map((item) => path.basename(item, '.json'))
 
+    if (!isValidUniverseArray(allUniverses)) {
+      throw new Error('Corrupted data: invalid universe in data')
+    }
+
     this._allUniverses = () => allUniverses
 
     if (!opts || isEmpty(opts)) {
@@ -79,12 +83,9 @@ export class Nerdata {
 
     this._setup(this._limitByExclusion(opts.exclude))
   }
+  public _universes: () => Universe[] = () => []
 
-  public allUniverses(): string[] {
-    return this._allUniverses
-  }
-
-  private _setup(universes: string[]) {
+  private _setup(universes: Universe[]) {
     this._universes = () => universes
     const data = this._getData(universes)
     this._data = () => data
@@ -96,7 +97,7 @@ export class Nerdata {
     this.quote = new Quote(this._data())
   }
 
-  private _getData(universes: string[]): any {
+  private _getData(universes: Universe[]): any {
     return reduce(
       universes,
       (acc, universe) => {
@@ -107,7 +108,7 @@ export class Nerdata {
     )
   }
 
-  private _loadData(universe: string) {
+  private _loadData(universe: Universe) {
     if (cache[universe]) {
       return cache[universe]
     }
@@ -121,13 +122,14 @@ export class Nerdata {
     return data
   }
 
-  private _limitByExclusion(excluded?: string | string[]) {
-    const toExclude = castArray(excluded).map((item) => item.toLowerCase())
-    const unavailable = toExclude.filter(
-      (key) => !this._allUniverses().includes(key),
-    )
+  private _limitByExclusion(excluded?: string | string[]): Universe[] {
+    const toExclude = castArray(excluded)
 
-    if (unavailable.length) {
+    if (!isValidUniverseArray(toExclude)) {
+      const unavailable = toExclude.filter(
+        (key: any) => !this._allUniverses().includes(key),
+      )
+
       throw errors.unsupported(unavailable, this._allUniverses())
     }
 
@@ -142,19 +144,19 @@ export class Nerdata {
     return universes
   }
 
-  private _limitByInclusion(included?: string | string[]) {
-    const toInclude = castArray(included).map((item) => item.toLowerCase())
+  private _limitByInclusion(included?: string | string[]): Universe[] {
+    const toInclude = castArray(included)
+
+    if (!isValidUniverseArray(toInclude)) {
+      const unavailable = toInclude.filter(
+        (key: any) => !this._allUniverses().includes(key),
+      )
+
+      throw errors.unsupported(unavailable, this._allUniverses())
+    }
 
     if (!toInclude.length) {
       throw errors.noneIncluded(this._allUniverses())
-    }
-
-    const unavailable = toInclude.filter(
-      (key) => !this._allUniverses().includes(key),
-    )
-
-    if (unavailable.length) {
-      throw errors.unsupported(unavailable, this._allUniverses())
     }
 
     return toInclude

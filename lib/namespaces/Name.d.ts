@@ -1,7 +1,8 @@
 import { Namespace } from "../Namespace";
+import { Universe } from '../interface';
 export declare class Name extends Namespace {
     constructor(data: any);
-    first(ctx?: string | string[]): any;
-    last(ctx?: string | string[]): any;
-    full(ctx?: string | string[]): string;
+    first(ctx?: Universe | Universe[]): any;
+    last(ctx?: Universe | Universe[]): any;
+    full(ctx?: Universe | Universe[]): string;
 }

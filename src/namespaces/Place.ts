@@ -3,6 +3,7 @@
  */
 
 import { sample } from 'lodash'
+import { Universe } from '../interface'
 import { Namespace } from '../Namespace'
 
 /*
@@ -18,19 +19,19 @@ export class Place extends Namespace {
     this.any = this.any.bind(this)
   }
 
-  public city(ctx?: string | string[]) {
+  public city(ctx?: Universe | Universe[]) {
     return sample(
       this.getSubset(ctx).filter((item: any) => item.type === 'city'),
     ).name
   }
 
-  public planet(ctx?: string | string[]) {
+  public planet(ctx?: Universe | Universe[]) {
     return sample(
       this.getSubset(ctx).filter((item: any) => item.type === 'planet'),
     ).name
   }
 
-  public any(ctx?: string | string[]) {
+  public any(ctx?: Universe | Universe[]) {
     return sample(this.getSubset(ctx)).name
   }
 }

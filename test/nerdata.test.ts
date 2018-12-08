@@ -1,9 +1,10 @@
-import { expect } from "chai";
-import { Nerdata } from "../src/Nerdata";
-import * as sinon from "sinon";
-import * as fs from "fs";
+import { expect } from 'chai'
+import * as fs from 'fs'
+import * as sinon from 'sinon'
+import { Universe } from '../src/interface'
+import { Nerdata } from '../src/Nerdata'
 
-describe("Nerdata", () => {
+describe('Nerdata', () => {
   describe('enumeration', () => {
     it('namespaces are enumerable', () => {
       expect(Object.keys(new Nerdata())).to.have.same.members([
@@ -11,296 +12,218 @@ describe("Nerdata", () => {
         'place',
         'item',
         'quote',
-        'species'
+        'species',
       ])
     })
   })
 
-  describe("universes", () => {
-    describe("no args", () => {
-      it("success", () => {
-        const nerdata = new Nerdata();
+  describe('universes', () => {
+    describe('no args', () => {
+      it('success', () => {
+        const nerdata = new Nerdata()
 
         expect(nerdata._universes()).have.same.members([
-          "dune",
-          "rick-and-morty",
-          "star-wars",
-        ]);
-      });
-    });
+          'dune',
+          'rick-and-morty',
+          'star-wars',
+        ])
+      })
+    })
 
-    describe("limit by inclusion", () => {
-      describe("positive", () => {
-        describe("uppercase", () => {
-          it("string", () => {
+    describe('limit by inclusion', () => {
+      describe('positive', () => {
+
+        describe('lowercase', () => {
+          it('string', () => {
             const nerdata = new Nerdata({
-              include: "DUNE",
-            });
+              include: 'dune',
+            })
 
-            expect(nerdata._universes()).have.same.members(["dune"]);
-          });
+            expect(nerdata._universes()).have.same.members(['dune'])
+          })
 
-          it("array - one item", () => {
+          it('array - one item', () => {
             const nerdata = new Nerdata({
-              include: ["STAR-WARS"],
-            });
+              include: ['star-wars'],
+            })
 
-            expect(nerdata._universes()).have.same.members(["star-wars"]);
-          });
+            expect(nerdata._universes()).have.same.members(['star-wars'])
+          })
 
-          it("array - two items", () => {
+          it('array - two items', () => {
             const nerdata = new Nerdata({
-              include: ["DUNE", "STAR-WARS"],
-            });
+              include: ['dune', 'star-wars'],
+            })
 
             expect(nerdata._universes()).have.same.members([
-              "dune",
-              "star-wars",
-            ]);
-          });
+              'dune',
+              'star-wars',
+            ])
+          })
 
-          it("array - all items", () => {
+          it('array - all items', () => {
             const nerdata = new Nerdata({
-              include: ["DUNE", "STAR-WARS", "RICK-AND-MORTY"],
-            });
+              include: ['dune', 'star-wars', 'rick-and-morty'],
+            })
 
             expect(nerdata._universes()).have.same.members([
-              "dune",
-              "star-wars",
-              "rick-and-morty",
-            ]);
-          });
-        });
+              'dune',
+              'star-wars',
+              'rick-and-morty',
+            ])
+          })
+        })
+      })
 
-        describe("lowercase", () => {
-          it("string", () => {
-            const nerdata = new Nerdata({
-              include: "dune",
-            });
-
-            expect(nerdata._universes()).have.same.members(["dune"]);
-          });
-
-          it("array - one item", () => {
-            const nerdata = new Nerdata({
-              include: ["star-wars"],
-            });
-
-            expect(nerdata._universes()).have.same.members(["star-wars"]);
-          });
-
-          it("array - two items", () => {
-            const nerdata = new Nerdata({
-              include: ["dune", "star-wars"],
-            });
-
-            expect(nerdata._universes()).have.same.members([
-              "dune",
-              "star-wars",
-            ]);
-          });
-
-          it("array - all items", () => {
-            const nerdata = new Nerdata({
-              include: ["dune", "star-wars", "rick-and-morty"],
-            });
-
-            expect(nerdata._universes()).have.same.members([
-              "dune",
-              "star-wars",
-              "rick-and-morty",
-            ]);
-          });
-        });
-      });
-
-      describe("negative", () => {
-        it("empty array", () => {
-          let error: Error | undefined = undefined;
+      describe('negative', () => {
+        it('empty array', () => {
+          let error: Error | undefined
           try {
-            new Nerdata({
-              include: [],
-            });
+            // tslint:disable-next-line:no-unused-expression
+            new Nerdata({ include: [] })
           } catch (err) {
-            error = err;
+            error = err
           }
 
           if (!error) {
-            throw new Error("expected error");
+            throw new Error('expected error')
           }
 
           expect(error.message).to.equal(
-            "opts.include must have at least one item, if specified. Options are: dune, rick-and-morty, star-wars",
-          );
-        });
+            'opts.include must have at least one item, if specified. Options are: dune, rick-and-morty, star-wars',
+          )
+        })
 
-        it("invalid universe", () => {
-          let error: Error | undefined = undefined;
+        it('invalid universe', () => {
+          let error: Error | undefined
           try {
-            new Nerdata({
-              include: ["twilight", "duun"],
-            });
+            // tslint:disable-next-line:no-unused-expression
+            new Nerdata({ include: ['twilight', 'duun'] as unknown as Universe[] })
           } catch (err) {
-            error = err;
+            error = err
           }
 
           if (!error) {
-            throw new Error("expected error");
+            throw new Error('expected error')
           }
 
           expect(error.message).to.equal(
-            "The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, rick-and-morty, star-wars",
-          );
-        });
-      });
-    });
+            // tslint:disable-next-line:max-line-length
+            'The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, rick-and-morty, star-wars',
+          )
+        })
+      })
+    })
 
-    describe("limit by exclusion", () => {
-      describe("positive", () => {
-        describe("uppercase", () => {
-          it("string", () => {
+    describe('limit by exclusion', () => {
+      describe('positive', () => {
+        describe('lowercase', () => {
+          it('string', () => {
             const nerdata = new Nerdata({
-              exclude: "DUNE",
-            });
+              exclude: 'dune',
+            })
 
             expect(nerdata._universes()).have.same.members([
-              "star-wars",
-              "rick-and-morty",
-            ]);
-          });
+              'star-wars',
+              'rick-and-morty',
+            ])
+          })
 
-          it("array - one item", () => {
+          it('array - one item', () => {
             const nerdata = new Nerdata({
-              exclude: ["STAR-WARS"],
-            });
+              exclude: ['star-wars'],
+            })
 
             expect(nerdata._universes()).have.same.members([
-              "dune",
-              "rick-and-morty",
-            ]);
-          });
+              'dune',
+              'rick-and-morty',
+            ])
+          })
 
-          it("array - two items", () => {
+          it('array - two items', () => {
             const nerdata = new Nerdata({
-              exclude: ["DUNE", "RICK-AND-MORTY"],
-            });
+              exclude: ['dune', 'rick-and-morty'],
+            })
 
-            expect(nerdata._universes()).have.same.members(["star-wars"]);
-          });
-        });
+            expect(nerdata._universes()).have.same.members(['star-wars'])
+          })
+        })
+      })
 
-        describe("lowercase", () => {
-          it("string", () => {
-            const nerdata = new Nerdata({
-              exclude: "dune",
-            });
-
-            expect(nerdata._universes()).have.same.members([
-              "star-wars",
-              "rick-and-morty",
-            ]);
-          });
-
-          it("array - one item", () => {
-            const nerdata = new Nerdata({
-              exclude: ["star-wars"],
-            });
-
-            expect(nerdata._universes()).have.same.members([
-              "dune",
-              "rick-and-morty",
-            ]);
-          });
-
-          it("array - two items", () => {
-            const nerdata = new Nerdata({
-              exclude: ["dune", "rick-and-morty"],
-            });
-
-            expect(nerdata._universes()).have.same.members(["star-wars"]);
-          });
-        });
-      });
-
-      describe("negative", () => {
-        it("array - all items", () => {
-          let error: Error | undefined = undefined;
+      describe('negative', () => {
+        it('array - all items', () => {
+          let error: Error | undefined
           try {
-            new Nerdata({
-              exclude: ["dune", "rick-and-morty", "star-wars"],
-            });
+            // tslint:disable-next-line:no-unused-expression
+            new Nerdata({ exclude: ['dune', 'rick-and-morty', 'star-wars'] })
           } catch (err) {
-            error = err;
+            error = err
           }
 
           if (!error) {
-            throw new Error("expected error");
+            throw new Error('expected error')
           }
 
           expect(error.message).to.equal(
-            "opts.exclude cannot contain all options.",
-          );
-        });
+            'opts.exclude cannot contain all options.',
+          )
+        })
 
-        it("invalid universe", () => {
-          let error: Error | undefined = undefined;
+        it('invalid universe', () => {
+          let error: Error | undefined
           try {
-            new Nerdata({
-              exclude: ["twilight", "duun"],
-            });
+            // tslint:disable-next-line:no-unused-expression
+            new Nerdata({ exclude: ['twilight', 'duun'] as unknown as Universe[] })
           } catch (err) {
-            error = err;
+            error = err
           }
 
           if (!error) {
-            throw new Error("expected error");
+            throw new Error('expected error')
           }
 
           expect(error.message).to.equal(
-            "The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, rick-and-morty, star-wars",
-          );
-        });
-      });
-    });
-  });
+            // tslint:disable-next-line:max-line-length
+            'The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, rick-and-morty, star-wars',
+          )
+        })
+      })
+    })
+  })
 
-  describe("files", () => {
-    const spy = sinon.spy(fs, "readFileSync");
+  describe('files', () => {
+    const spy = sinon.spy(fs, 'readFileSync')
     beforeEach(() => {
-      spy.resetHistory();
-      Nerdata.resetCache();
-    });
+      spy.resetHistory()
+      Nerdata.resetCache()
+    })
 
     after(() => {
-      spy.restore();
-    });
+      spy.restore()
+    })
 
-    it("are only loaded when used", () => {
-      new Nerdata({
-        include: "dune",
-      });
+    it('are only loaded when used', () => {
+      // tslint:disable-next-line:no-unused-expression
+      new Nerdata({ include: 'dune' })
 
-      expect(spy.callCount).to.equal(1);
+      expect(spy.callCount).to.equal(1)
 
-      new Nerdata({
-        include: ["star-wars", "rick-and-morty"],
-      });
+      // tslint:disable-next-line:no-unused-expression
+      new Nerdata({ include: ['star-wars', 'rick-and-morty'] })
 
-      expect(spy.callCount).to.equal(3);
-    });
+      expect(spy.callCount).to.equal(3)
+    })
 
-    it("are only loaded once each", () => {
-      new Nerdata({
-        include: "dune",
-      });
+    it('are only loaded once each', () => {
+      // tslint:disable-next-line:no-unused-expression
+      new Nerdata({ include: 'dune' })
 
-      expect(spy.callCount).to.equal(1);
+      expect(spy.callCount).to.equal(1)
 
-      new Nerdata({
-        include: "dune",
-      });
+      // tslint:disable-next-line:no-unused-expression
+      new Nerdata({ include: 'dune' })
 
-      expect(spy.callCount).to.equal(1);
-    });
-  });
-});
+      expect(spy.callCount).to.equal(1)
+    })
+  })
+})

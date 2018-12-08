@@ -1,46 +1,52 @@
+import { expect } from 'chai'
+import { readdirSync, readFileSync } from 'fs'
 import * as Joi from 'joi'
-import { readdirSync, readFileSync } from "fs";
-import * as path from "path";
+import * as path from 'path'
+import { isValidUniverseArray } from '../src/validators'
 
 describe('data validation', () => {
-  const dataDir = path.join(__dirname, "..", "data")
+  const dataDir = path.join(__dirname, '..', 'data')
 
   const name = Joi.object().keys({
     first: Joi.string().min(1).required(),
-    last: Joi.string()
+    last: Joi.string(),
   })
 
   const quote = Joi.object().keys({
+    speaker: Joi.string().min(1).required(),
     text: Joi.string().min(1).required(),
-    speaker: Joi.string().min(1).required()
   })
 
   const item = Joi.object().keys({
     name: Joi.string().min(1).required(),
-    type: Joi.string().regex(/^(weapon|tool|vehicle)$/).required()
+    type: Joi.string().regex(/^(weapon|tool|vehicle)$/).required(),
   })
 
   const place = Joi.object().keys({
     name: Joi.string().min(1).required(),
-    type: Joi.string().regex(/^(city|planet)$/).required()
+    type: Joi.string().regex(/^(city|planet)$/).required(),
   })
 
   const species = Joi.object().keys({
     name: Joi.string().min(1).required(),
-    type: Joi.string().regex(/^(sentient|nonsentient)$/).required()
+    type: Joi.string().regex(/^(sentient|nonsentient)$/).required(),
   })
 
   const schema = Joi.object().keys({
     items: Joi.array().min(1).items(item),
-    places: Joi.array().min(1).items(place),
     names: Joi.array().min(1).items(name),
+    places: Joi.array().min(1).items(place),
     quotes: Joi.array().min(1).items(quote),
     species: Joi.array().min(1).items(species),
   })
 
   const universes = readdirSync(dataDir)
-    .filter(item => path.extname(item) === ".json")
-    .map(item => path.basename(item, ".json"))
+    .filter((filename) => path.extname(filename) === '.json')
+    .map((filename) => path.basename(filename, '.json'))
+
+  it('Universes are registered and spelled correctly', () => {
+    expect(isValidUniverseArray(universes)).to.equal(true)
+  })
 
   universes.forEach((universe) => {
     it(`${universe}.json`, () => {
@@ -51,7 +57,7 @@ describe('data validation', () => {
         throw new Error(`Invalid json for ${universe}`)
       }
 
-      const { error } = Joi.validate(data, schema);
+      const { error } = Joi.validate(data, schema)
 
       if (error) {
         throw error
@@ -59,5 +65,3 @@ describe('data validation', () => {
     })
   })
 })
-
-

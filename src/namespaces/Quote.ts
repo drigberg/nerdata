@@ -4,6 +4,7 @@
 
 import { sample } from 'lodash'
 import { isNumber } from 'util'
+import { Universe } from '../interface'
 import { Namespace } from '../Namespace'
 
 /*
@@ -24,7 +25,7 @@ export class Quote extends Namespace {
     this.paragraph = this.paragraph.bind(this)
   }
 
-  public sentence(ctx?: string | string[], opts: any = {}) {
+  public sentence(ctx?: Universe | Universe[], opts: any = {}) {
     const quote = sample(this.getSubset(ctx))
 
     if (opts.citation === true) {
@@ -34,7 +35,7 @@ export class Quote extends Namespace {
     return quote.text
   }
 
-  public paragraph(ctx?: string | string[], opts: any = {}) {
+  public paragraph(ctx?: Universe | Universe[], opts: any = {}) {
     const ret = []
     const sentences = isNumber(opts.sentences) && opts.sentences > 0
       ? opts.sentences
