@@ -2,6 +2,7 @@ import { expect } from "chai";
 import { Nerdata } from "../src/Nerdata";
 import * as sinon from "sinon";
 import * as fs from "fs";
+import { Universe } from "../src/interface";
 
 describe("Nerdata", () => {
   describe('enumeration', () => {
@@ -31,46 +32,6 @@ describe("Nerdata", () => {
 
     describe("limit by inclusion", () => {
       describe("positive", () => {
-        describe("uppercase", () => {
-          it("string", () => {
-            const nerdata = new Nerdata({
-              include: "DUNE",
-            });
-
-            expect(nerdata._universes()).have.same.members(["dune"]);
-          });
-
-          it("array - one item", () => {
-            const nerdata = new Nerdata({
-              include: ["STAR-WARS"],
-            });
-
-            expect(nerdata._universes()).have.same.members(["star-wars"]);
-          });
-
-          it("array - two items", () => {
-            const nerdata = new Nerdata({
-              include: ["DUNE", "STAR-WARS"],
-            });
-
-            expect(nerdata._universes()).have.same.members([
-              "dune",
-              "star-wars",
-            ]);
-          });
-
-          it("array - all items", () => {
-            const nerdata = new Nerdata({
-              include: ["DUNE", "STAR-WARS", "RICK-AND-MORTY"],
-            });
-
-            expect(nerdata._universes()).have.same.members([
-              "dune",
-              "star-wars",
-              "rick-and-morty",
-            ]);
-          });
-        });
 
         describe("lowercase", () => {
           it("string", () => {
@@ -138,7 +99,7 @@ describe("Nerdata", () => {
           let error: Error | undefined = undefined;
           try {
             new Nerdata({
-              include: ["twilight", "duun"],
+              include: ["twilight", "duun"] as unknown as Universe[],
             });
           } catch (err) {
             error = err;
@@ -157,38 +118,6 @@ describe("Nerdata", () => {
 
     describe("limit by exclusion", () => {
       describe("positive", () => {
-        describe("uppercase", () => {
-          it("string", () => {
-            const nerdata = new Nerdata({
-              exclude: "DUNE",
-            });
-
-            expect(nerdata._universes()).have.same.members([
-              "star-wars",
-              "rick-and-morty",
-            ]);
-          });
-
-          it("array - one item", () => {
-            const nerdata = new Nerdata({
-              exclude: ["STAR-WARS"],
-            });
-
-            expect(nerdata._universes()).have.same.members([
-              "dune",
-              "rick-and-morty",
-            ]);
-          });
-
-          it("array - two items", () => {
-            const nerdata = new Nerdata({
-              exclude: ["DUNE", "RICK-AND-MORTY"],
-            });
-
-            expect(nerdata._universes()).have.same.members(["star-wars"]);
-          });
-        });
-
         describe("lowercase", () => {
           it("string", () => {
             const nerdata = new Nerdata({
@@ -246,7 +175,7 @@ describe("Nerdata", () => {
           let error: Error | undefined = undefined;
           try {
             new Nerdata({
-              exclude: ["twilight", "duun"],
+              exclude: ["twilight", "duun"] as unknown as Universe[],
             });
           } catch (err) {
             error = err;

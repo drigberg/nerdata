@@ -11,8 +11,8 @@ export declare class Nerdata {
     item: Item;
     species: Species;
     quote: Quote;
-    _allUniverses: any;
-    _universes: any;
+    _allUniverses: () => Universe[];
+    _universes: () => Universe[];
     private _data;
     constructor(opts?: INerdataOpts);
     allUniverses(): string[];

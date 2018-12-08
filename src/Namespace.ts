@@ -4,6 +4,8 @@
 
 import { castArray, reduce } from 'lodash'
 import * as errors from './errors'
+import { Universe } from './interface'
+import { NamespaceType } from './namespaces/interface'
 
 /*
  * Module
@@ -11,9 +13,9 @@ import * as errors from './errors'
 
 export class Namespace {
   private data: any
-  private universes: any
+  private universes: () => Universe[]
 
-  constructor(data: any, namespace: string) {
+  constructor(data: any, namespace: NamespaceType) {
     Object.defineProperties(this, {
       data: {
         enumerable: false,
@@ -30,12 +32,12 @@ export class Namespace {
     this.universes = () => parsed.universes
   }
 
-  public getSubset(ctx?: string | string[]) {
+  public getSubset(ctx?: Universe | Universe[]) {
     if (!ctx || !ctx.length) {
       return this.data()
     }
 
-    const universes = castArray(ctx)
+    const universes: Universe[] = castArray(ctx)
 
     const unavailable = universes.filter(
       (item) => !this.universes().includes(item),
@@ -48,7 +50,7 @@ export class Namespace {
     return this.data().filter((item: any) => universes.includes(item.ctx))
   }
 
-  private parseData(data: any, namespace: string) {
+  private parseData(data: any, namespace: NamespaceType) {
     return reduce(
       data,
       (acc, universeData, ctx) => {

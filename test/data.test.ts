@@ -1,6 +1,8 @@
 import * as Joi from 'joi'
 import { readdirSync, readFileSync } from "fs";
 import * as path from "path";
+import { expect } from 'chai'
+import { isValidUniverseArray } from '../src/validators';
 
 describe('data validation', () => {
   const dataDir = path.join(__dirname, "..", "data")
@@ -41,6 +43,10 @@ describe('data validation', () => {
   const universes = readdirSync(dataDir)
     .filter(item => path.extname(item) === ".json")
     .map(item => path.basename(item, ".json"))
+
+  it('Universes are registered and spelled correctly', () => {
+    expect(isValidUniverseArray(universes)).to.equal(true)
+  })
 
   universes.forEach((universe) => {
     it(`${universe}.json`, () => {
