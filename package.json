@@ -4,7 +4,7 @@
   "description": "testdata for the fantasy/scifi enthusiast",
   "main": "lib/index.js",
   "scripts": {
-    "compile": "tsc --declaration",
+    "compile": "tsc --declaration && bash generate_flow_types.sh",
     "lint": "tslint -p . --fix",
     "test": "mocha --timeout=10000 test/*.test.ts test/**/*.test.ts --require ts-node/register --recursive --prof --ui tdd --throw-deprecation"
   },
