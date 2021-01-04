@@ -1,9 +1,9 @@
-import * as sinon from 'sinon'
-import * as fs from 'fs'
-import { Nerdata } from '../src/Nerdata'
-import { Universe } from '../src/interface'
-import { after, beforeEach, describe, it } from 'mocha'
 import { expect } from 'chai'
+import * as fs from 'fs'
+import { after, beforeEach, describe, it } from 'mocha'
+import * as sinon from 'sinon'
+import { Universe } from '../src/interface'
+import { Nerdata } from '../src/Nerdata'
 
 describe('Nerdata', () => {
   describe('enumeration', () => {

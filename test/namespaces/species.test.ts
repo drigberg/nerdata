@@ -1,8 +1,8 @@
-import * as path from 'path'
-import { Nerdata } from '../../src/Nerdata'
-import { before, describe, it } from 'mocha'
 import { expect } from 'chai'
 import { readFileSync } from 'fs'
+import { before, describe, it } from 'mocha'
+import * as path from 'path'
+import { Nerdata } from '../../src/Nerdata'
 
 describe('Species', () => {
   let data: any

@@ -1,9 +1,9 @@
-import * as Joi from 'joi'
-import * as path from 'path'
-import { describe, it } from 'mocha'
 import { expect } from 'chai'
-import { isValidUniverseArray } from '../src/validators'
 import { readdirSync, readFileSync } from 'fs'
+import * as Joi from 'joi'
+import { describe, it } from 'mocha'
+import * as path from 'path'
+import { isValidUniverseArray } from '../src/validators'
 
 describe('data validation', () => {
   const dataDir = path.join(__dirname, '..', 'data')
