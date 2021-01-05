@@ -4,7 +4,7 @@
   "description": "testdata for the fantasy/scifi enthusiast",
   "main": "lib/index.js",
   "scripts": {
-    "copy-data": "cp -r src/data lib/data",
+    "copy-data": "cp -r src/data lib/src",
     "check-flow": "flow",
     "compile": "npm run compile-ts && npm run copy-data && npm run generate-flow-types",
     "compile-ts": "tsc --declaration",
