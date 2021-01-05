@@ -19,7 +19,7 @@ Planned universes:
 ## INITIALIZATION
 
 ```js
-const Nerdata = require("nerdata");
+const { Nerdata } = require("nerdata");
 ```
 
 A new instance can be specified with all universes:
