@@ -13,13 +13,13 @@ describe('Name', () => {
 
     const duneNames = JSON.parse(
       readFileSync(
-        path.join(__dirname, '..', '..', 'data', 'dune.json'),
+        path.join(__dirname, '..', '..', 'src', 'data', 'dune.json'),
       ).toString(),
     ).names
 
     const starWarsNames = JSON.parse(
       readFileSync(
-        path.join(__dirname, '..', '..', 'data', 'star-wars.json'),
+        path.join(__dirname, '..', '..', 'src', 'data', 'star-wars.json'),
       ).toString(),
     ).names
 

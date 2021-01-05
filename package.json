@@ -4,8 +4,9 @@
   "description": "testdata for the fantasy/scifi enthusiast",
   "main": "lib/index.js",
   "scripts": {
+    "copy-data": "cp -r src/data lib/data",
     "check-flow": "flow",
-    "compile": "npm run compile-ts && npm run generate-flow-types",
+    "compile": "npm run compile-ts && npm run copy-data && npm run generate-flow-types",
     "compile-ts": "tsc --declaration",
     "generate-flow-types": "bash generate_flow_types.sh && node replace_flow_headers.js",
     "lint": "tslint -p . --fix",

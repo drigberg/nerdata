@@ -6,7 +6,7 @@ import * as path from 'path'
 import { isValidUniverseArray } from '../src/validators'
 
 describe('data validation', () => {
-  const dataDir = path.join(__dirname, '..', 'data')
+  const dataDir = path.join(__dirname, '..', 'src', 'data')
 
   const name = Joi.object().keys({
     first: Joi.string().min(1).required(),

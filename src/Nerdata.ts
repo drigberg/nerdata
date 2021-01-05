@@ -19,7 +19,7 @@ import { Species } from './namespaces/Species'
  * Module variables
  */
 
-const dataDir: string = path.join(__dirname, '..', 'data')
+const dataDir: string = path.join(__dirname, 'data')
 let cache: any = {}
 
 /*

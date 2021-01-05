@@ -13,13 +13,13 @@ describe('Item', () => {
 
     const rickAndMortyItems = JSON.parse(
       readFileSync(
-        path.join(__dirname, '..', '..', 'data', 'rick-and-morty.json'),
+        path.join(__dirname, '..', '..', 'src', 'data', 'rick-and-morty.json'),
       ).toString(),
     ).items
 
     const starWarsItems = JSON.parse(
       readFileSync(
-        path.join(__dirname, '..', '..', 'data', 'star-wars.json'),
+        path.join(__dirname, '..', '..', 'src', 'data', 'star-wars.json'),
       ).toString(),
     ).items
 
