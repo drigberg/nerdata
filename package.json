@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "compile": "tsc --declaration && bash generate_flow_types.sh",
+    "check-flow": "flow lib",
     "lint": "tslint -p . --fix",
     "test": "mocha --timeout=10000 test/*.test.ts test/**/*.test.ts --require ts-node/register --recursive --prof --ui tdd --throw-deprecation"
   },
@@ -33,6 +34,8 @@
     "@types/node": "10.12.9",
     "@types/sinon": "5.0.7",
     "chai": "4.2.0",
+    "flow-bin": "^0.141.0",
+    "flow-coverage-report": "^0.8.0",
     "joi": "14.3.0",
     "mocha": "^8.2.1",
     "sinon": "7.1.1",

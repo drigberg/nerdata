@@ -1,0 +1,39 @@
+
+[version]
+0.141.0
+
+[ignore]
+<PROJECT_ROOT>/data/*
+<PROJECT_ROOT>/test/*
+<PROJECT_ROOT>/src/*
+<PROJECT_ROOT>/node_modules/re-resizable/*
+
+
+[options]
+esproposal.optional_chaining=enable
+esproposal.nullish_coalescing=enable
+
+# In preparation of Flow's modern Types-First mode, see https://flow.org/en/docs/lang/types-first/
+# TODO: Eventually replace well_formed_exports=true by types_first=true (which
+# will imply well_formed_exports=true).  This mode will eventually become
+# Flow's default mode.
+well_formed_exports=true
+
+[lints]
+all=error
+sketchy-null-bool=off
+sketchy-null-mixed=off
+sketchy-null-number=off
+sketchy-null-string=off
+sketchy-number-and=warn
+unclear-type=warn
+unnecessary-invariant=warn
+untyped-type-import=warn
+deprecated-utility=warn
+
+[strict]
+nonstrict-import
+unclear-type
+unsafe-getters-setters
+untyped-import
+untyped-type-import

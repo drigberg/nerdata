@@ -2,19 +2,17 @@
 
 Testdata from scifi and fantasy, because y'all need it.
 
-
-## CONTRIBUTING
-I don't have a system in place yet for managing pull requests -- shoot me a message at daniel.rigberg@gmail.com, and let's talk!
-
 ## DATA
 
 Supported universes:
+
 - Lord of the Rings
 - Star Wars
 - Rick and Morty
 - Dune
 
 Planned universes:
+
 - Doctor Who
 - Harry Potter
 
@@ -61,8 +59,6 @@ nerdata.name.full(["dune", "star-wars"]); // full name from Dune or Star Wars
 nerdata.name.full("fifty-shades-of-grey"); // ERROR: unsupported or unloaded
 ```
 
-
-
 ## API
 
 **All return values are strings.**
@@ -88,21 +84,31 @@ nerdata.name.full("fifty-shades-of-grey"); // ERROR: unsupported or unloaded
 ### OPTIONS
 
 #### quote.sentence: opts.citation
-  - `citation`: if true, appends speaker to quote
-    - true: `"It's a trap!" - Admiral Ackbar`
-    - false: `It's a trap!`
+
+- `citation`: if true, appends speaker to quote
+  - true: `"It's a trap!" - Admiral Ackbar`
+  - false: `It's a trap!`
 
 ```js
-nerdata.quote.sentence('rick-and-morty', { citation: true}) // '"I made the bomb, Morty." - Rick Sanchez'
-nerdata.quote.sentence('rick-and-morty', { citation: false}) // 'I made the bomb, Morty.'
-nerdata.quote.sentence('rick-and-morty') // 'I made the bomb, Morty.'
+nerdata.quote.sentence("rick-and-morty", { citation: true }); // '"I made the bomb, Morty." - Rick Sanchez'
+nerdata.quote.sentence("rick-and-morty", { citation: false }); // 'I made the bomb, Morty.'
+nerdata.quote.sentence("rick-and-morty"); // 'I made the bomb, Morty.'
 ```
 
 #### quote.paragraph: opts.sentences
-  - `sentences`: number of sentences in paragraph
-    - default: `3`
+
+- `sentences`: number of sentences in paragraph
+  - default: `3`
 
 ```js
-nerdata.quote.paragraph('rick-and-morty', { sentences: 1}) // 'I made the bomb, Morty.'
-nerdata.quote.paragraph('rick-and-morty') // 'I made the bomb, Morty. You pass butter. I mean, why would a Pop-Tart want to live inside a toaster, Rick?'
+nerdata.quote.paragraph("rick-and-morty", { sentences: 1 }); // 'I made the bomb, Morty.'
+nerdata.quote.paragraph("rick-and-morty"); // 'I made the bomb, Morty. You pass butter. I mean, why would a Pop-Tart want to live inside a toaster, Rick?'
 ```
+
+### BUILDING
+
+To build, run `npm run compile`. This first compiles the Typescript code and then auto-generates Flow definitions. The Flow generator makes mistakes, so you'll need to do some manual edits to all the `.flow.js` files in `lib/`. Bonus points for anyone who cleans this up so it's all done smoothly and automatically!
+
+## CONTRIBUTING
+
+I don't have a system in place yet for managing pull requests -- shoot me a message at daniel.rigberg@gmail.com, and let's talk!
