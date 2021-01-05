@@ -3,8 +3,8 @@
  */
 
 import { sample } from 'lodash'
-import { Universe } from '../interface'
 import { Namespace } from '../Namespace'
+import type { Universe } from '../interface'
 
 /*
  * Module

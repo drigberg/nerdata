@@ -1,4 +1,4 @@
-import { Universe } from './interface'
+import type { Universe } from './interface'
 
 export const isValidUniverse = (
   input: any,

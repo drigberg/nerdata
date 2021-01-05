@@ -1,8 +1,0 @@
-// @flow
-
-import type { NamespaceType } from "./namespaces/interface";
-import type { Universe } from "./interface";
-declare export class Namespace {
-  constructor(data: any, namespace: NamespaceType): this;
-  getSubset(ctx?: Universe | Universe[]): any;
-}

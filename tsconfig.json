@@ -15,9 +15,13 @@
     "target": "ES2017"
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "lib",
+    "test"
   ],
   "include": [
+    "index.ts",
+    "index.d.ts",
     "src/**/*.d.ts",
     "src/**/*.ts",
     "test/**/*.ts"

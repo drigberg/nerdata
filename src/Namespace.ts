@@ -4,8 +4,8 @@
 
 import { castArray, reduce } from 'lodash'
 import * as errors from './errors'
-import { Universe } from './interface'
-import { NamespaceType } from './namespaces/interface'
+import type { Universe } from './interface'
+import type { NamespaceType } from './namespaces/interface'
 
 /*
  * Module

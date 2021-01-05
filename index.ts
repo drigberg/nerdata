@@ -2,7 +2,7 @@
  * Module dependencies
  */
 
-import { Nerdata } from './Nerdata'
+import { Nerdata } from './src'
 
 /*
  * Module exports

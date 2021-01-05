@@ -4,8 +4,10 @@
   "description": "testdata for the fantasy/scifi enthusiast",
   "main": "lib/index.js",
   "scripts": {
-    "compile": "tsc --declaration && bash generate_flow_types.sh",
-    "check-flow": "flow lib",
+    "check-flow": "flow",
+    "compile": "npm run compile-ts && npm run generate-flow-types",
+    "compile-ts": "tsc --declaration",
+    "generate-flow-types": "bash generate_flow_types.sh && node replace_flow_headers.js",
     "lint": "tslint -p . --fix",
     "test": "mocha --timeout=10000 test/*.test.ts test/**/*.test.ts --require ts-node/register --recursive --prof --ui tdd --throw-deprecation"
   },
@@ -39,8 +41,8 @@
     "joi": "14.3.0",
     "mocha": "^8.2.1",
     "sinon": "7.1.1",
-    "ts-node": "7.0.1",
-    "tslint": "5.11.0",
-    "typescript": "3.1.6"
+    "ts-node": "^9.1.1",
+    "tslint": "^6.1.3",
+    "typescript": "^4.1.3"
   }
 }

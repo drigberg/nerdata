@@ -1,4 +1,4 @@
-import { Universe } from '../interface'
+import type { Universe } from '../interface'
 
 export type ItemType = 'tool' | 'vehicle' | 'weapon'
 export type NamespaceType = 'items' | 'names' | 'places' | 'quotes' | 'species'

@@ -107,7 +107,7 @@ nerdata.quote.paragraph("rick-and-morty"); // 'I made the bomb, Morty. You pass 
 
 ### BUILDING
 
-To build, run `npm run compile`. This first compiles the Typescript code and then auto-generates Flow definitions. The Flow generator makes mistakes, so you'll need to do some manual edits to all the `.flow.js` files in `lib/`. Bonus points for anyone who cleans this up so it's all done smoothly and automatically!
+To build, run `npm run compile`. This first compiles the Typescript code and then auto-generates Flow definitions. Some magic is done here to add `// @flow`, and the generator can make mistakes, so be sure to run `npm run check-flow` to be sure everything worked.
 
 ## CONTRIBUTING
 

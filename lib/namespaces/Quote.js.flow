@@ -1,9 +1,0 @@
-// @flow
-
-import { Namespace } from "../Namespace";
-import type { Universe } from "../interface";
-declare export class Quote mixins Namespace {
-  constructor(data: any): this;
-  sentence(ctx?: Universe | Universe[], opts?: any): any;
-  paragraph(ctx?: Universe | Universe[], opts?: any): string;
-}

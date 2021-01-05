@@ -4,8 +4,8 @@
 
 import { sample } from 'lodash'
 import { isNumber } from 'util'
-import { Universe } from '../interface'
 import { Namespace } from '../Namespace'
+import type { Universe } from '../interface'
 
 /*
  * Module

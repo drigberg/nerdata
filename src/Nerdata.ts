@@ -5,15 +5,15 @@
 import { readdirSync, readFileSync } from 'fs'
 import { castArray, has, isEmpty, reduce } from 'lodash'
 import * as path from 'path'
+import { isValidUniverseArray } from './validators'
 import * as errors from './errors'
-import { Universe } from './interface'
-import { INerdataOpts } from './interface'
+import type { Universe } from './interface'
+import type { INerdataOpts } from './interface'
 import { Item } from './namespaces/Item'
 import { Name } from './namespaces/Name'
 import { Place } from './namespaces/Place'
 import { Quote } from './namespaces/Quote'
 import { Species } from './namespaces/Species'
-import { isValidUniverseArray } from './validators'
 
 /*
  * Module variables
