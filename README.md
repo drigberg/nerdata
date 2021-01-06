@@ -2,6 +2,8 @@
 
 Testdata from scifi and fantasy, because y'all need it.
 
+Now with zero dependencies!
+
 ## DATA
 
 Supported universes:
@@ -29,7 +31,15 @@ A new instance can be specified with all universes:
 const nerdata = new Nerdata();
 ```
 
-To limit memory usage, you can limit in two ways:
+A custom number generator can be provided to be used instead of `Math.random()`:
+
+```js
+const nerdata = new Nerdata({
+  randomFn: someRandomFunction,
+});
+```
+
+There are two ways to select which universes you want (or limit memory usage):
 
 ```js
 // Inclusive
