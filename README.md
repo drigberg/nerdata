@@ -16,8 +16,27 @@ Supported universes:
 
 Planned universes:
 
-- Doctor Who
-- Game of Thrones
+- American Gods
+- Avatar: The Last Airbender
+- Buffy the Vampire Slayer
+- Daevabad
+- DC Comics
+- Discworld
+- Doctor Who ^^^
+- The Expanse
+- Firefly
+- Foundation
+- Greek Mythology
+- Gurren Lagann
+- Harry Potter ^^^
+- Jojo's Bizarre Adventure
+- Marvel Comics
+- One Piece
+- A Song of Ice and Fire ^^^
+- Umbrella Academy
+- The Witcher ^^^
+
+^^^: coming soon
 
 ## INITIALIZATION
 
