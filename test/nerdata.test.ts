@@ -28,6 +28,7 @@ describe('Nerdata', () => {
           'lord-of-the-rings',
           'rick-and-morty',
           'star-wars',
+          'naruto'
         ])
       })
     })
@@ -90,7 +91,7 @@ describe('Nerdata', () => {
 
           expect(error.message).to.equal(
             // tslint:disable-next-line:max-line-length
-            'opts.include must have at least one item, if specified. Options are: dune, lord-of-the-rings, rick-and-morty, star-wars',
+            'opts.include must have at least one item, if specified. Options are: dune, lord-of-the-rings, naruto, rick-and-morty, star-wars',
           )
         })
 
@@ -109,7 +110,7 @@ describe('Nerdata', () => {
 
           expect(error.message).to.equal(
             // tslint:disable-next-line:max-line-length
-            'The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, lord-of-the-rings, rick-and-morty, star-wars',
+            'The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, lord-of-the-rings, naruto, rick-and-morty, star-wars',
           )
         })
       })
@@ -126,6 +127,7 @@ describe('Nerdata', () => {
             'lord-of-the-rings',
             'star-wars',
             'rick-and-morty',
+            'naruto'
           ])
         })
 
@@ -138,6 +140,7 @@ describe('Nerdata', () => {
             'dune',
             'lord-of-the-rings',
             'rick-and-morty',
+            'naruto'
           ])
         })
 
@@ -146,7 +149,7 @@ describe('Nerdata', () => {
             exclude: ['dune', 'rick-and-morty'],
           })
 
-          expect(nerdata._universes()).have.same.members(['lord-of-the-rings', 'star-wars'])
+          expect(nerdata._universes()).have.same.members(['lord-of-the-rings', 'star-wars', 'naruto'])
         })
       })
     })
@@ -156,7 +159,7 @@ describe('Nerdata', () => {
         let error: Error | undefined
         try {
           // tslint:disable-next-line:no-unused-expression
-          new Nerdata({ exclude: ['dune', 'lord-of-the-rings', 'rick-and-morty', 'star-wars'] })
+          new Nerdata({ exclude: ['dune', 'lord-of-the-rings', 'rick-and-morty', 'star-wars', 'naruto'] })
         } catch (err) {
           error = err
         }
@@ -185,7 +188,7 @@ describe('Nerdata', () => {
 
         expect(error.message).to.equal(
           // tslint:disable-next-line:max-line-length
-          'The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, lord-of-the-rings, rick-and-morty, star-wars',
+          'The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, lord-of-the-rings, naruto, rick-and-morty, star-wars',
         )
       })
     })

@@ -14,7 +14,8 @@ Supported universes:
 Planned universes:
 
 - Doctor Who
-- Harry Potter
+- Game of Thrones
+- Naruto
 
 ## INITIALIZATION
 
