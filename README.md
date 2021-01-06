@@ -10,12 +10,12 @@ Supported universes:
 - Star Wars
 - Rick and Morty
 - Dune
+- Naruto
 
 Planned universes:
 
 - Doctor Who
 - Game of Thrones
-- Naruto
 
 ## INITIALIZATION
 
