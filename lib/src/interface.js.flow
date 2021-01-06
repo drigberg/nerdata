@@ -9,8 +9,10 @@ export type Universe =
   | "dune"
   | "lord-of-the-rings"
   | "rick-and-morty"
-  | "star-wars";
+  | "star-wars"
+  | "naruto";
 export interface INerdataOpts {
+  +randomFn?: () => number;
   +include?: Universe | Universe[];
   +exclude?: Universe | Universe[];
 }

@@ -4,9 +4,11 @@ import { Item } from './namespaces/Item';
 import { Name } from './namespaces/Name';
 import { Place } from './namespaces/Place';
 import { Quote } from './namespaces/Quote';
+import { Random } from './random';
 import { Species } from './namespaces/Species';
 export declare class Nerdata {
     static resetCache(): void;
+    _random: Random;
     name: Name;
     item: Item;
     place: Place;

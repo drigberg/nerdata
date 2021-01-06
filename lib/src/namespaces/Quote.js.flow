@@ -6,9 +6,10 @@
  */
 
 import { Namespace } from "../Namespace";
+import type { Random } from "../random";
 import type { Universe } from "../interface";
 declare export class Quote mixins Namespace {
-  constructor(data: any): this;
+  constructor(data: any, random: Random): this;
   sentence(ctx?: Universe | Universe[], opts?: any): any;
   paragraph(ctx?: Universe | Universe[], opts?: any): string;
 }
