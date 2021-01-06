@@ -13,6 +13,7 @@ import { Item } from './namespaces/Item'
 import { Name } from './namespaces/Name'
 import { Place } from './namespaces/Place'
 import { Quote } from './namespaces/Quote'
+import { Random } from './random'
 import { Species } from './namespaces/Species'
 
 /*
@@ -30,17 +31,22 @@ export class Nerdata {
   public static resetCache() {
     cache = {}
   }
-  public name: Name = new Name([])
-  public item: Item = new Item([])
-  public place: Place = new Place([])
-  public species: Species = new Species([])
-  public quote: Quote = new Quote([])
+  public _random: Random = new Random(Math.random)
+  public name: Name = new Name([], new Random(Math.random))
+  public item: Item = new Item([], new Random(Math.random))
+  public place: Place = new Place([], new Random(Math.random))
+  public species: Species = new Species([], new Random(Math.random))
+  public quote: Quote = new Quote([], new Random(Math.random))
 
   public _allUniverses: () => Universe[]
   private _data: any
 
   constructor(opts?: INerdataOpts) {
     Object.defineProperties(this, {
+      _random: {
+        enumerable: false,
+        writable: true,
+      },
       _allUniverses: {
         enumerable: false,
         writable: true,
@@ -66,9 +72,11 @@ export class Nerdata {
     this._allUniverses = () => allUniverses
 
     if (!opts || isEmpty(opts)) {
-      this._setup(this._allUniverses())
+      this._setup(this._allUniverses(), Math.random)
       return
     }
+
+    const randomFn = has(opts, 'randomFn') && opts.randomFn ? opts.randomFn : Math.random;
 
     if (has(opts, 'include') && has(opts, 'exclude')) {
       throw new Error(
@@ -77,24 +85,31 @@ export class Nerdata {
     }
 
     if (has(opts, 'include')) {
-      this._setup(this._limitByInclusion(opts.include))
+      this._setup(this._limitByInclusion(opts.include), randomFn)
       return
     }
 
-    this._setup(this._limitByExclusion(opts.exclude))
+    if (has(opts, 'exclude')) {
+      this._setup(this._limitByExclusion(opts.exclude), randomFn)
+      return
+    }
+
+    this._setup(this._allUniverses(), randomFn)
+
   }
   public _universes: () => Universe[] = () => []
 
-  private _setup(universes: Universe[]) {
+  private _setup(universes: Universe[], randomFn: () => number) {
+    this._random = new Random(randomFn)
     this._universes = () => universes
     const data = this._getData(universes)
     this._data = () => data
 
-    this.name = new Name(this._data())
-    this.place = new Place(this._data())
-    this.item = new Item(this._data())
-    this.species = new Species(this._data())
-    this.quote = new Quote(this._data())
+    this.name = new Name(this._data(), this._random)
+    this.place = new Place(this._data(), this._random)
+    this.item = new Item(this._data(), this._random)
+    this.species = new Species(this._data(), this._random)
+    this.quote = new Quote(this._data(), this._random)
   }
 
   private _getData(universes: Universe[]): any {

@@ -2,8 +2,8 @@
  * Module dependencies
  */
 
-import { sample } from 'lodash'
 import { Namespace } from '../Namespace'
+import type { Random } from '../random'
 import type { Universe } from '../interface'
 
 /*
@@ -11,8 +11,8 @@ import type { Universe } from '../interface'
  */
 
 export class Item extends Namespace {
-  constructor(data: any) {
-    super(data, 'items')
+  constructor(data: any, random: Random) {
+    super(data, 'items', random)
 
     this.any = this.any.bind(this)
     this.weapon = this.weapon.bind(this)
@@ -21,24 +21,24 @@ export class Item extends Namespace {
   }
 
   public weapon(ctx?: Universe | Universe[]) {
-    return sample(
+    return this.random.element(
       this.getSubset(ctx).filter((item: any) => item.type === 'weapon'),
     ).name
   }
 
   public tool(ctx?: Universe | Universe[]) {
-    return sample(
+    return this.random.element(
       this.getSubset(ctx).filter((item: any) => item.type === 'tool'),
     ).name
   }
 
   public vehicle(ctx?: Universe | Universe[]) {
-    return sample(
+    return this.random.element(
       this.getSubset(ctx).filter((item: any) => item.type === 'vehicle'),
     ).name
   }
 
   public any(ctx?: Universe | Universe[]) {
-    return sample(this.getSubset(ctx)).name
+    return this.random.element(this.getSubset(ctx)).name
   }
 }

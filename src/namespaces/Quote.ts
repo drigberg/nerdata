@@ -2,9 +2,9 @@
  * Module dependencies
  */
 
-import { sample } from 'lodash'
 import { isNumber } from 'util'
 import { Namespace } from '../Namespace'
+import type { Random } from '../random'
 import type { Universe } from '../interface'
 
 /*
@@ -13,8 +13,8 @@ import type { Universe } from '../interface'
 
 export class Quote extends Namespace {
   private _defaultParagraphLength = 3
-  constructor(data: any) {
-    super(data, 'quotes')
+  constructor(data: any, random: Random) {
+    super(data, 'quotes', random)
 
     Object.defineProperty(this, '_defaultParagraphLength', {
       enumerable: false,
@@ -26,7 +26,7 @@ export class Quote extends Namespace {
   }
 
   public sentence(ctx?: Universe | Universe[], opts: any = {}) {
-    const quote = sample(this.getSubset(ctx))
+    const quote = this.random.element(this.getSubset(ctx))
 
     if (opts.citation === true) {
       return `"${quote.text}" - ${quote.speaker}`

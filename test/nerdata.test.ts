@@ -33,6 +33,20 @@ describe('Nerdata', () => {
       })
     })
 
+    describe('randomFn', () => {
+      it('success', () => {
+        const nerdata = new Nerdata({ randomFn: Math.random })
+
+        expect(nerdata._universes()).have.same.members([
+          'dune',
+          'lord-of-the-rings',
+          'rick-and-morty',
+          'star-wars',
+          'naruto'
+        ])
+      })
+    })
+
     describe('limit by inclusion', () => {
       describe('positive', () => {
         it('string', () => {

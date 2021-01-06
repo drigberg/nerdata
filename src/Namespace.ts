@@ -6,6 +6,7 @@ import { castArray, reduce } from 'lodash'
 import * as errors from './errors'
 import type { Universe } from './interface'
 import type { NamespaceType } from './namespaces/interface'
+import type { Random } from './random'
 
 /*
  * Module
@@ -14,9 +15,15 @@ import type { NamespaceType } from './namespaces/interface'
 export class Namespace {
   private data: any
   private universes: () => Universe[]
+  public random: Random
 
-  constructor(data: any, namespace: NamespaceType) {
+  // TODO: use strongly-typed data
+  constructor(data: any, namespace: NamespaceType, random: Random) {
     Object.defineProperties(this, {
+      random: {
+        enumerable: false,
+        writable: true,
+      },
       data: {
         enumerable: false,
         writable: true,
@@ -28,6 +35,7 @@ export class Namespace {
     })
 
     const parsed = this.parseData(data, namespace)
+    this.random = random;
     this.data = () => parsed.data
     this.universes = () => parsed.universes
   }
