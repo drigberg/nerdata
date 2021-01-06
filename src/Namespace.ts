@@ -2,7 +2,6 @@
  * Module dependencies
  */
 
-import { castArray, reduce } from 'lodash'
 import * as errors from './errors'
 import type { Universe } from './interface'
 import type { NamespaceType } from './namespaces/interface'
@@ -35,7 +34,7 @@ export class Namespace {
     })
 
     const parsed = this.parseData(data, namespace)
-    this.random = random;
+    this.random = random
     this.data = () => parsed.data
     this.universes = () => parsed.universes
   }
@@ -45,7 +44,7 @@ export class Namespace {
       return this.data()
     }
 
-    const universes: Universe[] = castArray(ctx)
+    const universes: Universe[] = Array.isArray(ctx) ? ctx : [ctx]
 
     const unavailable = universes.filter(
       (item) => !this.universes().includes(item),
@@ -59,9 +58,8 @@ export class Namespace {
   }
 
   private parseData(data: any, namespace: NamespaceType) {
-    return reduce(
-      data,
-      (acc, universeData, ctx) => {
+    return Object.keys(data).reduce((acc, ctx) => {
+      const universeData = data[ctx]
         acc.data.push(
           ...universeData[namespace].map((ctxNameData: any) => ({
             ...ctxNameData,

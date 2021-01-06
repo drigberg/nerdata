@@ -3,7 +3,6 @@
  */
 
 import { readdirSync, readFileSync } from 'fs'
-import { castArray, has, isEmpty, reduce } from 'lodash'
 import * as path from 'path'
 import { isValidUniverseArray } from './validators'
 import * as errors from './errors'
@@ -71,25 +70,25 @@ export class Nerdata {
 
     this._allUniverses = () => allUniverses
 
-    if (!opts || isEmpty(opts)) {
+    if (!opts || Object.keys(opts).length === 0) {
       this._setup(this._allUniverses(), Math.random)
       return
     }
 
-    const randomFn = has(opts, 'randomFn') && opts.randomFn ? opts.randomFn : Math.random;
+    const randomFn = opts.randomFn ? opts.randomFn : Math.random
 
-    if (has(opts, 'include') && has(opts, 'exclude')) {
+    if (opts.include && opts.exclude) {
       throw new Error(
         'Opts cannot have both "exclude" and "include" properties.',
       )
     }
 
-    if (has(opts, 'include')) {
+    if (opts.include) {
       this._setup(this._limitByInclusion(opts.include), randomFn)
       return
     }
 
-    if (has(opts, 'exclude')) {
+    if (opts.exclude) {
       this._setup(this._limitByExclusion(opts.exclude), randomFn)
       return
     }
@@ -113,8 +112,7 @@ export class Nerdata {
   }
 
   private _getData(universes: Universe[]): any {
-    return reduce(
-      universes,
+    return universes.reduce(
       (acc, universe) => {
         acc[universe] = this._loadData(universe)
         return acc
@@ -137,8 +135,8 @@ export class Nerdata {
     return data
   }
 
-  private _limitByExclusion(excluded?: string | string[]): Universe[] {
-    const toExclude = castArray(excluded)
+  private _limitByExclusion(excluded: string | string[]): Universe[] {
+    const toExclude = Array.isArray(excluded) ? excluded : [excluded]
 
     if (!isValidUniverseArray(toExclude)) {
       const unavailable = toExclude.filter(
@@ -159,8 +157,8 @@ export class Nerdata {
     return universes
   }
 
-  private _limitByInclusion(included?: string | string[]): Universe[] {
-    const toInclude = castArray(included)
+  private _limitByInclusion(included: string | string[]): Universe[] {
+    const toInclude = Array.isArray(included) ? included : [included]
 
     if (!isValidUniverseArray(toInclude)) {
       const unavailable = toInclude.filter(

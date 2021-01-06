@@ -25,9 +25,6 @@
     "url": "https://github.com/drigberg/nerdata/issues"
   },
   "homepage": "https://github.com/drigberg/nerdata#readme",
-  "dependencies": {
-    "lodash": "^4.17.20"
-  },
   "devDependencies": {
     "@types/chai": "4.1.7",
     "@types/joi": "14.0.0",
