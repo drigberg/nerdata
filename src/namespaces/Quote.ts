@@ -14,6 +14,13 @@ import type { Universe, DataByUniverse } from '../interface'
 
 type QuotesByUniverse = Record<Universe, Quote[]>
 
+interface SentenceOpts {
+  citation?: boolean
+}
+
+interface ParagraphOpts {
+  sentences?: number
+}
 
 export class Quotes extends Namespace {
   public data: QuotesByUniverse
@@ -51,7 +58,7 @@ export class Quotes extends Namespace {
     return parsed
   }
 
-  public sentence(ctx?: Universe | Universe[], opts: any = {}): string {
+  public sentence(ctx?: Universe | Universe[], opts: SentenceOpts = {}): string {
     const subset = this.getUniverseSubset(ctx || null)
     const validQuotes = subset.reduce((acc, universe) => {
       acc.push(...this.data[universe])
@@ -67,7 +74,7 @@ export class Quotes extends Namespace {
     return quote.text
   }
 
-  public paragraph(ctx?: Universe | Universe[], opts: any = {}): string {
+  public paragraph(ctx?: Universe | Universe[], opts: ParagraphOpts = {}): string {
     const ret = []
     const sentences = isNumber(opts.sentences) && opts.sentences > 0
       ? opts.sentences

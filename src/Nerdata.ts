@@ -4,7 +4,7 @@
 
 import { readFileSync } from 'fs'
 import * as path from 'path'
-import { isValidUniverseArray } from './validators'
+import { isValidUniverse } from './validators'
 import * as errors from './errors'
 import type { Universe, INerdataOpts } from './interface'
 import { Items } from './namespaces/Item'
@@ -135,16 +135,13 @@ export class Nerdata {
   private _limitByExclusion(excluded: string | string[]): Universe[] {
     const toExclude = Array.isArray(excluded) ? excluded : [excluded]
 
-    if (!isValidUniverseArray(toExclude)) {
-      const unavailable = toExclude.filter(
-        (key: any) => !UNIVERSES.includes(key),
-      )
-
-      throw errors.unsupported(unavailable, UNIVERSES)
+    const invalid = toExclude.filter((key: string) => isValidUniverse(key))
+    if (invalid.length) {
+      throw errors.unsupported(invalid, UNIVERSES)
     }
 
     const universes = UNIVERSES.filter(
-      (item: any) => !toExclude.includes(item),
+      (item: string) => !toExclude.includes(item),
     )
 
     if (!universes.length) {
@@ -157,18 +154,15 @@ export class Nerdata {
   private _limitByInclusion(included: string | string[]): Universe[] {
     const toInclude = Array.isArray(included) ? included : [included]
 
-    if (!isValidUniverseArray(toInclude)) {
-      const unavailable = toInclude.filter(
-        (key: any) => !UNIVERSES.includes(key),
-      )
-
-      throw errors.unsupported(unavailable, UNIVERSES)
+    const invalid = toInclude.filter((key: string) => isValidUniverse(key))
+    if (invalid.length) {
+      throw errors.unsupported(invalid, UNIVERSES)
     }
 
     if (!toInclude.length) {
       throw errors.noneIncluded(UNIVERSES)
     }
 
-    return toInclude
+    return toInclude as Universe[]
   }
 }

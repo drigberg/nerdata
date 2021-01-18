@@ -10,10 +10,16 @@ import { Quote } from "../interface";
 import type { Random } from "../random";
 import type { Universe, DataByUniverse } from "../interface";
 declare type QuotesByUniverse = { [key: Universe]: Quote[], ... };
+declare interface SentenceOpts {
+  citation?: boolean;
+}
+declare interface ParagraphOpts {
+  sentences?: number;
+}
 declare export class Quotes mixins Namespace {
   data: QuotesByUniverse;
   constructor(data: DataByUniverse, random: Random): this;
-  sentence(ctx?: Universe | Universe[], opts?: any): string;
-  paragraph(ctx?: Universe | Universe[], opts?: any): string;
+  sentence(ctx?: Universe | Universe[], opts?: SentenceOpts): string;
+  paragraph(ctx?: Universe | Universe[], opts?: ParagraphOpts): string;
 }
 declare export {};

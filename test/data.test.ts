@@ -3,7 +3,7 @@ import { readdirSync, readFileSync } from 'fs'
 import * as Joi from 'joi'
 import { describe, it } from 'mocha'
 import * as path from 'path'
-import { isValidUniverseArray } from '../src/validators'
+import { isValidUniverse } from '../src/validators'
 
 describe('data validation', () => {
   const dataDir = path.join(__dirname, '..', 'src', 'data')
@@ -46,7 +46,7 @@ describe('data validation', () => {
     .map((filename) => path.basename(filename, '.json'))
 
   it('Universes are registered and spelled correctly', () => {
-    expect(isValidUniverseArray(universes)).to.equal(true)
+    expect(universes.every(universe => isValidUniverse(universe))).to.equal(true)
   })
 
   universes.forEach((universe) => {
