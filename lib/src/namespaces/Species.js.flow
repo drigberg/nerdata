@@ -10,7 +10,7 @@ import type { Random } from "../random";
 import type { Universe } from "../interface";
 declare export class Species mixins Namespace {
   constructor(data: any, random: Random): this;
-  sentient(ctx?: Universe | Universe[]): any;
-  nonsentient(ctx?: Universe | Universe[]): any;
-  any(ctx?: Universe | Universe[]): any;
+  sentient(ctx?: Universe | Universe[]): string;
+  nonsentient(ctx?: Universe | Universe[]): string;
+  any(ctx?: Universe | Universe[]): string;
 }

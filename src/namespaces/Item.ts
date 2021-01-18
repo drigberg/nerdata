@@ -20,25 +20,25 @@ export class Item extends Namespace {
     this.vehicle = this.vehicle.bind(this)
   }
 
-  public weapon(ctx?: Universe | Universe[]) {
+  public weapon(ctx?: Universe | Universe[]): string {
     return this.random.element(
       this.getSubset(ctx).filter((item: any) => item.type === 'weapon'),
     ).name
   }
 
-  public tool(ctx?: Universe | Universe[]) {
+  public tool(ctx?: Universe | Universe[]): string {
     return this.random.element(
       this.getSubset(ctx).filter((item: any) => item.type === 'tool'),
     ).name
   }
 
-  public vehicle(ctx?: Universe | Universe[]) {
+  public vehicle(ctx?: Universe | Universe[]): string {
     return this.random.element(
       this.getSubset(ctx).filter((item: any) => item.type === 'vehicle'),
     ).name
   }
 
-  public any(ctx?: Universe | Universe[]) {
+  public any(ctx?: Universe | Universe[]): string {
     return this.random.element(this.getSubset(ctx)).name
   }
 }

@@ -3,7 +3,7 @@ import type { Random } from '../random';
 import type { Universe } from '../interface';
 export declare class Place extends Namespace {
     constructor(data: any, random: Random);
-    city(ctx?: Universe | Universe[]): any;
-    realm(ctx?: Universe | Universe[]): any;
-    any(ctx?: Universe | Universe[]): any;
+    city(ctx?: Universe | Universe[]): string;
+    realm(ctx?: Universe | Universe[]): string;
+    any(ctx?: Universe | Universe[]): string;
 }

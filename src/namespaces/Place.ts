@@ -19,19 +19,19 @@ export class Place extends Namespace {
     this.any = this.any.bind(this)
   }
 
-  public city(ctx?: Universe | Universe[]) {
+  public city(ctx?: Universe | Universe[]): string {
     return this.random.element(
       this.getSubset(ctx).filter((item: any) => item.type === 'city'),
     ).name
   }
 
-  public realm(ctx?: Universe | Universe[]) {
+  public realm(ctx?: Universe | Universe[]): string {
     return this.random.element(
       this.getSubset(ctx).filter((item: any) => item.type === 'realm'),
     ).name
   }
 
-  public any(ctx?: Universe | Universe[]) {
+  public any(ctx?: Universe | Universe[]): string {
     return this.random.element(this.getSubset(ctx)).name
   }
 }

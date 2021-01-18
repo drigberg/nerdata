@@ -19,19 +19,19 @@ export class Species extends Namespace {
 
   }
 
-  public sentient(ctx?: Universe | Universe[]) {
+  public sentient(ctx?: Universe | Universe[]): string {
     return this.random.element(
       this.getSubset(ctx).filter((item: any) => item.type === 'sentient'),
     ).name
   }
 
-  public nonsentient(ctx?: Universe | Universe[]) {
+  public nonsentient(ctx?: Universe | Universe[]): string {
     return this.random.element(
       this.getSubset(ctx).filter((item: any) => item.type === 'nonsentient'),
     ).name
   }
 
-  public any(ctx?: Universe | Universe[]) {
+  public any(ctx?: Universe | Universe[]): string {
     return this.random.element(this.getSubset(ctx)).name
   }
 }

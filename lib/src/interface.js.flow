@@ -11,6 +11,7 @@ export type Universe =
   | "rick-and-morty"
   | "star-wars"
   | "naruto";
+declare export var UNIVERSES: Universe[];
 export interface INerdataOpts {
   +randomFn?: () => number;
   +include?: Universe | Universe[];

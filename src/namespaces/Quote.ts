@@ -25,7 +25,7 @@ export class Quote extends Namespace {
     this.paragraph = this.paragraph.bind(this)
   }
 
-  public sentence(ctx?: Universe | Universe[], opts: any = {}) {
+  public sentence(ctx?: Universe | Universe[], opts: any = {}): string {
     const quote = this.random.element(this.getSubset(ctx))
 
     if (opts.citation === true) {
@@ -35,7 +35,7 @@ export class Quote extends Namespace {
     return quote.text
   }
 
-  public paragraph(ctx?: Universe | Universe[], opts: any = {}) {
+  public paragraph(ctx?: Universe | Universe[], opts: any = {}): string {
     const ret = []
     const sentences = isNumber(opts.sentences) && opts.sentences > 0
       ? opts.sentences

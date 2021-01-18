@@ -10,7 +10,7 @@ import type { Random } from "../random";
 import type { Universe } from "../interface";
 declare export class Name mixins Namespace {
   constructor(data: any, random: Random): this;
-  first(ctx?: Universe | Universe[]): any;
-  last(ctx?: Universe | Universe[]): any;
+  first(ctx?: Universe | Universe[]): string;
+  last(ctx?: Universe | Universe[]): string;
   full(ctx?: Universe | Universe[]): string;
 }

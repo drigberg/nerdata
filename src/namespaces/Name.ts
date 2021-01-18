@@ -19,15 +19,15 @@ export class Name extends Namespace {
     this.full = this.full.bind(this)
   }
 
-  public first(ctx?: Universe | Universe[]) {
+  public first(ctx?: Universe | Universe[]): string {
     return this.random.element(this.getSubset(ctx)).first
   }
 
-  public last(ctx?: Universe | Universe[]) {
+  public last(ctx?: Universe | Universe[]): string {
     return this.random.element(this.getSubset(ctx).filter((item: any) => item.last)).last
   }
 
-  public full(ctx?: Universe | Universe[]) {
+  public full(ctx?: Universe | Universe[]): string {
     const { first, last } = this.random.element(this.getSubset(ctx))
     return [first, last].filter((item) => item).join(' ')
   }

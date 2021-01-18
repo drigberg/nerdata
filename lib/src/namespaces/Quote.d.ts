@@ -4,6 +4,6 @@ import type { Universe } from '../interface';
 export declare class Quote extends Namespace {
     private _defaultParagraphLength;
     constructor(data: any, random: Random);
-    sentence(ctx?: Universe | Universe[], opts?: any): any;
+    sentence(ctx?: Universe | Universe[], opts?: any): string;
     paragraph(ctx?: Universe | Universe[], opts?: any): string;
 }
