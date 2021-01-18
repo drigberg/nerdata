@@ -5,13 +5,18 @@
  * Flowgen v1.12.1
  */
 
-import { Namespace } from "../Namespace";
+import { Namespace } from "./Namespace";
+import { Item } from "../interface";
 import type { Random } from "../random";
-import type { Universe } from "../interface";
-declare export class Item mixins Namespace {
-  constructor(data: any, random: Random): this;
-  weapon(ctx?: Universe | Universe[]): any;
-  tool(ctx?: Universe | Universe[]): any;
-  vehicle(ctx?: Universe | Universe[]): any;
-  any(ctx?: Universe | Universe[]): any;
+import type { Universe, DataOrNullByUniverse } from "../interface";
+declare type ItemsByUniverse = { [key: Universe]: Item[], ... };
+declare export class Items mixins Namespace {
+  data: ItemsByUniverse;
+  constructor(data: DataOrNullByUniverse, random: Random): this;
+  getByType(ctx: null | Universe | Universe[], type: string | null): Item;
+  weapon(ctx?: Universe | Universe[]): string;
+  tool(ctx?: Universe | Universe[]): string;
+  vehicle(ctx?: Universe | Universe[]): string;
+  any(ctx?: Universe | Universe[]): string;
 }
+declare export {};

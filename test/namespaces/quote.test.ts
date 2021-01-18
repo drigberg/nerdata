@@ -1,7 +1,6 @@
+import { dataByUniverse } from '../../src/data';
 import { expect } from 'chai'
-import { readFileSync } from 'fs'
 import { before, describe, it } from 'mocha'
-import * as path from 'path'
 import { Nerdata } from '../../src/Nerdata'
 
 describe('Quote', () => {
@@ -11,17 +10,8 @@ describe('Quote', () => {
   before(() => {
     nerdata = new Nerdata({ include: ['star-wars', 'rick-and-morty'] })
 
-    const rickAndMortyQuotes = JSON.parse(
-      readFileSync(
-        path.join(__dirname, '..', '..', 'src', 'data', 'rick-and-morty.json'),
-      ).toString(),
-    ).quotes
-
-    const starWarsQuotes = JSON.parse(
-      readFileSync(
-        path.join(__dirname, '..', '..', 'src', 'data', 'star-wars.json'),
-      ).toString(),
-    ).quotes
+    const rickAndMortyQuotes = dataByUniverse['rick-and-morty'].quotes
+    const starWarsQuotes = dataByUniverse['star-wars'].quotes
 
     data = {
       rickAndMorty: {
@@ -105,7 +95,7 @@ describe('Quote', () => {
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        'The following universes were not loaded when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars',
+        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars',
       )
     })
   })
@@ -164,7 +154,7 @@ describe('Quote', () => {
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        'The following universes were not loaded when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars',
+        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars',
       )
     })
   })

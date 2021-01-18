@@ -1,26 +1,22 @@
-import type { Universe } from './interface';
-import type { INerdataOpts } from './interface';
-import { Item } from './namespaces/Item';
-import { Name } from './namespaces/Name';
-import { Place } from './namespaces/Place';
-import { Quote } from './namespaces/Quote';
+import type { Universe, INerdataOpts } from './interface';
+import { Items } from './namespaces/Item';
+import { Names } from './namespaces/Name';
+import { Places } from './namespaces/Place';
+import { Quotes } from './namespaces/Quote';
 import { Random } from './random';
 import { Species } from './namespaces/Species';
 export declare class Nerdata {
-    static resetCache(): void;
     _random: Random;
-    name: Name;
-    item: Item;
-    place: Place;
-    species: Species;
-    quote: Quote;
-    _allUniverses: () => Universe[];
     private _data;
+    _universes: Universe[];
+    name: Names;
+    item: Items;
+    place: Places;
+    species: Species;
+    quote: Quotes;
     constructor(opts?: INerdataOpts);
-    _universes: () => Universe[];
     private _setup;
     private _getData;
-    private _loadData;
     private _limitByExclusion;
     private _limitByInclusion;
 }

@@ -1,7 +1,6 @@
+import { dataByUniverse } from '../../src/data';
 import { expect } from 'chai'
-import { readFileSync } from 'fs'
 import { before, describe, it } from 'mocha'
-import * as path from 'path'
 import { Nerdata } from '../../src/Nerdata'
 
 describe('Species', () => {
@@ -11,17 +10,8 @@ describe('Species', () => {
   before(() => {
     nerdata = new Nerdata({ include: ['star-wars', 'rick-and-morty'] })
 
-    const rickAndMortySpecies = JSON.parse(
-      readFileSync(
-        path.join(__dirname, '..', '..', 'src', 'data', 'rick-and-morty.json'),
-      ).toString(),
-    ).species
-
-    const starWarsSpecies = JSON.parse(
-      readFileSync(
-        path.join(__dirname, '..', '..', 'src', 'data', 'star-wars.json'),
-      ).toString(),
-    ).species
+    const rickAndMortySpecies = dataByUniverse['rick-and-morty'].species
+    const starWarsSpecies = dataByUniverse['star-wars'].species
 
     data = {
       rickAndMorty: {
@@ -98,7 +88,7 @@ describe('Species', () => {
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        'The following universes were not loaded when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars',
+        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars',
       )
     })
   })
@@ -149,7 +139,7 @@ describe('Species', () => {
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        'The following universes were not loaded when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars',
+        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars',
       )
     })
   })
@@ -200,7 +190,7 @@ describe('Species', () => {
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        'The following universes were not loaded when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars',
+        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars',
       )
     })
   })

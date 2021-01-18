@@ -6,5 +6,4 @@
  */
 
 import type { Universe } from "./interface";
-declare export var isValidUniverse: (input: any) => boolean;
-declare export var isValidUniverseArray: (input: any) => boolean;
+declare export var isValidUniverse: (input: string) => boolean;

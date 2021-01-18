@@ -3,18 +3,32 @@
  */
 
 import { isNumber } from 'util'
-import { Namespace } from '../Namespace'
+import { Namespace } from './Namespace'
+import { Quote } from '../interface'
 import type { Random } from '../random'
-import type { Universe } from '../interface'
+import type { Universe, DataOrNullByUniverse } from '../interface'
 
 /*
  * Module
  */
 
-export class Quote extends Namespace {
+type QuotesByUniverse = Record<Universe, Quote[]>
+
+interface SentenceOpts {
+  citation?: boolean
+}
+
+interface ParagraphOpts {
+  sentences?: number
+}
+
+export class Quotes extends Namespace {
+  public data: QuotesByUniverse
+
   private _defaultParagraphLength = 3
-  constructor(data: any, random: Random) {
-    super(data, 'quotes', random)
+  constructor(data: DataOrNullByUniverse, random: Random) {
+    super(random)
+    this.data = this.parseData(data)
 
     Object.defineProperty(this, '_defaultParagraphLength', {
       enumerable: false,
@@ -25,8 +39,33 @@ export class Quote extends Namespace {
     this.paragraph = this.paragraph.bind(this)
   }
 
-  public sentence(ctx?: Universe | Universe[], opts: any = {}) {
-    const quote = this.random.element(this.getSubset(ctx))
+  private parseData(data: DataOrNullByUniverse): QuotesByUniverse {
+    const that = this
+    this.universes = [] as Universe[]
+
+    const parsed: QuotesByUniverse = Object.keys(data).reduce((acc, key) => {
+      const universe = key as Universe
+      const universeData = data[universe]
+      if (universeData === null) {
+        acc[universe] = [] as Quote[]
+        return acc
+      }
+
+      acc[universe] = universeData.quotes
+      that.universes.push(universe)
+      return acc
+    }, {} as QuotesByUniverse)
+    return parsed
+  }
+
+  public sentence(ctx?: Universe | Universe[], opts: SentenceOpts = {}): string {
+    const subset = this.getUniverseSubset(ctx || null)
+    const validQuotes = subset.reduce((acc, universe) => {
+      acc.push(...this.data[universe])
+      return acc
+    }, [] as Quote[])
+
+    const quote = this.random.element(validQuotes)
 
     if (opts.citation === true) {
       return `"${quote.text}" - ${quote.speaker}`
@@ -35,7 +74,7 @@ export class Quote extends Namespace {
     return quote.text
   }
 
-  public paragraph(ctx?: Universe | Universe[], opts: any = {}) {
+  public paragraph(ctx?: Universe | Universe[], opts: ParagraphOpts = {}): string {
     const ret = []
     const sentences = isNumber(opts.sentences) && opts.sentences > 0
       ? opts.sentences

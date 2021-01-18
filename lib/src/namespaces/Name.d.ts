@@ -1,9 +1,15 @@
-import { Namespace } from '../Namespace';
+import { Namespace } from './Namespace';
+import { Name } from '../interface';
 import type { Random } from '../random';
-import type { Universe } from '../interface';
-export declare class Name extends Namespace {
-    constructor(data: any, random: Random);
-    first(ctx?: Universe | Universe[]): any;
-    last(ctx?: Universe | Universe[]): any;
+import type { Universe, DataOrNullByUniverse } from '../interface';
+declare type NamesByUniverse = Record<Universe, Name[]>;
+export declare class Names extends Namespace {
+    data: NamesByUniverse;
+    constructor(data: DataOrNullByUniverse, random: Random);
+    private parseData;
+    getNamesSubset(ctx: null | Universe | Universe[]): Name[];
+    first(ctx?: Universe | Universe[]): string;
+    last(ctx?: Universe | Universe[]): string;
     full(ctx?: Universe | Universe[]): string;
 }
+export {};

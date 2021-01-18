@@ -11,8 +11,48 @@ export type Universe =
   | "rick-and-morty"
   | "star-wars"
   | "naruto";
+declare export var UNIVERSES: Universe[];
 export interface INerdataOpts {
   +randomFn?: () => number;
   +include?: Universe | Universe[];
   +exclude?: Universe | Universe[];
 }
+export type ItemType = "tool" | "vehicle" | "weapon";
+export type PlaceType = "city" | "realm";
+export type SpeciesType = "nonsentient" | "sentient";
+export interface Item {
+  +name: string;
+  +type: ItemType;
+}
+export interface Name {
+  +first: string;
+  +last?: string;
+}
+export interface NameWithLast {
+  +first: string;
+  +last: string;
+}
+export interface Place {
+  +name: string;
+  +type: PlaceType;
+}
+export interface Quote {
+  +text: string;
+  +speaker: string;
+}
+export interface Species {
+  +name: string;
+  +type: SpeciesType;
+}
+export interface UniverseData {
+  +places: Place[];
+  +items: Item[];
+  +names: Name[];
+  +species: Species[];
+  +quotes: Quote[];
+}
+export type DataByUniverse = { [key: Universe]: UniverseData, ... };
+export type DataOrNullByUniverse = {
+  [key: Universe]: UniverseData | null,
+  ...
+};

@@ -5,12 +5,17 @@
  * Flowgen v1.12.1
  */
 
-import { Namespace } from "../Namespace";
+import { Namespace } from "./Namespace";
+import { Place } from "../interface";
 import type { Random } from "../random";
-import type { Universe } from "../interface";
-declare export class Place mixins Namespace {
-  constructor(data: any, random: Random): this;
-  city(ctx?: Universe | Universe[]): any;
-  realm(ctx?: Universe | Universe[]): any;
-  any(ctx?: Universe | Universe[]): any;
+import type { Universe, DataOrNullByUniverse } from "../interface";
+declare type PlacesByUniverse = { [key: Universe]: Place[], ... };
+declare export class Places mixins Namespace {
+  data: PlacesByUniverse;
+  constructor(data: DataOrNullByUniverse, random: Random): this;
+  getByType(ctx: null | Universe | Universe[], type: string | null): Place;
+  city(ctx?: Universe | Universe[]): string;
+  realm(ctx?: Universe | Universe[]): string;
+  any(ctx?: Universe | Universe[]): string;
 }
+declare export {};

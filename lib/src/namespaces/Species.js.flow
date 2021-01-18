@@ -5,12 +5,17 @@
  * Flowgen v1.12.1
  */
 
-import { Namespace } from "../Namespace";
+import { Namespace } from "./Namespace";
+import { Species as ISpecies } from "../interface";
 import type { Random } from "../random";
-import type { Universe } from "../interface";
+import type { Universe, DataOrNullByUniverse } from "../interface";
+declare type SpeciesByUniverse = { [key: Universe]: ISpecies[], ... };
 declare export class Species mixins Namespace {
-  constructor(data: any, random: Random): this;
-  sentient(ctx?: Universe | Universe[]): any;
-  nonsentient(ctx?: Universe | Universe[]): any;
-  any(ctx?: Universe | Universe[]): any;
+  data: SpeciesByUniverse;
+  constructor(data: DataOrNullByUniverse, random: Random): this;
+  getByType(ctx: null | Universe | Universe[], type: string | null): ISpecies;
+  sentient(ctx?: Universe | Universe[]): string;
+  nonsentient(ctx?: Universe | Universe[]): string;
+  any(ctx?: Universe | Universe[]): string;
 }
+declare export {};

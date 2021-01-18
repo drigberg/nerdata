@@ -1,9 +1,20 @@
-import { Namespace } from '../Namespace';
+import { Namespace } from './Namespace';
+import { Quote } from '../interface';
 import type { Random } from '../random';
-import type { Universe } from '../interface';
-export declare class Quote extends Namespace {
-    private _defaultParagraphLength;
-    constructor(data: any, random: Random);
-    sentence(ctx?: Universe | Universe[], opts?: any): any;
-    paragraph(ctx?: Universe | Universe[], opts?: any): string;
+import type { Universe, DataOrNullByUniverse } from '../interface';
+declare type QuotesByUniverse = Record<Universe, Quote[]>;
+interface SentenceOpts {
+    citation?: boolean;
 }
+interface ParagraphOpts {
+    sentences?: number;
+}
+export declare class Quotes extends Namespace {
+    data: QuotesByUniverse;
+    private _defaultParagraphLength;
+    constructor(data: DataOrNullByUniverse, random: Random);
+    private parseData;
+    sentence(ctx?: Universe | Universe[], opts?: SentenceOpts): string;
+    paragraph(ctx?: Universe | Universe[], opts?: ParagraphOpts): string;
+}
+export {};

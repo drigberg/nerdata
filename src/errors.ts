@@ -8,7 +8,7 @@ function formatAvailable(available: string[]) {
 
 export function unloaded(unavailable: string[], available: string[]) {
   return new Error(
-    `The following universes were not loaded when Nerdata was initialized: ${unavailable
+    `The following universes were not selected when Nerdata was initialized: ${unavailable
       .sort()
       .join(
         ', ',
