@@ -5,5 +5,5 @@
  * Flowgen v1.12.1
  */
 
-import { DataByUniverse } from "../interface";
+import type { DataByUniverse } from "../interface";
 declare export var dataByUniverse: DataByUniverse;

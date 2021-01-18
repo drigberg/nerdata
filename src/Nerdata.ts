@@ -5,14 +5,14 @@
 import { isValidUniverse } from './validators'
 import * as errors from './errors'
 import { dataByUniverse } from './data'
-import type { Universe, INerdataOpts } from './interface'
+import type { Universe, INerdataOpts, DataOrNullByUniverse } from './interface'
 import { Items } from './namespaces/Item'
 import { Names } from './namespaces/Name'
 import { Places } from './namespaces/Place'
 import { Quotes } from './namespaces/Quote'
 import { Random } from './random'
 import { Species } from './namespaces/Species'
-import { UNIVERSES, DataOrNullByUniverse } from './interface'
+import { UNIVERSES } from './interface'
 
 function getEmptyDataByUniverse(): DataOrNullByUniverse {
   return UNIVERSES.reduce((acc, universe) => {

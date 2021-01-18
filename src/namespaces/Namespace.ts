@@ -2,9 +2,9 @@
  * Module dependencies
  */
 
-import * as errors from './errors'
-import type { Universe } from './interface'
-import type { Random } from './random'
+import * as errors from '../errors'
+import type { Universe } from '../interface'
+import type { Random } from '../random'
 
 /*
  * Module

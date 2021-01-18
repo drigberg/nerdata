@@ -2,7 +2,7 @@
  * Module dependencies
  */
 
-import { DataByUniverse } from '../interface'
+import type { DataByUniverse } from '../interface'
 import * as dune from './dune'
 import * as lordOfTheRings from './lord-of-the-rings'
 import * as naruto from './naruto'

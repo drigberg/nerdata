@@ -2,7 +2,7 @@
  * Module dependencies
  */
 
-import { Namespace } from '../Namespace'
+import { Namespace } from './Namespace'
 import { Item } from '../interface'
 import type { Random } from '../random'
 import type { Universe, DataOrNullByUniverse } from '../interface'

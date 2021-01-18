@@ -1,4 +1,4 @@
-import { Namespace } from '../Namespace';
+import { Namespace } from './Namespace';
 import { Quote } from '../interface';
 import type { Random } from '../random';
 import type { Universe, DataOrNullByUniverse } from '../interface';
