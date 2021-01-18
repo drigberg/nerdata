@@ -1,4 +1,5 @@
 export type Universe = 'dune' | 'lord-of-the-rings' | 'rick-and-morty' | 'star-wars' | 'naruto'
+export const UNIVERSES: Universe[] = ['dune', 'lord-of-the-rings', 'rick-and-morty', 'star-wars', 'naruto']
 
 export interface INerdataOpts {
   readonly randomFn?: () => number

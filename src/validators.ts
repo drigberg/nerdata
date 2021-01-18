@@ -1,9 +1,10 @@
+import { UNIVERSES } from './interface'
 import type { Universe } from './interface'
 
 export const isValidUniverse = (
   input: any,
 ): input is Universe => {
-  return ['dune', 'lord-of-the-rings', 'rick-and-morty', 'star-wars', 'naruto'].includes(input)
+  return UNIVERSES.includes(input)
 }
 
 export const isValidUniverseArray = (
