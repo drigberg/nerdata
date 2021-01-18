@@ -1,7 +1,6 @@
+import { dataByUniverse } from '../../src/data';
 import { expect } from 'chai'
-import { readFileSync } from 'fs'
 import { before, describe, it } from 'mocha'
-import * as path from 'path'
 import { Nerdata } from '../../src/Nerdata'
 
 describe('Place', () => {
@@ -11,17 +10,8 @@ describe('Place', () => {
   before(() => {
     nerdata = new Nerdata({ include: ['star-wars', 'rick-and-morty'] })
 
-    const rickAndMortyPlaces = JSON.parse(
-      readFileSync(
-        path.join(__dirname, '..', '..', 'src', 'data', 'rick-and-morty.json'),
-      ).toString(),
-    ).places
-
-    const starWarsPlaces = JSON.parse(
-      readFileSync(
-        path.join(__dirname, '..', '..', 'src', 'data', 'star-wars.json'),
-      ).toString(),
-    ).places
+    const rickAndMortyPlaces = dataByUniverse['rick-and-morty'].places
+    const starWarsPlaces = dataByUniverse['star-wars'].places
 
     data = {
       rickAndMorty: {

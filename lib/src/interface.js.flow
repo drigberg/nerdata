@@ -38,7 +38,7 @@ export interface Place {
 }
 export interface Quote {
   +text: string;
-  +speaker: ItemType;
+  +speaker: string;
 }
 export interface Species {
   +name: string;
@@ -51,4 +51,8 @@ export interface UniverseData {
   +species: Species[];
   +quotes: Quote[];
 }
-export type DataByUniverse = { [key: Universe]: UniverseData | null, ... };
+export type DataByUniverse = { [key: Universe]: UniverseData, ... };
+export type DataOrNullByUniverse = {
+  [key: Universe]: UniverseData | null,
+  ...
+};

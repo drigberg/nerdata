@@ -2,10 +2,9 @@
  * Module dependencies
  */
 
-import { readFileSync } from 'fs'
-import * as path from 'path'
 import { isValidUniverse } from './validators'
 import * as errors from './errors'
+import { dataByUniverse } from './data'
 import type { Universe, INerdataOpts } from './interface'
 import { Items } from './namespaces/Item'
 import { Names } from './namespaces/Name'
@@ -13,36 +12,22 @@ import { Places } from './namespaces/Place'
 import { Quotes } from './namespaces/Quote'
 import { Random } from './random'
 import { Species } from './namespaces/Species'
-import { UNIVERSES, UniverseData, DataByUniverse } from './interface'
+import { UNIVERSES, DataOrNullByUniverse } from './interface'
 
-/*
- * Module variables
- */
-
-const dataDir: string = path.join(__dirname, 'data')
-
-function createDataByUniverse(): DataByUniverse {
+function getEmptyDataByUniverse(): DataOrNullByUniverse {
   return UNIVERSES.reduce((acc, universe) => {
     acc[universe] = null
     return acc
-  }, {} as DataByUniverse)
+  }, {} as DataOrNullByUniverse)
 }
-
-const cache: DataByUniverse = createDataByUniverse()
-
 
 /*
  * Module
  */
 
 export class Nerdata {
-  public static resetCache() {
-    for (const universe of UNIVERSES) {
-      cache[universe] = null
-    }
-  }
   public _random: Random = new Random(Math.random)
-  private _data: DataByUniverse = createDataByUniverse()
+  private _data: DataOrNullByUniverse = dataByUniverse
   public _universes: Universe[] = []
 
   public name: Names = new Names(this._data, new Random(Math.random))
@@ -96,7 +81,7 @@ export class Nerdata {
   private _setup(universes: Universe[], randomFn: () => number) {
     this._random = new Random(randomFn)
     this._data = this._getData(universes)
-    this._universes = universes;
+    this._universes = universes
 
     this.name = new Names(this._data, this._random)
     this.place = new Places(this._data, this._random)
@@ -105,37 +90,20 @@ export class Nerdata {
     this.quote = new Quotes(this._data, this._random)
   }
 
-  private _getData(universes: Universe[]): DataByUniverse {
+  private _getData(universes: Universe[]): DataOrNullByUniverse {
     return universes.reduce(
       (acc, universe) => {
-        acc[universe] = this._loadData(universe)
+        acc[universe] = dataByUniverse[universe]
         return acc
       },
-      {} as DataByUniverse,
+      getEmptyDataByUniverse(),
     )
-  }
-
-  private _loadData(universe: Universe): UniverseData {
-    if (universe in cache) {
-      const cached = cache[universe]
-      if (cached !== null) {
-        return cached
-      }
-    }
-
-    const data: UniverseData = JSON.parse(
-      readFileSync(path.join(dataDir, `${universe}.json`)).toString(),
-    )
-
-    cache[universe] = data
-
-    return data
   }
 
   private _limitByExclusion(excluded: string | string[]): Universe[] {
     const toExclude = Array.isArray(excluded) ? excluded : [excluded]
 
-    const invalid = toExclude.filter((key: string) => isValidUniverse(key))
+    const invalid = toExclude.filter((key: string) => !isValidUniverse(key))
     if (invalid.length) {
       throw errors.unsupported(invalid, UNIVERSES)
     }
@@ -154,7 +122,7 @@ export class Nerdata {
   private _limitByInclusion(included: string | string[]): Universe[] {
     const toInclude = Array.isArray(included) ? included : [included]
 
-    const invalid = toInclude.filter((key: string) => isValidUniverse(key))
+    const invalid = toInclude.filter((key: string) => !isValidUniverse(key))
     if (invalid.length) {
       throw errors.unsupported(invalid, UNIVERSES)
     }

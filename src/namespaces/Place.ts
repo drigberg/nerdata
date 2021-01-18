@@ -5,7 +5,7 @@
 import { Namespace } from '../Namespace'
 import { Place } from '../interface'
 import type { Random } from '../random'
-import type { Universe, DataByUniverse } from '../interface'
+import type { Universe, DataOrNullByUniverse } from '../interface'
 
 /*
  * Module
@@ -16,7 +16,7 @@ type PlacesByUniverse = Record<Universe, Place[]>
 export class Places extends Namespace {
   public data: PlacesByUniverse
 
-  constructor(data: DataByUniverse, random: Random) {
+  constructor(data: DataOrNullByUniverse, random: Random) {
     super(random)
 
     this.data = this.parseData(data)
@@ -26,7 +26,7 @@ export class Places extends Namespace {
     this.any = this.any.bind(this)
   }
 
-  private parseData(data: DataByUniverse): PlacesByUniverse {
+  private parseData(data: DataOrNullByUniverse): PlacesByUniverse {
     const that = this
     this.universes = [] as Universe[]
 

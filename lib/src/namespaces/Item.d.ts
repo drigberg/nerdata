@@ -1,11 +1,11 @@
 import { Namespace } from '../Namespace';
 import { Item } from '../interface';
 import type { Random } from '../random';
-import type { Universe, DataByUniverse } from '../interface';
+import type { Universe, DataOrNullByUniverse } from '../interface';
 declare type ItemsByUniverse = Record<Universe, Item[]>;
 export declare class Items extends Namespace {
     data: ItemsByUniverse;
-    constructor(data: DataByUniverse, random: Random);
+    constructor(data: DataOrNullByUniverse, random: Random);
     private parseData;
     getByType(ctx: null | Universe | Universe[], type: string | null): Item;
     weapon(ctx?: Universe | Universe[]): string;

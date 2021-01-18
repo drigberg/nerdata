@@ -33,7 +33,7 @@ export interface Place {
 
 export interface Quote {
   readonly text: string
-  readonly speaker: ItemType
+  readonly speaker: string
 }
 
 export interface Species {
@@ -49,4 +49,5 @@ export interface UniverseData {
   readonly quotes: Quote[]
 }
 
-export type DataByUniverse = Record<Universe, UniverseData | null>
+export type DataByUniverse = Record<Universe, UniverseData>
+export type DataOrNullByUniverse = Record<Universe, UniverseData | null>

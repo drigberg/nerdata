@@ -8,11 +8,11 @@
 import { Namespace } from "../Namespace";
 import { Item } from "../interface";
 import type { Random } from "../random";
-import type { Universe, DataByUniverse } from "../interface";
+import type { Universe, DataOrNullByUniverse } from "../interface";
 declare type ItemsByUniverse = { [key: Universe]: Item[], ... };
 declare export class Items mixins Namespace {
   data: ItemsByUniverse;
-  constructor(data: DataByUniverse, random: Random): this;
+  constructor(data: DataOrNullByUniverse, random: Random): this;
   getByType(ctx: null | Universe | Universe[], type: string | null): Item;
   weapon(ctx?: Universe | Universe[]): string;
   tool(ctx?: Universe | Universe[]): string;

@@ -35,7 +35,7 @@ export class Namespace {
 
   public getUniverseSubset(ctx: null | Universe | Universe[]): Universe[] {
     if (ctx === null || !ctx.length) {
-      return this.universes;
+      return this.universes
     }
 
     const universes: Universe[] = Array.isArray(ctx) ? ctx : [ctx]

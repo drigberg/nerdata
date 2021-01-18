@@ -8,11 +8,11 @@
 import { Namespace } from "../Namespace";
 import { Place } from "../interface";
 import type { Random } from "../random";
-import type { Universe, DataByUniverse } from "../interface";
+import type { Universe, DataOrNullByUniverse } from "../interface";
 declare type PlacesByUniverse = { [key: Universe]: Place[], ... };
 declare export class Places mixins Namespace {
   data: PlacesByUniverse;
-  constructor(data: DataByUniverse, random: Random): this;
+  constructor(data: DataOrNullByUniverse, random: Random): this;
   getByType(ctx: null | Universe | Universe[], type: string | null): Place;
   city(ctx?: Universe | Universe[]): string;
   realm(ctx?: Universe | Universe[]): string;

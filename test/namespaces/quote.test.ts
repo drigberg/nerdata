@@ -1,7 +1,6 @@
+import { dataByUniverse } from '../../src/data';
 import { expect } from 'chai'
-import { readFileSync } from 'fs'
 import { before, describe, it } from 'mocha'
-import * as path from 'path'
 import { Nerdata } from '../../src/Nerdata'
 
 describe('Quote', () => {
@@ -11,17 +10,8 @@ describe('Quote', () => {
   before(() => {
     nerdata = new Nerdata({ include: ['star-wars', 'rick-and-morty'] })
 
-    const rickAndMortyQuotes = JSON.parse(
-      readFileSync(
-        path.join(__dirname, '..', '..', 'src', 'data', 'rick-and-morty.json'),
-      ).toString(),
-    ).quotes
-
-    const starWarsQuotes = JSON.parse(
-      readFileSync(
-        path.join(__dirname, '..', '..', 'src', 'data', 'star-wars.json'),
-      ).toString(),
-    ).quotes
+    const rickAndMortyQuotes = dataByUniverse['rick-and-morty'].quotes
+    const starWarsQuotes = dataByUniverse['star-wars'].quotes
 
     data = {
       rickAndMorty: {

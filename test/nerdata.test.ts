@@ -1,7 +1,5 @@
 import { expect } from 'chai'
-import * as fs from 'fs'
-import { after, beforeEach, describe, it } from 'mocha'
-import * as sinon from 'sinon'
+import { describe, it } from 'mocha'
 import { Universe } from '../src/interface'
 import { Nerdata } from '../src/Nerdata'
 
@@ -205,42 +203,6 @@ describe('Nerdata', () => {
           'The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, lord-of-the-rings, naruto, rick-and-morty, star-wars',
         )
       })
-    })
-  })
-
-  describe('files', () => {
-    const spy = sinon.spy(fs, 'readFileSync')
-    beforeEach(() => {
-      spy.resetHistory()
-      Nerdata.resetCache()
-    })
-
-    after(() => {
-      spy.restore()
-    })
-
-    it('are only loaded when used', () => {
-      // tslint:disable-next-line:no-unused-expression
-      new Nerdata({ include: 'dune' })
-
-      expect(spy.callCount).to.equal(1)
-
-      // tslint:disable-next-line:no-unused-expression
-      new Nerdata({ include: ['star-wars', 'rick-and-morty'] })
-
-      expect(spy.callCount).to.equal(3)
-    })
-
-    it('are only loaded once each', () => {
-      // tslint:disable-next-line:no-unused-expression
-      new Nerdata({ include: 'dune' })
-
-      expect(spy.callCount).to.equal(1)
-
-      // tslint:disable-next-line:no-unused-expression
-      new Nerdata({ include: 'dune' })
-
-      expect(spy.callCount).to.equal(1)
     })
   })
 })

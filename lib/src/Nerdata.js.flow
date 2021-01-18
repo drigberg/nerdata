@@ -13,7 +13,6 @@ import { Quotes } from "./namespaces/Quote";
 import { Random } from "./random";
 import { Species } from "./namespaces/Species";
 declare export class Nerdata {
-  static resetCache(): void;
   _random: Random;
   _universes: Universe[];
   name: Names;

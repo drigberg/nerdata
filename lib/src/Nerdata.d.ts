@@ -6,7 +6,6 @@ import { Quotes } from './namespaces/Quote';
 import { Random } from './random';
 import { Species } from './namespaces/Species';
 export declare class Nerdata {
-    static resetCache(): void;
     _random: Random;
     private _data;
     _universes: Universe[];
@@ -18,7 +17,6 @@ export declare class Nerdata {
     constructor(opts?: INerdataOpts);
     private _setup;
     private _getData;
-    private _loadData;
     private _limitByExclusion;
     private _limitByInclusion;
 }

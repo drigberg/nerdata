@@ -6,7 +6,7 @@ import { isNumber } from 'util'
 import { Namespace } from '../Namespace'
 import { Quote } from '../interface'
 import type { Random } from '../random'
-import type { Universe, DataByUniverse } from '../interface'
+import type { Universe, DataOrNullByUniverse } from '../interface'
 
 /*
  * Module
@@ -26,7 +26,7 @@ export class Quotes extends Namespace {
   public data: QuotesByUniverse
 
   private _defaultParagraphLength = 3
-  constructor(data: DataByUniverse, random: Random) {
+  constructor(data: DataOrNullByUniverse, random: Random) {
     super(random)
     this.data = this.parseData(data)
 
@@ -39,7 +39,7 @@ export class Quotes extends Namespace {
     this.paragraph = this.paragraph.bind(this)
   }
 
-  private parseData(data: DataByUniverse): QuotesByUniverse {
+  private parseData(data: DataOrNullByUniverse): QuotesByUniverse {
     const that = this
     this.universes = [] as Universe[]
 
