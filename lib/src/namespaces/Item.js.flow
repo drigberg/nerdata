@@ -6,12 +6,17 @@
  */
 
 import { Namespace } from "../Namespace";
+import { Item } from "../interface";
 import type { Random } from "../random";
-import type { Universe } from "../interface";
-declare export class Item mixins Namespace {
-  constructor(data: any, random: Random): this;
+import type { Universe, DataByUniverse } from "../interface";
+declare type ItemsByUniverse = { [key: Universe]: Item[], ... };
+declare export class Items mixins Namespace {
+  data: ItemsByUniverse;
+  constructor(data: DataByUniverse, random: Random): this;
+  getByType(ctx: null | Universe | Universe[], type: string | null): Item;
   weapon(ctx?: Universe | Universe[]): string;
   tool(ctx?: Universe | Universe[]): string;
   vehicle(ctx?: Universe | Universe[]): string;
   any(ctx?: Universe | Universe[]): string;
 }
+declare export {};

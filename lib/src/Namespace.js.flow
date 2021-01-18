@@ -6,10 +6,10 @@
  */
 
 import type { Universe } from "./interface";
-import type { NamespaceType } from "./namespaces/interface";
 import type { Random } from "./random";
 declare export class Namespace {
   random: Random;
-  constructor(data: any, namespace: NamespaceType, random: Random): this;
-  getSubset(ctx?: Universe | Universe[]): any;
+  universes: Universe[];
+  constructor(random: Random): this;
+  getUniverseSubset(ctx: null | Universe | Universe[]): Universe[];
 }

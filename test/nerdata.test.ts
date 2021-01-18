@@ -23,7 +23,7 @@ describe('Nerdata', () => {
       it('success', () => {
         const nerdata = new Nerdata()
 
-        expect(nerdata._universes()).have.same.members([
+        expect(nerdata._universes).have.same.members([
           'dune',
           'lord-of-the-rings',
           'rick-and-morty',
@@ -37,7 +37,7 @@ describe('Nerdata', () => {
       it('success', () => {
         const nerdata = new Nerdata({ randomFn: Math.random })
 
-        expect(nerdata._universes()).have.same.members([
+        expect(nerdata._universes).have.same.members([
           'dune',
           'lord-of-the-rings',
           'rick-and-morty',
@@ -54,7 +54,7 @@ describe('Nerdata', () => {
             include: 'dune',
           })
 
-          expect(nerdata._universes()).have.same.members(['dune'])
+          expect(nerdata._universes).have.same.members(['dune'])
         })
 
         it('array - one item', () => {
@@ -62,7 +62,7 @@ describe('Nerdata', () => {
             include: ['star-wars'],
           })
 
-          expect(nerdata._universes()).have.same.members(['star-wars'])
+          expect(nerdata._universes).have.same.members(['star-wars'])
         })
 
         it('array - two items', () => {
@@ -70,7 +70,7 @@ describe('Nerdata', () => {
             include: ['dune', 'star-wars'],
           })
 
-          expect(nerdata._universes()).have.same.members([
+          expect(nerdata._universes).have.same.members([
             'dune',
             'star-wars',
           ])
@@ -81,7 +81,7 @@ describe('Nerdata', () => {
             include: ['dune', 'star-wars', 'rick-and-morty'],
           })
 
-          expect(nerdata._universes()).have.same.members([
+          expect(nerdata._universes).have.same.members([
             'dune',
             'star-wars',
             'rick-and-morty',
@@ -137,7 +137,7 @@ describe('Nerdata', () => {
             exclude: 'dune',
           })
 
-          expect(nerdata._universes()).have.same.members([
+          expect(nerdata._universes).have.same.members([
             'lord-of-the-rings',
             'star-wars',
             'rick-and-morty',
@@ -150,7 +150,7 @@ describe('Nerdata', () => {
             exclude: ['star-wars'],
           })
 
-          expect(nerdata._universes()).have.same.members([
+          expect(nerdata._universes).have.same.members([
             'dune',
             'lord-of-the-rings',
             'rick-and-morty',
@@ -163,7 +163,7 @@ describe('Nerdata', () => {
             exclude: ['dune', 'rick-and-morty'],
           })
 
-          expect(nerdata._universes()).have.same.members(['lord-of-the-rings', 'star-wars', 'naruto'])
+          expect(nerdata._universes).have.same.members(['lord-of-the-rings', 'star-wars', 'naruto'])
         })
       })
     })

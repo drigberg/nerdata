@@ -8,5 +8,5 @@
 declare export class Random {
   constructor(randomFn: () => number): this;
   integer(from: number, to: number): number;
-  element(items: any[]): any;
+  element<T>(items: T[]): T;
 }

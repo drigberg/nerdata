@@ -6,11 +6,16 @@
  */
 
 import { Namespace } from "../Namespace";
+import { Species as ISpecies } from "../interface";
 import type { Random } from "../random";
-import type { Universe } from "../interface";
+import type { Universe, DataByUniverse } from "../interface";
+declare type SpeciesByUniverse = { [key: Universe]: ISpecies[], ... };
 declare export class Species mixins Namespace {
-  constructor(data: any, random: Random): this;
+  data: SpeciesByUniverse;
+  constructor(data: DataByUniverse, random: Random): this;
+  getByType(ctx: null | Universe | Universe[], type: string | null): ISpecies;
   sentient(ctx?: Universe | Universe[]): string;
   nonsentient(ctx?: Universe | Universe[]): string;
   any(ctx?: Universe | Universe[]): string;
 }
+declare export {};

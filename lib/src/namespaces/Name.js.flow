@@ -6,11 +6,16 @@
  */
 
 import { Namespace } from "../Namespace";
+import { Name } from "../interface";
 import type { Random } from "../random";
-import type { Universe } from "../interface";
-declare export class Name mixins Namespace {
-  constructor(data: any, random: Random): this;
+import type { Universe, DataByUniverse } from "../interface";
+declare type NamesByUniverse = { [key: Universe]: Name[], ... };
+declare export class Names mixins Namespace {
+  data: NamesByUniverse;
+  constructor(data: DataByUniverse, random: Random): this;
+  getNamesSubset(ctx: null | Universe | Universe[]): Name[];
   first(ctx?: Universe | Universe[]): string;
   last(ctx?: Universe | Universe[]): string;
   full(ctx?: Universe | Universe[]): string;
 }
+declare export {};

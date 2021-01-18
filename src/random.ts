@@ -10,7 +10,7 @@ export class Random {
   }
 
   // TODO: replace with <T>, once data is strongly typed
-  public element(items: any[]): any {
+  public element<T>(items: T[]): T {
     if (!items.length) {
       throw new Error('Cannot select item from empty array')
     }

@@ -4,17 +4,24 @@
 
 import { isNumber } from 'util'
 import { Namespace } from '../Namespace'
+import { Quote } from '../interface'
 import type { Random } from '../random'
-import type { Universe } from '../interface'
+import type { Universe, DataByUniverse } from '../interface'
 
 /*
  * Module
  */
 
-export class Quote extends Namespace {
+type QuotesByUniverse = Record<Universe, Quote[]>
+
+
+export class Quotes extends Namespace {
+  public data: QuotesByUniverse
+
   private _defaultParagraphLength = 3
-  constructor(data: any, random: Random) {
-    super(data, 'quotes', random)
+  constructor(data: DataByUniverse, random: Random) {
+    super(random)
+    this.data = this.parseData(data)
 
     Object.defineProperty(this, '_defaultParagraphLength', {
       enumerable: false,
@@ -25,8 +32,33 @@ export class Quote extends Namespace {
     this.paragraph = this.paragraph.bind(this)
   }
 
+  private parseData(data: DataByUniverse): QuotesByUniverse {
+    const that = this
+    this.universes = [] as Universe[]
+
+    const parsed: QuotesByUniverse = Object.keys(data).reduce((acc, key) => {
+      const universe = key as Universe
+      const universeData = data[universe]
+      if (universeData === null) {
+        acc[universe] = [] as Quote[]
+        return acc
+      }
+
+      acc[universe] = universeData.quotes
+      that.universes.push(universe)
+      return acc
+    }, {} as QuotesByUniverse)
+    return parsed
+  }
+
   public sentence(ctx?: Universe | Universe[], opts: any = {}): string {
-    const quote = this.random.element(this.getSubset(ctx))
+    const subset = this.getUniverseSubset(ctx || null)
+    const validQuotes = subset.reduce((acc, universe) => {
+      acc.push(...this.data[universe])
+      return acc
+    }, [] as Quote[])
+
+    const quote = this.random.element(validQuotes)
 
     if (opts.citation === true) {
       return `"${quote.text}" - ${quote.speaker}`

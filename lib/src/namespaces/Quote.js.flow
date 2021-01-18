@@ -6,10 +6,14 @@
  */
 
 import { Namespace } from "../Namespace";
+import { Quote } from "../interface";
 import type { Random } from "../random";
-import type { Universe } from "../interface";
-declare export class Quote mixins Namespace {
-  constructor(data: any, random: Random): this;
+import type { Universe, DataByUniverse } from "../interface";
+declare type QuotesByUniverse = { [key: Universe]: Quote[], ... };
+declare export class Quotes mixins Namespace {
+  data: QuotesByUniverse;
+  constructor(data: DataByUniverse, random: Random): this;
   sentence(ctx?: Universe | Universe[], opts?: any): string;
   paragraph(ctx?: Universe | Universe[], opts?: any): string;
 }
+declare export {};

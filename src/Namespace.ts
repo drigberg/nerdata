@@ -4,7 +4,6 @@
 
 import * as errors from './errors'
 import type { Universe } from './interface'
-import type { NamespaceType } from './namespaces/interface'
 import type { Random } from './random'
 
 /*
@@ -12,12 +11,10 @@ import type { Random } from './random'
  */
 
 export class Namespace {
-  private data: any
-  private universes: () => Universe[]
   public random: Random
+  public universes: Universe[] = []
 
-  // TODO: use strongly-typed data
-  constructor(data: any, namespace: NamespaceType, random: Random) {
+  constructor(random: Random) {
     Object.defineProperties(this, {
       random: {
         enumerable: false,
@@ -33,47 +30,24 @@ export class Namespace {
       },
     })
 
-    const parsed = this.parseData(data, namespace)
     this.random = random
-    this.data = () => parsed.data
-    this.universes = () => parsed.universes
   }
 
-  public getSubset(ctx?: Universe | Universe[]) {
-    if (!ctx || !ctx.length) {
-      return this.data()
+  public getUniverseSubset(ctx: null | Universe | Universe[]): Universe[] {
+    if (ctx === null || !ctx.length) {
+      return this.universes;
     }
 
     const universes: Universe[] = Array.isArray(ctx) ? ctx : [ctx]
 
     const unavailable = universes.filter(
-      (item) => !this.universes().includes(item),
+      (item) => !this.universes.includes(item),
     )
 
     if (unavailable.length) {
-      throw errors.unloaded(unavailable, this.universes())
+      throw errors.unloaded(unavailable, this.universes)
     }
 
-    return this.data().filter((item: any) => universes.includes(item.ctx))
-  }
-
-  private parseData(data: any, namespace: NamespaceType) {
-    return Object.keys(data).reduce((acc, ctx) => {
-      const universeData = data[ctx]
-        acc.data.push(
-          ...universeData[namespace].map((ctxNameData: any) => ({
-            ...ctxNameData,
-            ctx,
-          })),
-        )
-
-        acc.universes.push(ctx)
-        return acc
-      },
-      {
-        data: [],
-        universes: [],
-      } as any,
-    )
+    return universes
   }
 }

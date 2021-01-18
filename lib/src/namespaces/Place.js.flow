@@ -6,11 +6,16 @@
  */
 
 import { Namespace } from "../Namespace";
+import { Place } from "../interface";
 import type { Random } from "../random";
-import type { Universe } from "../interface";
-declare export class Place mixins Namespace {
-  constructor(data: any, random: Random): this;
+import type { Universe, DataByUniverse } from "../interface";
+declare type PlacesByUniverse = { [key: Universe]: Place[], ... };
+declare export class Places mixins Namespace {
+  data: PlacesByUniverse;
+  constructor(data: DataByUniverse, random: Random): this;
+  getByType(ctx: null | Universe | Universe[], type: string | null): Place;
   city(ctx?: Universe | Universe[]): string;
   realm(ctx?: Universe | Universe[]): string;
   any(ctx?: Universe | Universe[]): string;
 }
+declare export {};
