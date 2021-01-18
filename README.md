@@ -58,7 +58,7 @@ const nerdata = new Nerdata({
 });
 ```
 
-There are two ways to select which universes you want (or limit memory usage):
+There are two ways to select which universes you want:
 
 ```js
 // Inclusive
