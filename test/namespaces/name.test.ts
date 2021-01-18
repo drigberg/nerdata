@@ -86,7 +86,7 @@ describe('Name', () => {
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        'The following universes were not loaded when Nerdata was initialized: rick-and-morty. Only the following are currently available: dune, star-wars',
+        'The following universes were not selected when Nerdata was initialized: rick-and-morty. Only the following are currently available: dune, star-wars',
       )
     })
   })
@@ -129,7 +129,7 @@ describe('Name', () => {
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        'The following universes were not loaded when Nerdata was initialized: rick-and-morty. Only the following are currently available: dune, star-wars',
+        'The following universes were not selected when Nerdata was initialized: rick-and-morty. Only the following are currently available: dune, star-wars',
       )
     })
   })
@@ -172,7 +172,7 @@ describe('Name', () => {
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        'The following universes were not loaded when Nerdata was initialized: rick-and-morty. Only the following are currently available: dune, star-wars',
+        'The following universes were not selected when Nerdata was initialized: rick-and-morty. Only the following are currently available: dune, star-wars',
       )
     })
   })

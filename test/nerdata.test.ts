@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { describe, it } from 'mocha'
-import { Universe } from '../src/interface'
+import { Universe, UNIVERSES } from '../src/interface'
 import { Nerdata } from '../src/Nerdata'
 
 describe('Nerdata', () => {
@@ -20,28 +20,14 @@ describe('Nerdata', () => {
     describe('no args', () => {
       it('success', () => {
         const nerdata = new Nerdata()
-
-        expect(nerdata._universes).have.same.members([
-          'dune',
-          'lord-of-the-rings',
-          'rick-and-morty',
-          'star-wars',
-          'naruto'
-        ])
+        expect(nerdata._universes).have.same.members(UNIVERSES)
       })
     })
 
     describe('randomFn', () => {
       it('success', () => {
         const nerdata = new Nerdata({ randomFn: Math.random })
-
-        expect(nerdata._universes).have.same.members([
-          'dune',
-          'lord-of-the-rings',
-          'rick-and-morty',
-          'star-wars',
-          'naruto'
-        ])
+        expect(nerdata._universes).have.same.members(UNIVERSES)
       })
     })
 
@@ -56,34 +42,30 @@ describe('Nerdata', () => {
         })
 
         it('array - one item', () => {
+          const toInclude: Universe[] = ['star-wars']
           const nerdata = new Nerdata({
-            include: ['star-wars'],
+            include:toInclude,
           })
 
-          expect(nerdata._universes).have.same.members(['star-wars'])
+          expect(nerdata._universes).have.same.members(toInclude)
         })
 
         it('array - two items', () => {
+          const toInclude: Universe[] = ['dune', 'star-wars']
           const nerdata = new Nerdata({
-            include: ['dune', 'star-wars'],
+            include: toInclude
           })
 
-          expect(nerdata._universes).have.same.members([
-            'dune',
-            'star-wars',
-          ])
+          expect(nerdata._universes).have.same.members(toInclude)
         })
 
         it('array - all items', () => {
+          const toInclude: Universe[] = ['dune', 'star-wars', 'rick-and-morty']
           const nerdata = new Nerdata({
-            include: ['dune', 'star-wars', 'rick-and-morty'],
+            include: toInclude
           })
 
-          expect(nerdata._universes).have.same.members([
-            'dune',
-            'star-wars',
-            'rick-and-morty',
-          ])
+          expect(nerdata._universes).have.same.members(toInclude)
         })
       })
 
@@ -101,10 +83,7 @@ describe('Nerdata', () => {
             throw new Error('expected error')
           }
 
-          expect(error.message).to.equal(
-            // tslint:disable-next-line:max-line-length
-            'opts.include must have at least one item, if specified. Options are: dune, lord-of-the-rings, naruto, rick-and-morty, star-wars',
-          )
+          expect(error.message.startsWith('opts.include must have at least one item, if specified.')).to.equal(true)
         })
 
         it('invalid universe', () => {
@@ -120,10 +99,7 @@ describe('Nerdata', () => {
             throw new Error('expected error')
           }
 
-          expect(error.message).to.equal(
-            // tslint:disable-next-line:max-line-length
-            'The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, lord-of-the-rings, naruto, rick-and-morty, star-wars',
-          )
+          expect(error.message.startsWith('The following universes are unsupported or misspelled: duun, twilight.')).to.equal(true)
         })
       })
     })
@@ -135,33 +111,25 @@ describe('Nerdata', () => {
             exclude: 'dune',
           })
 
-          expect(nerdata._universes).have.same.members([
-            'lord-of-the-rings',
-            'star-wars',
-            'rick-and-morty',
-            'naruto'
-          ])
+          expect(nerdata._universes).have.same.members(UNIVERSES.filter(i => i !== 'dune'))
         })
 
         it('array - one item', () => {
+          const toExclude: Universe[] = ['star-wars']
           const nerdata = new Nerdata({
-            exclude: ['star-wars'],
+            exclude: toExclude
           })
 
-          expect(nerdata._universes).have.same.members([
-            'dune',
-            'lord-of-the-rings',
-            'rick-and-morty',
-            'naruto'
-          ])
+          expect(nerdata._universes).have.same.members(UNIVERSES.filter(i => !toExclude.includes(i)))
         })
 
         it('array - two items', () => {
+          const toExclude: Universe[] = ['dune', 'rick-and-morty']
           const nerdata = new Nerdata({
-            exclude: ['dune', 'rick-and-morty'],
+            exclude: toExclude
           })
 
-          expect(nerdata._universes).have.same.members(['lord-of-the-rings', 'star-wars', 'naruto'])
+          expect(nerdata._universes).have.same.members(UNIVERSES.filter(i => !toExclude.includes(i)))
         })
       })
     })
@@ -171,7 +139,7 @@ describe('Nerdata', () => {
         let error: Error | undefined
         try {
           // tslint:disable-next-line:no-unused-expression
-          new Nerdata({ exclude: ['dune', 'lord-of-the-rings', 'rick-and-morty', 'star-wars', 'naruto'] })
+          new Nerdata({ exclude: UNIVERSES })
         } catch (err) {
           error = err
         }
@@ -198,10 +166,7 @@ describe('Nerdata', () => {
           throw new Error('expected error')
         }
 
-        expect(error.message).to.equal(
-          // tslint:disable-next-line:max-line-length
-          'The following universes are unsupported or misspelled: duun, twilight. Available universes are: dune, lord-of-the-rings, naruto, rick-and-morty, star-wars',
-        )
+        expect(error.message.startsWith('The following universes are unsupported or misspelled: duun, twilight.')).to.equal(true)
       })
     })
   })
