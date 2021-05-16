@@ -13,6 +13,7 @@ Supported universes:
 - Rick and Morty
 - Dune
 - Naruto
+- Jojo's Bizarre Adventure
 
 Planned universes:
 
@@ -22,21 +23,18 @@ Planned universes:
 - Daevabad
 - DC Comics
 - Discworld
-- Doctor Who ^^^
+- Doctor Who
 - The Expanse
 - Firefly
 - Foundation
 - Greek Mythology
 - Gurren Lagann
-- Harry Potter ^^^
-- Jojo's Bizarre Adventure
+- Harry Potter
 - Marvel Comics
 - One Piece
-- A Song of Ice and Fire ^^^
+- A Song of Ice and Fire
 - Umbrella Academy
-- The Witcher ^^^
-
-^^^: coming soon
+- The Witcher
 
 ## INITIALIZATION
 
