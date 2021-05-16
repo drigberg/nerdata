@@ -1,16 +1,16 @@
 export type Universe =
-  | "dune"
-  | "lord-of-the-rings"
-  | "rick-and-morty"
-  | "star-wars"
-  | "naruto"
+  | "Dune"
+  | "Lord of the Rings"
+  | "Rick and Morty"
+  | "Star Wars"
+  | "Naruto"
   | "JoJo's Bizarre Adventure";
 export const UNIVERSES: Universe[] = [
-  "dune",
-  "lord-of-the-rings",
-  "rick-and-morty",
-  "star-wars",
-  "naruto",
+  "Dune",
+  "Lord of the Rings",
+  "Rick and Morty",
+  "Star Wars",
+  "Naruto",
   "JoJo's Bizarre Adventure",
 ];
 

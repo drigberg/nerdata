@@ -54,19 +54,11 @@ export const data: UniverseData = {
       name: "stone mask",
       type: "weapon",
     },
-    {
-      name: "",
-      type: "vehicle",
-    },
   ],
   species: [
     {
       name: "vampire zombie",
       type: "sentient",
-    },
-    {
-      name: "",
-      type: "nonsentient",
     },
   ],
   quotes: [
