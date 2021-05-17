@@ -355,7 +355,7 @@ export const data: UniverseData = {
       speaker: 'Han Solo'
     },
     {
-      text: 'ou truly belong here with us among the clouds.',
+      text: 'You truly belong here with us among the clouds.',
       speaker: 'Lando Calrissian'
     },
     {
