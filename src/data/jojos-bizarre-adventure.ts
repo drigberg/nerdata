@@ -36,6 +36,24 @@ export const data: UniverseData = {
       first: 'Will',
       last: 'A. Zeppeli',
     },
+    {
+      first: 'Blueford',
+    },
+    {
+      first: 'Tarukus',
+    },
+    {
+      first: 'Poco',
+    },
+    {
+      first: 'Tonpetty',
+    },
+    {
+      first: 'Dire',
+    },
+    {
+      first: 'Straizo',
+    },
   ],
   items: [
     {
@@ -52,6 +70,14 @@ export const data: UniverseData = {
     },
     {
       name: 'stone mask',
+      type: 'tool',
+    },
+    {
+      name: 'scarlet overdrive',
+      type: 'weapon',
+    },
+    {
+      name: 'Danse Macabre hair',
       type: 'weapon',
     },
     {
