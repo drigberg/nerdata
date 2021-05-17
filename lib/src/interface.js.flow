@@ -6,11 +6,13 @@
  */
 
 export type Universe =
+  | "daevabad"
   | "dune"
   | "lord-of-the-rings"
   | "rick-and-morty"
   | "star-wars"
-  | "naruto";
+  | "naruto"
+  | "jojos-bizarre-adventure";
 declare export var UNIVERSES: Universe[];
 export interface INerdataOpts {
   +randomFn?: () => number;

@@ -1,9 +1,8 @@
-
 /*
  * Module dependencies
  */
 
-import { UniverseData } from '../interface'
+import { UniverseData } from '../interface';
 
 /*
  * Module
@@ -12,214 +11,214 @@ import { UniverseData } from '../interface'
 export const data: UniverseData = {
   places: [
     {
-      name: 'Helm\'s Deep',
-      type: 'city'
+      name: "Helm's Deep",
+      type: 'city',
     },
     {
       name: 'Bag End',
-      type: 'city'
+      type: 'city',
     },
     {
       name: 'Minas Tirith',
-      type: 'city'
+      type: 'city',
     },
     {
       name: 'Osgiliath',
-      type: 'city'
+      type: 'city',
     },
     {
       name: 'Minas Morgul',
-      type: 'city'
+      type: 'city',
     },
     {
       name: 'Gondolin',
-      type: 'city'
+      type: 'city',
     },
     {
       name: 'Rivendell',
-      type: 'city'
+      type: 'city',
     },
     {
       name: 'Gondor',
-      type: 'realm'
+      type: 'realm',
     },
     {
       name: 'Middle Earth',
-      type: 'realm'
+      type: 'realm',
     },
     {
       name: 'Rohan',
-      type: 'realm'
+      type: 'realm',
     },
     {
       name: 'Mordor',
-      type: 'realm'
+      type: 'realm',
     },
     {
       name: 'Valinor',
-      type: 'realm'
+      type: 'realm',
     },
     {
       name: 'The Shire',
-      type: 'realm'
-    }
+      type: 'realm',
+    },
   ],
   names: [
     {
       first: 'Frodo',
-      last: 'Baggins'
+      last: 'Baggins',
     },
     {
       first: 'Samwise',
-      last: 'Gamgee'
+      last: 'Gamgee',
     },
     {
-      first: 'Gandalf'
+      first: 'Gandalf',
     },
     {
       first: 'Tom',
-      last: 'Bombadil'
+      last: 'Bombadil',
     },
     {
       first: 'Peregrin',
-      last: 'Took'
+      last: 'Took',
     },
     {
       first: 'Meriadoc',
-      last: 'Brandybuck'
+      last: 'Brandybuck',
     },
     {
-      first: 'Elrond'
+      first: 'Elrond',
     },
     {
-      first: 'Faramir'
+      first: 'Faramir',
     },
     {
-      first: 'Boromir'
+      first: 'Boromir',
     },
     {
-      first: 'Aragorn'
+      first: 'Aragorn',
     },
     {
-      first: 'Legolas'
-    }
+      first: 'Legolas',
+    },
   ],
   items: [
     {
       name: 'palantir',
-      type: 'tool'
+      type: 'tool',
     },
     {
       name: 'Phial of Galadriel',
-      type: 'tool'
+      type: 'tool',
     },
     {
       name: 'Horn of Gondor',
-      type: 'tool'
+      type: 'tool',
     },
     {
       name: 'The One Ring',
-      type: 'tool'
+      type: 'tool',
     },
     {
       name: 'Glamdring',
-      type: 'weapon'
+      type: 'weapon',
     },
     {
       name: 'Narsil',
-      type: 'weapon'
+      type: 'weapon',
     },
     {
       name: 'Sting',
-      type: 'weapon'
+      type: 'weapon',
     },
     {
       name: 'Anduril',
-      type: 'weapon'
+      type: 'weapon',
     },
     {
       name: 'Orcrist',
-      type: 'weapon'
+      type: 'weapon',
     },
     {
       name: 'ferry',
-      type: 'vehicle'
+      type: 'vehicle',
     },
     {
       name: 'elven boat',
-      type: 'vehicle'
-    }
+      type: 'vehicle',
+    },
   ],
- species: [
+  species: [
     {
       name: 'human',
-      type: 'sentient'
+      type: 'sentient',
     },
     {
       name: 'dragon',
-      type: 'sentient'
+      type: 'sentient',
     },
     {
       name: 'dwarf',
-      type: 'sentient'
+      type: 'sentient',
     },
     {
       name: 'elf',
-      type: 'sentient'
+      type: 'sentient',
     },
     {
       name: 'orc',
-      type: 'sentient'
+      type: 'sentient',
     },
     {
       name: 'goblin',
-      type: 'sentient'
+      type: 'sentient',
     },
     {
       name: 'troll',
-      type: 'sentient'
+      type: 'sentient',
     },
     {
       name: 'ent',
-      type: 'sentient'
+      type: 'sentient',
     },
     {
       name: 'warg',
-      type: 'nonsentient'
+      type: 'nonsentient',
     },
     {
       name: 'great spider',
-      type: 'nonsentient'
+      type: 'nonsentient',
     },
     {
       name: 'crebain',
-      type: 'nonsentient'
+      type: 'nonsentient',
     },
     {
       name: 'oliphaunt',
-      type: 'nonsentient'
-    }
+      type: 'nonsentient',
+    },
   ],
   quotes: [
     {
       text: 'It’s the job that’s never started as takes longest to finish.',
-      speaker: 'Samwise Gamgee'
+      speaker: 'Samwise Gamgee',
     },
     {
       text: 'It is useless to meet revenge with revenge: it will heal nothing.',
-      speaker: 'Frodo Baggins'
+      speaker: 'Frodo Baggins',
     },
     {
       text: 'Even the smallest person can change the course of history.',
-      speaker: 'Galadriel'
+      speaker: 'Galadriel',
     },
     {
       text: 'A hunted man sometimes wearies of distrust and longs for friendship.',
-      speaker: 'Aragorn'
+      speaker: 'Aragorn',
     },
     {
       text: 'You shall not pass!',
-      speaker: 'Gandalf'
-    }
-  ]
-}
+      speaker: 'Gandalf',
+    },
+  ],
+};

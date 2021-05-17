@@ -10,10 +10,10 @@ describe('Quote', () => {
   let nerdata: Nerdata;
 
   before(() => {
-    nerdata = new Nerdata({ include: ['Star Wars', 'Rick and Morty'] });
+    nerdata = new Nerdata({ include: ['star-wars', 'rick-and-morty'] });
 
-    const rickAndMortyQuotes = dataByUniverse['Rick and Morty'].quotes;
-    const starWarsQuotes = dataByUniverse['Star Wars'].quotes;
+    const rickAndMortyQuotes = dataByUniverse['rick-and-morty'].quotes;
+    const starWarsQuotes = dataByUniverse['star-wars'].quotes;
 
     data = {
       rickAndMorty: {
@@ -68,7 +68,7 @@ describe('Quote', () => {
     it('filters by universe: string', () => {
       for (let i = 0; i < 10; i++) {
         expect(data.starWars.text).to.include(
-          nerdata.quote.sentence('Star Wars')
+          nerdata.quote.sentence('star-wars')
         );
       }
     });
@@ -76,7 +76,7 @@ describe('Quote', () => {
     it('filters by universe: array (single)', () => {
       for (let i = 0; i < 10; i++) {
         expect(data.starWars.text).to.include(
-          nerdata.quote.sentence(['Star Wars'])
+          nerdata.quote.sentence(['star-wars'])
         );
       }
     });
@@ -85,7 +85,7 @@ describe('Quote', () => {
       const fullArray = data.rickAndMorty.text.concat(data.starWars.text);
       for (let i = 0; i < 10; i++) {
         expect(fullArray).to.include(
-          nerdata.quote.sentence(['Star Wars', 'Rick and Morty'])
+          nerdata.quote.sentence(['star-wars', 'rick-and-morty'])
         );
       }
     });
@@ -93,7 +93,7 @@ describe('Quote', () => {
     it('throws error when unloaded universe is requested', () => {
       let error: Error | undefined;
       try {
-        nerdata.quote.sentence('Dune');
+        nerdata.quote.sentence('dune');
       } catch (err) {
         error = err;
       }
@@ -104,7 +104,7 @@ describe('Quote', () => {
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        'The following universes were not selected when Nerdata was initialized: Dune. Only the following are currently available: Rick and Morty, Star Wars'
+        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars'
       );
     });
   });
@@ -125,7 +125,7 @@ describe('Quote', () => {
     it('filters by universe: string', () => {
       for (let i = 0; i < 10; i++) {
         expect(data.starWars.text).to.include(
-          nerdata.quote.paragraph('Star Wars', { sentences: 1 })
+          nerdata.quote.paragraph('star-wars', { sentences: 1 })
         );
       }
     });
@@ -133,7 +133,7 @@ describe('Quote', () => {
     it('filters by universe: array (single)', () => {
       for (let i = 0; i < 10; i++) {
         expect(data.starWars.text).to.include(
-          nerdata.quote.paragraph(['Star Wars'], { sentences: 1 })
+          nerdata.quote.paragraph(['star-wars'], { sentences: 1 })
         );
       }
     });
@@ -142,7 +142,7 @@ describe('Quote', () => {
       const fullArray = data.rickAndMorty.text.concat(data.starWars.text);
       for (let i = 0; i < 10; i++) {
         expect(fullArray).to.include(
-          nerdata.quote.paragraph(['Star Wars', 'Rick and Morty'], {
+          nerdata.quote.paragraph(['star-wars', 'rick-and-morty'], {
             sentences: 1,
           })
         );
@@ -152,7 +152,7 @@ describe('Quote', () => {
     it('throws error when unloaded universe is requested', () => {
       let error: Error | undefined;
       try {
-        nerdata.quote.paragraph('Dune');
+        nerdata.quote.paragraph('dune');
       } catch (err) {
         error = err;
       }
@@ -163,7 +163,7 @@ describe('Quote', () => {
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        'The following universes were not selected when Nerdata was initialized: Dune. Only the following are currently available: Rick and Morty, Star Wars'
+        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars'
       );
     });
   });

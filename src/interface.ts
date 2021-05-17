@@ -1,19 +1,19 @@
 export type Universe =
-  | 'Daevabad'
-  | 'Dune'
-  | 'Lord of the Rings'
-  | 'Rick and Morty'
-  | 'Star Wars'
-  | 'Naruto'
-  | "JoJo's Bizarre Adventure";
+  | 'daevabad'
+  | 'dune'
+  | 'lord-of-the-rings'
+  | 'rick-and-morty'
+  | 'star-wars'
+  | 'naruto'
+  | 'jojos-bizarre-adventure';
 export const UNIVERSES: Universe[] = [
-  'Daevabad',
-  'Dune',
-  'Lord of the Rings',
-  'Rick and Morty',
-  'Star Wars',
-  'Naruto',
-  "JoJo's Bizarre Adventure",
+  'daevabad',
+  'dune',
+  'lord-of-the-rings',
+  'rick-and-morty',
+  'star-wars',
+  'naruto',
+  'jojos-bizarre-adventure',
 ];
 
 export interface INerdataOpts {

@@ -35,14 +35,14 @@ describe('Nerdata', () => {
       describe('positive', () => {
         it('string', () => {
           const nerdata = new Nerdata({
-            include: 'Dune',
+            include: 'dune',
           });
 
-          expect(nerdata._universes).have.same.members(['Dune']);
+          expect(nerdata._universes).have.same.members(['dune']);
         });
 
         it('array - one item', () => {
-          const toInclude: Universe[] = ['Star Wars'];
+          const toInclude: Universe[] = ['star-wars'];
           const nerdata = new Nerdata({
             include: toInclude,
           });
@@ -51,7 +51,7 @@ describe('Nerdata', () => {
         });
 
         it('array - two items', () => {
-          const toInclude: Universe[] = ['Dune', 'Star Wars'];
+          const toInclude: Universe[] = ['dune', 'star-wars'];
           const nerdata = new Nerdata({
             include: toInclude,
           });
@@ -109,16 +109,16 @@ describe('Nerdata', () => {
       describe('positive', () => {
         it('string', () => {
           const nerdata = new Nerdata({
-            exclude: 'Dune',
+            exclude: 'dune',
           });
 
           expect(nerdata._universes).have.same.members(
-            UNIVERSES.filter((i) => i !== 'Dune')
+            UNIVERSES.filter((i) => i !== 'dune')
           );
         });
 
         it('array - one item', () => {
-          const toExclude: Universe[] = ['Star Wars'];
+          const toExclude: Universe[] = ['star-wars'];
           const nerdata = new Nerdata({
             exclude: toExclude,
           });
@@ -129,7 +129,7 @@ describe('Nerdata', () => {
         });
 
         it('array - two items', () => {
-          const toExclude: Universe[] = ['Dune', 'Rick and Morty'];
+          const toExclude: Universe[] = ['dune', 'rick-and-morty'];
           const nerdata = new Nerdata({
             exclude: toExclude,
           });

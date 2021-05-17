@@ -3,24 +3,24 @@
  */
 
 import type { DataByUniverse } from '../interface';
-import * as daevabad from './Daevabad';
-import * as dune from './Dune';
-import * as lordOfTheRings from './Lord of the Rings';
-import * as naruto from './Naruto';
-import * as jojosBizarreAdventure from "./Jojo's Bizarre Adventure";
-import * as rickAndMorty from './Rick and Morty';
-import * as starWars from './Star Wars';
+import * as daevabad from './daevabad';
+import * as dune from './dune';
+import * as lordOfTheRings from './lord-of-the-rings';
+import * as naruto from './naruto';
+import * as jojosBizarreAdventure from './jojos-bizarre-adventure';
+import * as rickAndMorty from './rick-and-morty';
+import * as starWars from './star-wars';
 
 /*
  * Module
  */
 
 export const dataByUniverse: DataByUniverse = {
-  Daevabad: daevabad.data,
-  Dune: dune.data,
-  'Lord of the Rings': lordOfTheRings.data,
-  Naruto: naruto.data,
-  'Rick and Morty': rickAndMorty.data,
-  'Star Wars': starWars.data,
-  "JoJo's Bizarre Adventure": jojosBizarreAdventure.data,
+  daevabad: daevabad.data,
+  dune: dune.data,
+  'lord-of-the-rings': lordOfTheRings.data,
+  naruto: naruto.data,
+  'rick-and-morty': rickAndMorty.data,
+  'star-wars': starWars.data,
+  'jojos-bizarre-adventure': jojosBizarreAdventure.data,
 };
