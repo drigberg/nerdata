@@ -1,16 +1,18 @@
 export type Universe =
-  | "Dune"
-  | "Lord of the Rings"
-  | "Rick and Morty"
-  | "Star Wars"
-  | "Naruto"
+  | 'Daevabad'
+  | 'Dune'
+  | 'Lord of the Rings'
+  | 'Rick and Morty'
+  | 'Star Wars'
+  | 'Naruto'
   | "JoJo's Bizarre Adventure";
 export const UNIVERSES: Universe[] = [
-  "Dune",
-  "Lord of the Rings",
-  "Rick and Morty",
-  "Star Wars",
-  "Naruto",
+  'Daevabad',
+  'Dune',
+  'Lord of the Rings',
+  'Rick and Morty',
+  'Star Wars',
+  'Naruto',
   "JoJo's Bizarre Adventure",
 ];
 
@@ -20,9 +22,9 @@ export interface INerdataOpts {
   readonly exclude?: Universe | Universe[];
 }
 
-export type ItemType = "tool" | "vehicle" | "weapon";
-export type PlaceType = "city" | "realm";
-export type SpeciesType = "nonsentient" | "sentient";
+export type ItemType = 'tool' | 'vehicle' | 'weapon';
+export type PlaceType = 'city' | 'realm';
+export type SpeciesType = 'nonsentient' | 'sentient';
 
 export interface Item {
   readonly name: string;

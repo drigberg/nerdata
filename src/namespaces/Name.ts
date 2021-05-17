@@ -2,72 +2,73 @@
  * Module dependencies
  */
 
-import { Namespace } from './Namespace'
-import { Name, NameWithLast } from '../interface'
-import type { Random } from '../random'
-import type { Universe, DataOrNullByUniverse } from '../interface'
+import { Namespace } from './Namespace';
+import { Name, NameWithLast } from '../interface';
+import type { Random } from '../random';
+import type { Universe, DataOrNullByUniverse } from '../interface';
 
 /*
  * Module
  */
 
-type NamesByUniverse = Record<Universe, Name[]>
+type NamesByUniverse = Record<Universe, Name[]>;
 export class Names extends Namespace {
-  public data: NamesByUniverse
+  public data: NamesByUniverse;
 
   constructor(data: DataOrNullByUniverse, random: Random) {
-    super(random)
+    super(random);
 
-    this.data = this.parseData(data)
+    this.data = this.parseData(data);
 
-    this.first = this.first.bind(this)
-    this.last = this.last.bind(this)
-    this.full = this.full.bind(this)
+    this.first = this.first.bind(this);
+    this.last = this.last.bind(this);
+    this.full = this.full.bind(this);
   }
 
   private parseData(data: DataOrNullByUniverse): NamesByUniverse {
-    const that = this
-    this.universes = [] as Universe[]
+    this.universes = [] as Universe[];
 
     const parsed: NamesByUniverse = Object.keys(data).reduce((acc, key) => {
-      const universe = key as Universe
-      const universeData = data[universe]
+      const universe = key as Universe;
+      const universeData = data[universe];
       if (universeData === null) {
-        acc[universe] = [] as Name[]
-        return acc
+        acc[universe] = [] as Name[];
+        return acc;
       }
 
-      acc[universe] = universeData.names
-      that.universes.push(universe)
-      return acc
-    }, {} as NamesByUniverse)
-    return parsed
+      acc[universe] = universeData.names;
+      this.universes.push(universe);
+      return acc;
+    }, {} as NamesByUniverse);
+    return parsed;
   }
 
   public getNamesSubset(ctx: null | Universe | Universe[]): Name[] {
-    const subset = this.getUniverseSubset(ctx)
+    const subset = this.getUniverseSubset(ctx);
     const allNames = subset.reduce((acc, universe) => {
-      acc.push(...this.data[universe])
-      return acc
-    }, [] as Name[])
-    return allNames
+      acc.push(...this.data[universe]);
+      return acc;
+    }, [] as Name[]);
+    return allNames;
   }
 
   public first(ctx?: Universe | Universe[]): string {
-    const names = this.getNamesSubset(ctx || null)
-    const name = this.random.element(names)
-    return name.first
+    const names = this.getNamesSubset(ctx || null);
+    const name = this.random.element(names);
+    return name.first;
   }
 
   public last(ctx?: Universe | Universe[]): string {
-    const names: NameWithLast[] = this.getNamesSubset(ctx || null).filter((n): n is NameWithLast => n.last !== undefined)
-    const name = this.random.element(names)
-    return name.last
+    const names: NameWithLast[] = this.getNamesSubset(ctx || null).filter(
+      (n): n is NameWithLast => n.last !== undefined
+    );
+    const name = this.random.element(names);
+    return name.last;
   }
 
   public full(ctx?: Universe | Universe[]): string {
-    const names = this.getNamesSubset(ctx || null)
-    const {first, last} = this.random.element(names)
-    return [first, last].filter((i) => i).join(' ')
+    const names = this.getNamesSubset(ctx || null);
+    const { first, last } = this.random.element(names);
+    return [first, last].filter((i) => i).join(' ');
   }
 }

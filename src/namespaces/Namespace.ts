@@ -2,9 +2,9 @@
  * Module dependencies
  */
 
-import * as errors from '../errors'
-import type { Universe } from '../interface'
-import type { Random } from '../random'
+import * as errors from '../errors';
+import type { Universe } from '../interface';
+import type { Random } from '../random';
 
 /*
  * Module
@@ -28,26 +28,26 @@ export class Namespace {
         enumerable: false,
         writable: true,
       },
-    })
+    });
 
-    this.random = random
+    this.random = random;
   }
 
   public getUniverseSubset(ctx: null | Universe | Universe[]): Universe[] {
     if (ctx === null || !ctx.length) {
-      return this.universes
+      return this.universes;
     }
 
-    const universes: Universe[] = Array.isArray(ctx) ? ctx : [ctx]
+    const universes: Universe[] = Array.isArray(ctx) ? ctx : [ctx];
 
     const unavailable = universes.filter(
       (item) => !this.universes.includes(item),
-    )
+    );
 
     if (unavailable.length) {
-      throw errors.unloaded(unavailable, this.universes)
+      throw errors.unloaded(unavailable, this.universes);
     }
 
-    return universes
+    return universes;
   }
 }

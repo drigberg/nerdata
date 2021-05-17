@@ -1,9 +1,9 @@
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 
-const isFlowFile = (filename) => filename.endsWith(".js.flow");
+const isFlowFile = (filename) => filename.endsWith('.js.flow');
 const isDirectory = (filepath) => fs.lstatSync(filepath).isDirectory();
-const flowHeader = "// @flow\n";
+const flowHeader = '// @flow\n';
 function replaceInDirectory(directory) {
   const filenames = fs.readdirSync(directory);
   const flowFilenames = filenames.filter(isFlowFile);
@@ -24,4 +24,4 @@ function replaceInDirectory(directory) {
   }
 }
 
-replaceInDirectory("lib");
+replaceInDirectory('lib');

@@ -1,17 +1,19 @@
-import { dataByUniverse } from "../../src/data";
-import { expect } from "chai";
-import { before, describe, it } from "mocha";
-import { Nerdata } from "../../src/Nerdata";
+import { dataByUniverse } from '../../src/data';
+import { expect } from 'chai';
+import { before, describe, it } from 'mocha';
+import { Nerdata } from '../../src/Nerdata';
 
-describe("Quote", () => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+describe('Quote', () => {
   let data: any;
   let nerdata: Nerdata;
 
   before(() => {
-    nerdata = new Nerdata({ include: ["Star Wars", "Rick and Morty"] });
+    nerdata = new Nerdata({ include: ['Star Wars', 'Rick and Morty'] });
 
-    const rickAndMortyQuotes = dataByUniverse["Rick and Morty"].quotes;
-    const starWarsQuotes = dataByUniverse["Star Wars"].quotes;
+    const rickAndMortyQuotes = dataByUniverse['Rick and Morty'].quotes;
+    const starWarsQuotes = dataByUniverse['Star Wars'].quotes;
 
     data = {
       rickAndMorty: {
@@ -25,28 +27,28 @@ describe("Quote", () => {
     };
   });
 
-  describe("enumeration", () => {
-    it("methods are enumerable", () => {
+  describe('enumeration', () => {
+    it('methods are enumerable', () => {
       expect(Object.keys(new Nerdata().quote)).to.have.same.members([
-        "sentence",
-        "paragraph",
+        'sentence',
+        'paragraph',
       ]);
     });
   });
 
-  describe("sentence", () => {
-    it("returns a string", () => {
-      expect(nerdata.quote.sentence()).to.be.a("string");
+  describe('sentence', () => {
+    it('returns a string', () => {
+      expect(nerdata.quote.sentence()).to.be.a('string');
     });
 
-    describe("citation = true", () => {
-      it("returns a string", () => {
+    describe('citation = true', () => {
+      it('returns a string', () => {
         expect(nerdata.quote.sentence(undefined, { citation: true })).to.be.a(
-          "string"
+          'string'
         );
       });
 
-      it("appends speaker", () => {
+      it('appends speaker', () => {
         for (let i = 0; i < 10; i++) {
           const sentence = nerdata.quote.sentence(undefined, {
             citation: true,
@@ -57,111 +59,111 @@ describe("Quote", () => {
               sentence.includes(quote.text) && sentence.includes(quote.speaker)
           );
 
-          expect(match).to.be.an("object");
+          expect(match).to.be.an('object');
           expect(sentence).to.equal(`"${match.text}" - ${match.speaker}`);
         }
       });
     });
 
-    it("filters by universe: string", () => {
+    it('filters by universe: string', () => {
       for (let i = 0; i < 10; i++) {
         expect(data.starWars.text).to.include(
-          nerdata.quote.sentence("Star Wars")
+          nerdata.quote.sentence('Star Wars')
         );
       }
     });
 
-    it("filters by universe: array (single)", () => {
+    it('filters by universe: array (single)', () => {
       for (let i = 0; i < 10; i++) {
         expect(data.starWars.text).to.include(
-          nerdata.quote.sentence(["Star Wars"])
+          nerdata.quote.sentence(['Star Wars'])
         );
       }
     });
 
-    it("filters by universe: array (multiple)", () => {
+    it('filters by universe: array (multiple)', () => {
       const fullArray = data.rickAndMorty.text.concat(data.starWars.text);
       for (let i = 0; i < 10; i++) {
         expect(fullArray).to.include(
-          nerdata.quote.sentence(["Star Wars", "Rick and Morty"])
+          nerdata.quote.sentence(['Star Wars', 'Rick and Morty'])
         );
       }
     });
 
-    it("throws error when unloaded universe is requested", () => {
+    it('throws error when unloaded universe is requested', () => {
       let error: Error | undefined;
       try {
-        nerdata.quote.sentence("Dune");
+        nerdata.quote.sentence('Dune');
       } catch (err) {
         error = err;
       }
 
       if (!error) {
-        throw new Error("expected error");
+        throw new Error('expected error');
       }
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        "The following universes were not selected when Nerdata was initialized: Dune. Only the following are currently available: Rick and Morty, Star Wars"
+        'The following universes were not selected when Nerdata was initialized: Dune. Only the following are currently available: Rick and Morty, Star Wars'
       );
     });
   });
 
-  describe("paragraph", () => {
-    it("returns a string", () => {
-      expect(nerdata.quote.paragraph()).to.be.a("string");
+  describe('paragraph', () => {
+    it('returns a string', () => {
+      expect(nerdata.quote.paragraph()).to.be.a('string');
     });
 
-    it("opts.sentences = 1", () => {
+    it('opts.sentences = 1', () => {
       const paragraph = nerdata.quote.paragraph(undefined, { sentences: 1 });
-      expect(paragraph).to.be.a("string");
+      expect(paragraph).to.be.a('string');
       expect(data.rickAndMorty.text.concat(data.starWars.text)).to.include(
         paragraph
       );
     });
 
-    it("filters by universe: string", () => {
+    it('filters by universe: string', () => {
       for (let i = 0; i < 10; i++) {
         expect(data.starWars.text).to.include(
-          nerdata.quote.paragraph("Star Wars", { sentences: 1 })
+          nerdata.quote.paragraph('Star Wars', { sentences: 1 })
         );
       }
     });
 
-    it("filters by universe: array (single)", () => {
+    it('filters by universe: array (single)', () => {
       for (let i = 0; i < 10; i++) {
         expect(data.starWars.text).to.include(
-          nerdata.quote.paragraph(["Star Wars"], { sentences: 1 })
+          nerdata.quote.paragraph(['Star Wars'], { sentences: 1 })
         );
       }
     });
 
-    it("filters by universe: array (multiple)", () => {
+    it('filters by universe: array (multiple)', () => {
       const fullArray = data.rickAndMorty.text.concat(data.starWars.text);
       for (let i = 0; i < 10; i++) {
         expect(fullArray).to.include(
-          nerdata.quote.paragraph(["Star Wars", "Rick and Morty"], {
+          nerdata.quote.paragraph(['Star Wars', 'Rick and Morty'], {
             sentences: 1,
           })
         );
       }
     });
 
-    it("throws error when unloaded universe is requested", () => {
+    it('throws error when unloaded universe is requested', () => {
       let error: Error | undefined;
       try {
-        nerdata.quote.paragraph("Dune");
+        nerdata.quote.paragraph('Dune');
       } catch (err) {
         error = err;
       }
 
       if (!error) {
-        throw new Error("expected error");
+        throw new Error('expected error');
       }
 
       expect(error.message).to.equal(
         // tslint:disable-next-line:max-line-length
-        "The following universes were not selected when Nerdata was initialized: Dune. Only the following are currently available: Rick and Morty, Star Wars"
+        'The following universes were not selected when Nerdata was initialized: Dune. Only the following are currently available: Rick and Morty, Star Wars'
       );
     });
   });

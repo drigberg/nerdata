@@ -14,11 +14,7 @@
     "strict": true,
     "target": "ES2017"
   },
-  "exclude": [
-    "node_modules",
-    "lib",
-    "test"
-  ],
+  "exclude": ["node_modules", "lib", "test"],
   "include": [
     "src/data",
     "index.ts",
@@ -27,7 +23,5 @@
     "src/**/*.ts",
     "test/**/*.ts"
   ],
-  "typeRoots": [
-    "node_modules/@types"
-  ]
+  "typeRoots": ["node_modules/@types"]
 }

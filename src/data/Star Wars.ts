@@ -2,7 +2,7 @@
  * Module dependencies
  */
 
-import { UniverseData } from '../interface'
+import { UniverseData } from '../interface';
 
 /*
  * Module
@@ -371,4 +371,4 @@ export const data: UniverseData = {
       speaker: 'Leia Organa'
     }
   ]
-}
+};

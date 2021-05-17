@@ -2,11 +2,11 @@
  * Module dependencies
  */
 
-import { isNumber } from 'util'
-import { Namespace } from './Namespace'
-import { Quote } from '../interface'
-import type { Random } from '../random'
-import type { Universe, DataOrNullByUniverse } from '../interface'
+import { isNumber } from 'util';
+import { Namespace } from './Namespace';
+import { Quote } from '../interface';
+import type { Random } from '../random';
+import type { Universe, DataOrNullByUniverse } from '../interface';
 
 /*
  * Module
@@ -27,63 +27,62 @@ export class Quotes extends Namespace {
 
   private _defaultParagraphLength = 3
   constructor(data: DataOrNullByUniverse, random: Random) {
-    super(random)
-    this.data = this.parseData(data)
+    super(random);
+    this.data = this.parseData(data);
 
     Object.defineProperty(this, '_defaultParagraphLength', {
       enumerable: false,
       writable: true,
-    })
+    });
 
-    this.sentence = this.sentence.bind(this)
-    this.paragraph = this.paragraph.bind(this)
+    this.sentence = this.sentence.bind(this);
+    this.paragraph = this.paragraph.bind(this);
   }
 
   private parseData(data: DataOrNullByUniverse): QuotesByUniverse {
-    const that = this
-    this.universes = [] as Universe[]
+    this.universes = [] as Universe[];
 
     const parsed: QuotesByUniverse = Object.keys(data).reduce((acc, key) => {
-      const universe = key as Universe
-      const universeData = data[universe]
+      const universe = key as Universe;
+      const universeData = data[universe];
       if (universeData === null) {
-        acc[universe] = [] as Quote[]
-        return acc
+        acc[universe] = [] as Quote[];
+        return acc;
       }
 
-      acc[universe] = universeData.quotes
-      that.universes.push(universe)
-      return acc
-    }, {} as QuotesByUniverse)
-    return parsed
+      acc[universe] = universeData.quotes;
+      this.universes.push(universe);
+      return acc;
+    }, {} as QuotesByUniverse);
+    return parsed;
   }
 
   public sentence(ctx?: Universe | Universe[], opts: SentenceOpts = {}): string {
-    const subset = this.getUniverseSubset(ctx || null)
+    const subset = this.getUniverseSubset(ctx || null);
     const validQuotes = subset.reduce((acc, universe) => {
-      acc.push(...this.data[universe])
-      return acc
-    }, [] as Quote[])
+      acc.push(...this.data[universe]);
+      return acc;
+    }, [] as Quote[]);
 
-    const quote = this.random.element(validQuotes)
+    const quote = this.random.element(validQuotes);
 
     if (opts.citation === true) {
-      return `"${quote.text}" - ${quote.speaker}`
+      return `"${quote.text}" - ${quote.speaker}`;
     }
 
-    return quote.text
+    return quote.text;
   }
 
   public paragraph(ctx?: Universe | Universe[], opts: ParagraphOpts = {}): string {
-    const ret = []
+    const ret = [];
     const sentences = isNumber(opts.sentences) && opts.sentences > 0
       ? opts.sentences
-      : this._defaultParagraphLength
+      : this._defaultParagraphLength;
 
     for (let i = 0; i < sentences; i++) {
-      ret.push(this.sentence(ctx))
+      ret.push(this.sentence(ctx));
     }
 
-    return ret.join(' ')
+    return ret.join(' ');
   }
 }

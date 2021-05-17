@@ -8,19 +8,19 @@ Now with zero dependencies!
 
 Supported universes:
 
-- Lord of the Rings
-- Star Wars
-- Rick and Morty
+- Daevabad
 - Dune
-- Naruto
 - Jojo's Bizarre Adventure
+- Lord of the Rings
+- Naruto
+- Rick and Morty
+- Star Wars
 
 Planned universes:
 
 - American Gods
 - Avatar: The Last Airbender
 - Buffy the Vampire Slayer
-- Daevabad
 - DC Comics
 - Discworld
 - Doctor Who
@@ -31,6 +31,7 @@ Planned universes:
 - Gurren Lagann
 - Harry Potter
 - Marvel Comics
+- Mass Effect
 - One Piece
 - A Song of Ice and Fire
 - Umbrella Academy
