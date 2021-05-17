@@ -233,7 +233,7 @@ export const data: UniverseData = {
       speaker: 'Rock Lee',
     },
     {
-      text: 'Those who break the rules are schum, but those who abandon their friends are worse than scum.',
+      text: 'Those who break the rules are scum, but those who abandon their friends are worse than scum.',
       speaker: 'Kakashi Hatake',
     },
     {
