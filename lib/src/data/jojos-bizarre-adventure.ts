@@ -21,7 +21,19 @@ export const data: UniverseData = {
       last: 'Joestar',
     },
     {
+      first: 'Jonathan',
+      last: 'Joestar'
+    },
+    {
+      first: 'Joseph',
+      last: 'Joestar'
+    },
+    {
       first: 'Dario',
+      last: 'Brando',
+    },
+    {
+      first: 'Dio',
       last: 'Brando',
     },
     {
@@ -35,6 +47,52 @@ export const data: UniverseData = {
     {
       first: 'Will',
       last: 'A. Zeppeli',
+    },
+    {
+      first: 'Blueford',
+    },
+    {
+      first: 'Tarukus',
+    },
+    {
+      first: 'Poco',
+    },
+    {
+      first: 'Tonpetty',
+    },
+    {
+      first: 'Dire',
+    },
+    {
+      first: 'Straizo',
+    },
+    {
+      first: 'Doobie'
+    },
+    {
+      first: 'Smokey'
+    },
+    {
+      first: 'Kars'
+    },
+    {
+      first: 'Wamuu'
+    },
+    {
+      first: 'Esidisi'
+    },
+    {
+      first: 'Santviento'
+    },
+    {
+      first: 'Lisa',
+      last: 'Lisa'
+    },
+    {
+      first: 'Messina'
+    },
+    {
+      first: 'Loggs'
     },
   ],
   items: [
@@ -52,6 +110,18 @@ export const data: UniverseData = {
     },
     {
       name: 'stone mask',
+      type: 'tool',
+    },
+    {
+      name: 'scarlet overdrive',
+      type: 'weapon',
+    },
+    {
+      name: 'Danse Macabre hair',
+      type: 'weapon',
+    },
+    {
+      name: 'bubble launcher',
       type: 'weapon',
     },
     {
@@ -154,5 +224,9 @@ export const data: UniverseData = {
       text: 'Courage is knowing fear and making that fear your own.',
       speaker: 'Baron Zeppeli',
     },
+    {
+      text: 'My least favorite word is “work”. My second least favorite word is “try”!',
+      speaker: 'Joseph Joestar'
+    }
   ],
 };
