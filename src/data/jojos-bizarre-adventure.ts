@@ -14,6 +14,10 @@ export const data: UniverseData = {
       name: "Windknight's Lot",
       type: 'city',
     },
+    {
+      name: "Skeleton's Heel",
+      type: 'city',
+    },
   ],
   names: [
     {
@@ -47,6 +51,10 @@ export const data: UniverseData = {
     {
       first: 'Will',
       last: 'A. Zeppeli',
+    },
+    {
+      first: 'Caesar',
+      last: 'Zeppeli',
     },
     {
       first: 'Blueford',
@@ -92,7 +100,31 @@ export const data: UniverseData = {
       first: 'Messina'
     },
     {
+      first: 'Rudol',
+      last: 'von Stroheim'
+    },
+    {
       first: 'Loggs'
+    },
+    {
+      first: 'Suzie',
+      last: 'Q',
+    },
+    {
+      first: 'Mohammed',
+      last: 'Avdol',
+    },
+    {
+      first: 'Holy',
+      last: 'Kujo',
+    },
+    {
+      first: 'Jotaro',
+      last: 'Kujo',
+    },
+    {
+      first: 'Noriaki',
+      last: 'Kakyoin',
     },
   ],
   items: [
@@ -110,6 +142,10 @@ export const data: UniverseData = {
     },
     {
       name: 'stone mask',
+      type: 'tool',
+    },
+    {
+      name: 'Super Aja',
       type: 'tool',
     },
     {
@@ -135,7 +171,11 @@ export const data: UniverseData = {
       type: 'sentient',
     },
     {
-      name: 'frog', // TODO: replace
+      name: 'pillar men',
+      type: 'sentient',
+    },
+    {
+      name: 'stand',
       type: 'nonsentient',
     },
   ],
@@ -227,6 +267,14 @@ export const data: UniverseData = {
     {
       text: 'My least favorite word is “work”. My second least favorite word is “try”!',
       speaker: 'Joseph Joestar'
+    },
+    {
+      text: "You're bad at making friends, but when you do, I guess it's true love.",
+      speaker: 'Messina'
+    },
+    {
+      text: 'How tragic and so very exquisite.',
+      speaker: 'Kars'
     }
   ],
 };
