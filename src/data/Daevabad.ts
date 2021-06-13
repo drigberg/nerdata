@@ -12,19 +12,19 @@ export const data: UniverseData = {
   places: [
     {
       name: 'Daevabad',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Qui-zi',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Heiropolis',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Bir Nabat',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Ta Ntry',

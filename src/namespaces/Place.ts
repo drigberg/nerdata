@@ -21,7 +21,7 @@ export class Places extends Namespace {
 
     this.data = this.parseData(data);
 
-    this.city = this.city.bind(this);
+    this.location = this.location.bind(this);
     this.realm = this.realm.bind(this);
     this.any = this.any.bind(this);
   }
@@ -59,8 +59,8 @@ export class Places extends Namespace {
     );
   }
 
-  public city(ctx?: Universe | Universe[]): string {
-    const place = this.getByType(ctx || null, 'city');
+  public location(ctx?: Universe | Universe[]): string {
+    const place = this.getByType(ctx || null, 'location');
     return place.name;
   }
 
@@ -73,4 +73,13 @@ export class Places extends Namespace {
     const place = this.getByType(ctx || null, null);
     return place.name;
   }
+
+  /**
+   * @deprecated Use places.location() instead
+   */
+  public city(ctx?: Universe | Universe[]): string {
+    console.log('Deprecation warning: use places.location() instead of places.city()');
+    return this.location(ctx);
+  }
+
 }

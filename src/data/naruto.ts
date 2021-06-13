@@ -12,43 +12,43 @@ export const data: UniverseData = {
   places: [
     {
       name: 'Konohagakure',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Iwagakure',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Amegakure',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Hoshigakure',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Ishigakure',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Kirigakure',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Shimogakure',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Sunagakure',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Tanigakure',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Tonika Village',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'The Land of Fire',

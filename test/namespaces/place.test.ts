@@ -2,6 +2,7 @@ import { dataByUniverse } from '../../src/data';
 import { expect } from 'chai';
 import { before, describe, it } from 'mocha';
 import { Nerdata } from '../../src/Nerdata';
+import { DUNE_NOT_FOUND_ERROR_MESSAGE } from '../constants';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -18,7 +19,7 @@ describe('Place', () => {
     data = {
       rickAndMorty: {
         cities: rickAndMortyPlaces
-          .filter((item: any) => item.type === 'city')
+          .filter((item: any) => item.type === 'location')
           .map((item: any) => item.name),
         places: rickAndMortyPlaces.map((item: any) => item.name),
         realms: rickAndMortyPlaces
@@ -27,7 +28,7 @@ describe('Place', () => {
       },
       starWars: {
         cities: starWarsPlaces
-          .filter((item: any) => item.type === 'city')
+          .filter((item: any) => item.type === 'location')
           .map((item: any) => item.name),
         places: starWarsPlaces.map((item: any) => item.name),
         realms: starWarsPlaces
@@ -41,7 +42,7 @@ describe('Place', () => {
     it('methods are enumerable', () => {
       expect(Object.keys(new Nerdata().place)).to.have.same.members([
         'realm',
-        'city',
+        'location',
         'any',
       ]);
     });
@@ -87,14 +88,11 @@ describe('Place', () => {
         throw new Error('expected error');
       }
 
-      expect(error.message).to.equal(
-        // tslint:disable-next-line:max-line-length
-        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars'
-      );
+      expect(error.message).to.equal(DUNE_NOT_FOUND_ERROR_MESSAGE);
     });
   });
 
-  describe('city', () => {
+  describe('city (deprecated)', () => {
     it('returns a string', () => {
       expect(nerdata.place.city()).to.be.a('string');
     });
@@ -136,10 +134,7 @@ describe('Place', () => {
         throw new Error('expected error');
       }
 
-      expect(error.message).to.equal(
-        // tslint:disable-next-line:max-line-length
-        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars'
-      );
+      expect(error.message).to.equal(DUNE_NOT_FOUND_ERROR_MESSAGE);
     });
   });
 
@@ -185,10 +180,7 @@ describe('Place', () => {
         throw new Error('expected error');
       }
 
-      expect(error.message).to.equal(
-        // tslint:disable-next-line:max-line-length
-        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars'
-      );
+      expect(error.message).to.equal(DUNE_NOT_FOUND_ERROR_MESSAGE);
     });
   });
 });

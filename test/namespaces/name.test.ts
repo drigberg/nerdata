@@ -2,6 +2,7 @@ import { dataByUniverse } from '../../src/data';
 import { expect } from 'chai';
 import { before, describe, it } from 'mocha';
 import { Nerdata } from '../../src/Nerdata';
+import { DUNE_NOT_FOUND_ERROR_MESSAGE } from '../constants';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -10,18 +11,18 @@ describe('Name', () => {
   let nerdata: Nerdata;
 
   before(() => {
-    nerdata = new Nerdata({ include: ['star-wars', 'dune'] });
+    nerdata = new Nerdata({ include: ['star-wars', 'rick-and-morty'] });
 
-    const duneNames = dataByUniverse.dune.names;
+    const rickAndMortyNames = dataByUniverse['rick-and-morty'].names;
     const starWarsNames = dataByUniverse['star-wars'].names;
 
     data = {
-      dune: {
-        first: duneNames.map((item: any) => item.first),
-        full: duneNames.map((name: any) =>
+      rickAndMorty: {
+        first: rickAndMortyNames.map((item: any) => item.first),
+        full: rickAndMortyNames.map((name: any) =>
           [name.first, name.last].filter((item: any) => item).join(' ')
         ),
-        last: duneNames
+        last: rickAndMortyNames
           .map((item: any) => item.last)
           .filter((item: any) => item),
       },
@@ -54,7 +55,7 @@ describe('Name', () => {
 
     it('filters by universe: string', () => {
       for (let i = 0; i < 10; i++) {
-        expect(data.dune.first).to.include(nerdata.name.first('dune'));
+        expect(data.rickAndMorty.first).to.include(nerdata.name.first('rick-and-morty'));
       }
     });
 
@@ -67,16 +68,16 @@ describe('Name', () => {
     });
 
     it('filters by universe: array (multiple)', () => {
-      const fullArray = data.dune.first.concat(data.starWars.first);
+      const fullArray = data.rickAndMorty.first.concat(data.starWars.first);
       for (let i = 0; i < 10; i++) {
-        expect(fullArray).to.include(nerdata.name.first(['star-wars', 'dune']));
+        expect(fullArray).to.include(nerdata.name.first(['star-wars', 'rick-and-morty']));
       }
     });
 
     it('throws error when unloaded universe is requested', () => {
       let error: Error | undefined;
       try {
-        nerdata.name.first('rick-and-morty');
+        nerdata.name.first('dune');
       } catch (err) {
         error = err;
       }
@@ -85,10 +86,7 @@ describe('Name', () => {
         throw new Error('expected error');
       }
 
-      expect(error.message).to.equal(
-        // tslint:disable-next-line:max-line-length
-        'The following universes were not selected when Nerdata was initialized: rick-and-morty. Only the following are currently available: dune, star-wars'
-      );
+      expect(error.message).to.equal(DUNE_NOT_FOUND_ERROR_MESSAGE);
     });
   });
 
@@ -99,7 +97,7 @@ describe('Name', () => {
 
     it('filters by universe: string', () => {
       for (let i = 0; i < 10; i++) {
-        expect(data.dune.last).to.include(nerdata.name.last('dune'));
+        expect(data.rickAndMorty.last).to.include(nerdata.name.last('rick-and-morty'));
       }
     });
 
@@ -110,16 +108,16 @@ describe('Name', () => {
     });
 
     it('filters by universe: array (multiple)', () => {
-      const fullArray = data.dune.last.concat(data.starWars.last);
+      const fullArray = data.rickAndMorty.last.concat(data.starWars.last);
       for (let i = 0; i < 10; i++) {
-        expect(fullArray).to.include(nerdata.name.last(['star-wars', 'dune']));
+        expect(fullArray).to.include(nerdata.name.last(['star-wars', 'rick-and-morty']));
       }
     });
 
     it('throws error when unloaded universe is requested', () => {
       let error: Error | undefined;
       try {
-        nerdata.name.last('rick-and-morty');
+        nerdata.name.last('dune');
       } catch (err) {
         error = err;
       }
@@ -128,10 +126,7 @@ describe('Name', () => {
         throw new Error('expected error');
       }
 
-      expect(error.message).to.equal(
-        // tslint:disable-next-line:max-line-length
-        'The following universes were not selected when Nerdata was initialized: rick-and-morty. Only the following are currently available: dune, star-wars'
-      );
+      expect(error.message).to.equal(DUNE_NOT_FOUND_ERROR_MESSAGE);
     });
   });
 
@@ -142,7 +137,7 @@ describe('Name', () => {
 
     it('filters by universe: string', () => {
       for (let i = 0; i < 10; i++) {
-        expect(data.dune.full).to.include(nerdata.name.full('dune'));
+        expect(data.rickAndMorty.full).to.include(nerdata.name.full('rick-and-morty'));
       }
     });
 
@@ -153,16 +148,16 @@ describe('Name', () => {
     });
 
     it('filters by universe: array (multiple)', () => {
-      const fullArray = data.dune.full.concat(data.starWars.full);
+      const fullArray = data.rickAndMorty.full.concat(data.starWars.full);
       for (let i = 0; i < 10; i++) {
-        expect(fullArray).to.include(nerdata.name.full(['star-wars', 'dune']));
+        expect(fullArray).to.include(nerdata.name.full(['star-wars', 'rick-and-morty']));
       }
     });
 
     it('throws error when unloaded universe is requested', () => {
       let error: Error | undefined;
       try {
-        nerdata.name.full('rick-and-morty');
+        nerdata.name.full('dune');
       } catch (err) {
         error = err;
       }
@@ -171,10 +166,7 @@ describe('Name', () => {
         throw new Error('expected error');
       }
 
-      expect(error.message).to.equal(
-        // tslint:disable-next-line:max-line-length
-        'The following universes were not selected when Nerdata was initialized: rick-and-morty. Only the following are currently available: dune, star-wars'
-      );
+      expect(error.message).to.equal(DUNE_NOT_FOUND_ERROR_MESSAGE);
     });
   });
 });

@@ -12,27 +12,27 @@ export const data: UniverseData = {
   places: [
     {
       name: 'Arrakeen',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Harko City',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Bandalong',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Cala City',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Barony',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Vernii',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Giedi Prime',

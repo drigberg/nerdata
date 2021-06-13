@@ -11,12 +11,16 @@ import { UniverseData } from '../interface';
 export const data: UniverseData = {
   places: [
     {
+      name: 'Joestar Mansion',
+      type: 'location',
+    },
+    {
       name: "Windknight's Lot",
-      type: 'city',
+      type: 'location',
     },
     {
       name: "Skeleton's Heel",
-      type: 'city',
+      type: 'location',
     },
   ],
   names: [

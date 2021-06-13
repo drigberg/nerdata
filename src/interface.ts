@@ -23,7 +23,7 @@ export interface INerdataOpts {
 }
 
 export type ItemType = 'tool' | 'vehicle' | 'weapon';
-export type PlaceType = 'city' | 'realm';
+export type PlaceType = 'location' | 'realm';
 export type SpeciesType = 'nonsentient' | 'sentient';
 
 export interface Item {

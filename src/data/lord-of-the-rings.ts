@@ -12,31 +12,31 @@ export const data: UniverseData = {
   places: [
     {
       name: "Helm's Deep",
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Bag End',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Minas Tirith',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Osgiliath',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Minas Morgul',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Gondolin',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Rivendell',
-      type: 'city',
+      type: 'location',
     },
     {
       name: 'Gondor',

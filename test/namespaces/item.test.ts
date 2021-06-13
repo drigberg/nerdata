@@ -2,6 +2,7 @@ import { dataByUniverse } from '../../src/data';
 import { expect } from 'chai';
 import { before, describe, it } from 'mocha';
 import { Nerdata } from '../../src/Nerdata';
+import { DUNE_NOT_FOUND_ERROR_MESSAGE } from '../constants';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -93,10 +94,7 @@ describe('Item', () => {
         throw new Error('expected error');
       }
 
-      expect(error.message).to.equal(
-        // tslint:disable-next-line:max-line-length
-        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars'
-      );
+      expect(error.message).to.equal(DUNE_NOT_FOUND_ERROR_MESSAGE);
     });
   });
 
@@ -140,10 +138,7 @@ describe('Item', () => {
         throw new Error('expected error');
       }
 
-      expect(error.message).to.equal(
-        // tslint:disable-next-line:max-line-length
-        'The following universes were not selected when Nerdata was initialized: dune. Only the following are currently available: rick-and-morty, star-wars'
-      );
+      expect(error.message).to.equal(DUNE_NOT_FOUND_ERROR_MESSAGE);
     });
   });
 });

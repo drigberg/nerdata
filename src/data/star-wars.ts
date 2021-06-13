@@ -12,31 +12,31 @@ export const data: UniverseData = {
   places: [
     {
       name: 'Cloud City',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Theed',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Mos Eisley',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Tipoca City',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Galactic City',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Anchorhead',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Ahto City',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Tattooine',

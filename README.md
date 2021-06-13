@@ -4,6 +4,10 @@ Testdata from scifi and fantasy, because y'all need it.
 
 Now with zero dependencies!
 
+## Changes in version 1.3.0
+- place.city() has been deprecated in favor of place.location(), to allow for smaller points of interest (ex: Belmont Hold, Joestar Mansion)
+- new universe: castlevania
+
 ## DATA
 
 Supported universes:
@@ -98,8 +102,8 @@ nerdata.name.full("fifty-shades-of-grey"); // ERROR: unsupported or unloaded
 | name.last           | last name                           | "Solo", "Sanchez", "Atreides"                 |
 | name.full           | full name                           | "Han Solo", "Rick Sanchez", "Frodo Baggins"   |
 | place.any           | name of location (any type)         | "Ahto City", "Gazorpazorp", "Caladan"         |
-| place.city          | name of city                        | "Ahto City", "Seattle", "Bandalong"           |
-| place.realm         | name of realm                       | "Tattooine", "Gazorpazorp", "Gondor"          |
+| place.location      | name of city or smaller location    | "Ahto City", "Seattle", "Bandalong"           |
+| place.realm         | name of place larger than a city    | "Tattooine", "Gazorpazorp", "Gondor"          |
 | item.any            | name of item (any type)             | "light saber", "space cruiser", "suspensor"   |
 | item.tool           | name of tool                        | "neural band", "plumbus", "suspensor"         |
 | item.weapon         | name of weapon                      | "Narsil", "freeze ray", "crysknife"           |

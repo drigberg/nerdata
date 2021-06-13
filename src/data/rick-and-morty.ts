@@ -14,15 +14,15 @@ export const data: UniverseData = {
   places: [
     {
       name: 'The Citadel',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Seattle',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Bespin',
-      type: 'city'
+      type: 'location'
     },
     {
       name: 'Gazorpazorp',
