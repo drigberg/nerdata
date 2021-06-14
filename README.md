@@ -12,6 +12,7 @@ Now with zero dependencies!
 
 Supported universes:
 
+- Castlevania
 - Daevabad
 - Dune
 - Jojo's Bizarre Adventure
@@ -20,23 +21,25 @@ Supported universes:
 - Rick and Morty
 - Star Wars
 
-Planned universes:
+Possible future universes:
 
 - American Gods
 - Avatar: The Last Airbender
-- Buffy the Vampire Slayer
+- Bobobo-bo Bo-bobo
 - DC Comics
 - Discworld
 - Doctor Who
+- Dragonball
 - The Expanse
 - Firefly
-- Foundation
 - Greek Mythology
 - Gurren Lagann
 - Harry Potter
 - Marvel Comics
 - Mass Effect
 - One Piece
+- One Punch Man
+- She-Ra
 - A Song of Ice and Fire
 - Umbrella Academy
 - The Witcher
